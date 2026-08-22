@@ -233,10 +233,6 @@ footer:
     name: 언론 보도
     url: /press/
     weight: 40
-  - parent: 커뮤니티
-    name: 비급여안내
-    url: /pricing/
-    weight: 50
 
   - name: 안내
     weight: 40
