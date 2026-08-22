@@ -5,7 +5,7 @@
 # ══════════════════════════════════════════════════════════════════════════════
 clinic:
   phone_display: "02-6954-7575" # 화면에 보이는 전화번호
-  phone_tel: "tel:0507-1469-7578" # 실제 클릭 시 연결되는 네이버 스마트콜 번호
+  phone_tel: "tel:02-6954-7575" # 실제 클릭 시 연결되는 전화번호 (표시 번호와 통일)
   naver_booking_url: "https://map.naver.com/p/entry/place/1887559338?placePath=%2Fhome%3Fentry%3Dplt%26from%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202608220007%26locale%3Dko%26svcName%3Dmap_pcv5&searchType=place&lng=127.0819814&lat=37.5114327&c=15.00,0,0,0,dh"
   kakao_channel_url: "https://pf.kakao.com/_xkqufn"
   naver_blog_url: "https://blog.naver.com/healimjs"
@@ -13,6 +13,9 @@ clinic:
   youtube_url: "https://www.youtube.com/@%ED%95%B4%EC%95%84%EB%A6%BC-g5w/videos"
   network_site_url: "https://www.healim.com" # 해아림한의원 네트워크 홈페이지
   consult_form_endpoint: "consult" # Netlify Forms form name
+  # 네이버클라우드플랫폼(https://www.ncloud.com) > Maps > Application 등록 후 발급받는 Client ID.
+  # 비워두면 오시는 길 지도는 구글 지도로 자동 표시됩니다. (docs/ISSUES.md 참고)
+  naver_map_client_id: ""
 
 # ══════════════════════════════════════════════════════════════════════════════
 # HUGO BLOX CONFIGURATION

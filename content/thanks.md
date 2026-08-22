@@ -13,7 +13,7 @@ sections:
         url: /
       secondary_action:
         text: 전화 문의 (02-6954-7575)
-        url: "tel:0507-1469-7578"
+        url: "tel:02-6954-7575"
     design:
       spacing:
         padding: ["4rem", 0, "4rem", 0]

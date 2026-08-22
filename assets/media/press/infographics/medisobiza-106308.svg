@@ -1,0 +1,17 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a3e635"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <circle cx="520" cy="60" r="120" fill="white" opacity="0.06"/>
+  <circle cx="40" cy="360" r="90" fill="white" opacity="0.06"/>
+  <g transform="translate(236,90)">
+    <circle cx="64" cy="64" r="64" fill="white" opacity="0.16"/>
+    <g transform="translate(32,32)"><path d="M32 10c9 13 16 22 16 31a16 16 0 1 1-32 0c0-9 7-18 16-31z" fill="none" stroke="white" stroke-width="3.5" stroke-linejoin="round"/></g>
+  </g>
+  
+  <text x="300" y="300" text-anchor="middle" font-family="'Pretendard','Malgun Gothic',sans-serif" font-size="22" font-weight="600" fill="white" opacity="0.95">다한증 · 강박증</text>
+</svg>

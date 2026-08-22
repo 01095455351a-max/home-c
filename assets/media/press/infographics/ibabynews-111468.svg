@@ -1,0 +1,17 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <circle cx="520" cy="60" r="120" fill="white" opacity="0.06"/>
+  <circle cx="40" cy="360" r="90" fill="white" opacity="0.06"/>
+  <g transform="translate(236,90)">
+    <circle cx="64" cy="64" r="64" fill="white" opacity="0.16"/>
+    <g transform="translate(32,32)"><path d="M36 8 16 36h12l-4 20 24-30H36l0-18z" fill="white" opacity="0.95"/></g>
+  </g>
+  <text x="300" y="272" text-anchor="middle" font-family="'Pretendard','Malgun Gothic',sans-serif" font-size="40" font-weight="800" fill="white">10~20%</text>
+  <text x="300" y="320" text-anchor="middle" font-family="'Pretendard','Malgun Gothic',sans-serif" font-size="22" font-weight="600" fill="white" opacity="0.95">소아 틱장애 유병률</text>
+</svg>

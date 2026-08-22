@@ -175,7 +175,7 @@ sections:
   # ──────────────────────────────────────────────────────────
   # 5. 오시는 길 & 진료시간 — 지도
   # ──────────────────────────────────────────────────────────
-  - block: google-map
+  - block: clinic-map
     id: location
     content:
       title: 오시는 길
@@ -202,7 +202,7 @@ sections:
         - "화 · 금 (야간진료): 10:00 ~ 20:00 (점심시간 13:00 ~ 14:00)"
         - "토요일 · 대체공휴일: 10:00 ~ 16:00 (점심시간 없이 연속 진료)"
         - "정기 휴진: 목요일 · 일요일 · 공휴일 (대체공휴일은 진료)"
-      phone: "02-xxx-xxxx"
+      phone: "02-6954-7575"
       social:
         - icon: brands/instagram
           url: https://www.instagram.com/healimjs
@@ -257,7 +257,7 @@ sections:
     id: reserve
     content:
       title: 지금, 편안한 마음으로 첫 상담을 시작해 보세요
-      text: 네이버 예약 · 카카오톡 1:1 비밀상담 · 공식 인스타그램 DM(@healimjs) · 전화 문의(02-xxx-xxxx)로 편하게 문의해 주세요.
+      text: 네이버 예약 · 카카오톡 1:1 비밀상담 · 공식 인스타그램 DM(@healimjs) · 전화 문의(02-6954-7575)로 편하게 문의해 주세요.
       button:
         text: 네이버 실시간 예약
         url: "#"

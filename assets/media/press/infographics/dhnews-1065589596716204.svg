@@ -1,0 +1,19 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e879f9"/>
+      <stop offset="100%" stop-color="#c026d3"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <circle cx="520" cy="60" r="120" fill="white" opacity="0.06"/>
+  <circle cx="40" cy="360" r="90" fill="white" opacity="0.06"/>
+  <g transform="translate(236,90)">
+    <circle cx="64" cy="64" r="64" fill="white" opacity="0.16"/>
+    <g transform="translate(32,32)"><path d="M8 22h30a6 6 0 1 0-5-9" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M8 34h38a6.5 6.5 0 1 1-5.5 10" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M8 46h24a5 5 0 1 1-4 8" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round"/></g>
+  </g>
+  
+  <text x="300" y="300" text-anchor="middle" font-family="'Pretendard','Malgun Gothic',sans-serif" font-size="22" font-weight="600" fill="white" opacity="0.95">불면증 · 자율신경실조증</text>
+</svg>

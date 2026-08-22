@@ -13,7 +13,7 @@ sections:
       spacing:
         padding: ["4rem", 0, "3rem", 0]
 
-  - block: google-map
+  - block: clinic-map
     content:
       lat: 37.5114327
       lng: 127.0819814
@@ -39,5 +39,5 @@ sections:
       text: 도보로 찾기 어려우신 경우 전화로 안내해 드립니다.
       button:
         text: "전화 문의 02-6954-7575"
-        url: "tel:0507-1469-7578"
+        url: "tel:02-6954-7575"
 ---

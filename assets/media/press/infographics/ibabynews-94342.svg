@@ -1,0 +1,18 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <circle cx="520" cy="60" r="120" fill="white" opacity="0.06"/>
+  <circle cx="40" cy="360" r="90" fill="white" opacity="0.06"/>
+  <g transform="translate(236,90)">
+    <circle cx="64" cy="64" r="64" fill="white" opacity="0.16"/>
+    <g transform="translate(32,32)"><path d="M40 14c-11 2-19 11-19 22s8 20 19 22c-14 2-27-9-27-24s13-26 27-20z" fill="white" opacity="0.95"/>
+    <circle cx="44" cy="20" r="2" fill="white"/><circle cx="50" cy="28" r="1.4" fill="white"/></g>
+  </g>
+  
+  <text x="300" y="300" text-anchor="middle" font-family="'Pretendard','Malgun Gothic',sans-serif" font-size="22" font-weight="600" fill="white" opacity="0.95">불면증 · 우울증</text>
+</svg>

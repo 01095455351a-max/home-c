@@ -1,0 +1,20 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3f96ac"/>
+      <stop offset="100%" stop-color="#23606f"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <circle cx="520" cy="60" r="120" fill="white" opacity="0.06"/>
+  <circle cx="40" cy="360" r="90" fill="white" opacity="0.06"/>
+  <g transform="translate(236,90)">
+    <circle cx="64" cy="64" r="64" fill="white" opacity="0.16"/>
+    <g transform="translate(32,32)"><circle cx="24" cy="24" r="9" fill="none" stroke="white" stroke-width="3.5"/>
+    <circle cx="44" cy="26" r="7" fill="none" stroke="white" stroke-width="3" opacity="0.8"/>
+    <path d="M10 52c0-9 6-15 14-15s14 6 14 15" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M38 52c0-7 4-12 12-12s12 5 12 12" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.8"/></g>
+  </g>
+  
+  <text x="300" y="300" text-anchor="middle" font-family="'Pretendard','Malgun Gothic',sans-serif" font-size="22" font-weight="600" fill="white" opacity="0.95">공황장애 · 사회공포증</text>
+</svg>
