@@ -1,0 +1,41 @@
+{{/* Project override of Hugo Blox's default social_links.html — adds a
+     colorful circular badge (matching each brand's real color) for
+     known platforms (Instagram, YouTube), instead of the theme's plain
+     monochrome glyph. Any icon not in the lookup falls back to the
+     original neutral style so this stays safe for other pages that
+     reuse this partial (author cards, author listing). */}}
+{{ if .Params.profiles }}
+{{ $brandStyles := dict
+  "brands/instagram" (dict "class" "bg-gradient-to-br from-amber-400 via-pink-500 to-purple-600 text-white")
+  "brands/youtube" (dict "class" "bg-[#FF0000] text-white")
+}}
+<div class="flex flex-wrap items-center gap-2 text-neutral-500 dark:text-neutral-300">
+  {{ range $links := .Params.profiles }}
+    {{ $link := .url }}
+    {{ $scheme := (urls.Parse $link).Scheme }}
+    {{ $target := "" }}
+    {{ if not $scheme }}
+      {{ $link = .url | relLangURL }}
+    {{ else if in (slice "http" "https") $scheme }}
+      {{ $target = "target=\"_blank\" rel=\"noopener\" rel=\"me noopener noreferrer\"" }}
+    {{ end }}
+    {{ $brand := index $brandStyles .icon }}
+    {{ if $brand }}
+    <a
+      class="inline-flex items-center justify-center w-10 h-10 rounded-full shadow-md transition-transform hover:scale-110 {{ $brand.class }}"
+      href="{{ $link | safeURL }}"
+      {{ $target | safeHTMLAttr }}
+      aria-label="{{ .icon | title }}"
+    >{{ partial "functions/get_icon" (dict "name" .icon "attributes" "class=\"w-5 h-5\"") }}</a>
+    {{ else }}
+    <a
+      class="pr-4 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="{{ $link | safeURL }}"
+      {{ $target | safeHTMLAttr }}
+      aria-label="{{ .icon | title }}"
+    >{{ partial "functions/get_icon" (dict "name" .icon "attributes" "style=\"height: 1em;\"") }}</a>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}
