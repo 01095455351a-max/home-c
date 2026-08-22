@@ -16,10 +16,9 @@ sections:
 
   - block: markdown
     content:
-      title: 네이버 리뷰
+      title: 온라인 리뷰
       text: |
         네이버 스마트플레이스에 남겨주신 실제 방문자 리뷰를 확인하실 수 있습니다.
-        (아래는 리뷰 영역 예시이며, 실제 대표 리뷰 캡처 또는 발췌 문구로 교체해 주세요.)
 
   - block: cta-button-list
     content:
@@ -37,7 +36,6 @@ sections:
 
   - block: focus-areas
     content:
-      subtitle: 다한증 치료 후기
       items:
         - name: 두피 다한증 · 6개월 치료
           description: "치료 전: 두피에 땀이 계속 젖어있어 항상 창피함을 느꼈습니다. **치료 후**: 땀이 현저히 줄고, 사람들을 만나도 창피하거나 민망함이 없어졌습니다."
@@ -55,14 +53,6 @@ sections:
           description: "치료 전: 출퇴근 지하철, 사람 많은 장소에서 화장이 지워질 정도로 땀이 났습니다. **치료 후**: 사람 많은 강의나 출퇴근시에도 땀이 거의 나지 않습니다. 포기하지 않고 꾸준히 치료하면 좋아질 수 있습니다."
           image: reviews/hyperhidrosis/review4.jpg
           topics: ["다한증"]
-    design:
-      layout: cards
-      css_class: "bg-gray-50 dark:bg-gray-900/50"
-
-  - block: focus-areas
-    content:
-      subtitle: 틱장애 · ADHD 치료 후기
-      items:
         - name: ADHD · 9개월 치료 (보호자 후기)
           description: "치료 전: 숙제할 때 집중하지 못하고 매일 아이와 다퉜습니다. **치료 후**: 한약과 두뇌훈련, 침 치료를 병행하며 서서히 좋아져, 학원 선생님도 놀랄 만큼 집중력이 좋아졌습니다."
           image: reviews/tic-adhd/review1.jpg
@@ -79,13 +69,6 @@ sections:
           description: "치료 전: '음' 소리와 눈 깜빡임 증상이 있었습니다. **치료 후**: 증상이 모두 사라졌습니다. 치료 시기가 무엇보다 중요하며, 재발했을 때도 바로 내원해 빠르게 치료할 수 있었습니다."
           image: reviews/tic-adhd/review4.jpg
           topics: ["틱장애"]
-    design:
-      layout: cards
-
-  - block: focus-areas
-    content:
-      subtitle: 신경정신과 질환 치료 후기
-      items:
         - name: 공황장애 치료 후기
           description: "치료 전: 사람 많은 곳, 폐쇄된 공간에서 심하게 호흡이 힘들었고 밤에 잠들기 어려웠습니다. **치료 후**: 사람 많은 곳에도 신경 쓰지 않고 잘 적응하며, 밤에 잠도 잘 잡니다."
           image: reviews/mental-health/review1.jpg
@@ -106,14 +89,6 @@ sections:
           description: "치료 전: 잠에 대한 불안감이 커지고 매일 밤 불안해하며 우울·무기력해졌습니다. **치료 후**: 정신적으로 평온해지고 피로감이 사라지며 의욕이 생겼습니다."
           image: reviews/mental-health/review5.jpg
           topics: ["불면증"]
-    design:
-      layout: cards
-      css_class: "bg-gray-50 dark:bg-gray-900/50"
-
-  - block: focus-areas
-    content:
-      subtitle: 자율신경실조증 · 기타 치료 후기
-      items:
         - name: 스트레스성 생리불순 · 자율신경 치료 후기
           description: "치료 전: 업무 스트레스로 생리가 지연되고, 잘 체하며 어지러움이 있었습니다. **치료 후**: 생리가 규칙적으로 돌아오고, 체하는 일과 어지러움이 사라졌습니다."
           image: reviews/autonomic/review1.jpg
