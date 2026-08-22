@@ -160,6 +160,33 @@ sections:
       css_class: "bg-white dark:bg-gray-900"
 
   # ──────────────────────────────────────────────────────────
+  # 첫 진료시 — 4단계 진료 프로세스 (특화 질환 다음, 치료 방법 이전)
+  # ──────────────────────────────────────────────────────────
+  - block: steps
+    id: process
+    content:
+      title: 편안한 첫걸음을 위한 4단계 진료 프로세스
+      text: 처음 내원하시는 분들도 부담 없이 준비할 수 있도록 과정을 안내해 드립니다.
+      items:
+        - title: 사전 예약
+          text: 네이버 예약, 카카오톡 비밀상담을 통한 프라이빗 예약
+          icon: calendar-days
+        - title: 기초 설문 & 정밀 검사
+          text: 두뇌 및 자율신경 기능 상태 객관적 측정
+          icon: clipboard-document-check
+        - title: 1:1 전담 원장 심층 진료
+          text: 증상의 원인을 짚어내는 면밀한 진단과 상담
+          icon: user-group
+        - title: 맞춤 처방 & 지속 케어
+          text: 개인 맞춤 한약 탕전 및 정기적인 회복 경과 점검
+          icon: beaker
+    design:
+      layout: horizontal
+      marker_style: icon
+      connector: line
+      css_class: "bg-gray-50 dark:bg-gray-900/50"
+
+  # ──────────────────────────────────────────────────────────
   # 진료안내 · 치료 방법 (8종) 요약 — 상단 메뉴 "진료안내" 클릭 시 이동
   # ──────────────────────────────────────────────────────────
   - block: focus-areas
@@ -256,33 +283,6 @@ sections:
             - 신경성 두통·어지럼증
     design:
       layout: cards
-
-  # ──────────────────────────────────────────────────────────
-  # 4. 치료 이야기 및 내원 안내 — 4단계 진료 프로세스
-  # ──────────────────────────────────────────────────────────
-  - block: steps
-    id: process
-    content:
-      title: 편안한 첫걸음을 위한 4단계 진료 프로세스
-      text: 처음 내원하시는 분들도 부담 없이 준비할 수 있도록 과정을 안내해 드립니다.
-      items:
-        - title: 사전 예약
-          text: 네이버 예약, 카카오톡 비밀상담을 통한 프라이빗 예약
-          icon: calendar-days
-        - title: 기초 설문 & 정밀 검사
-          text: 두뇌 및 자율신경 기능 상태 객관적 측정
-          icon: clipboard-document-check
-        - title: 1:1 전담 원장 심층 진료
-          text: 증상의 원인을 짚어내는 면밀한 진단과 상담
-          icon: user-group
-        - title: 맞춤 처방 & 지속 케어
-          text: 개인 맞춤 한약 탕전 및 정기적인 회복 경과 점검
-          icon: beaker
-    design:
-      layout: horizontal
-      marker_style: icon
-      connector: line
-      css_class: "bg-gray-50 dark:bg-gray-900/50"
 
   # ──────────────────────────────────────────────────────────
   # 치료후기 미리보기 — 상단 메뉴 "치료후기" 클릭 시 이동
