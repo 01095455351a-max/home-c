@@ -112,9 +112,8 @@ hugoblox:
     sticky: true
     # Show logo in navbar
     show_logo: true
-    # Show site title text in navbar
-    show_title: true
-    # Override navbar title (defaults to identity.name) — logo already reads "해아림한의원", so just add the branch
+    # Show site title text in navbar — off: 새 로고 이미지에 "잠실점" 글자가 이미 포함되어 있음
+    show_title: false
     title: "잠실점"
     # Menu alignment
     align: center # left | center | right
@@ -137,9 +136,8 @@ hugoblox:
     # Footer style variant
     style: columns # minimal | columns | centered
     show_logo: true
-    show_title: true
+    show_title: false
     show_tagline: true
-    # Override footer title (defaults to identity.name) — logo already reads "해아림한의원", so just add the branch
     title: "잠실점"
     language_switcher: true
     # Show social icons from identity.social.links
