@@ -106,11 +106,11 @@ hugoblox:
     # Stick to top on scroll
     sticky: true
     # Show logo in navbar
-    show_logo: false
+    show_logo: true
     # Show site title text in navbar
     show_title: true
-    # Override navbar title (defaults to identity.name)
-    title: ""
+    # Override navbar title (defaults to identity.name) — logo already reads "해아림한의원", so just add the branch
+    title: "잠실점"
     # Menu alignment
     align: center # left | center | right
     # Feature toggles
@@ -131,11 +131,11 @@ hugoblox:
   footer:
     # Footer style variant
     style: columns # minimal | columns | centered
-    show_logo: false
+    show_logo: true
     show_title: true
     show_tagline: true
-    # Override footer title (defaults to identity.name)
-    title: ""
+    # Override footer title (defaults to identity.name) — logo already reads "해아림한의원", so just add the branch
+    title: "잠실점"
     language_switcher: true
     # Show social icons from identity.social.links
     show_social: true
