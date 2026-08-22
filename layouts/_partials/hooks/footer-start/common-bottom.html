@@ -109,22 +109,22 @@
 
       {{/* ── 오시는 길 ── */}}
       <div class="lg:col-span-1 bg-white dark:bg-gray-800 rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 lg:p-8 flex flex-col">
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-5">오시는 길</h3>
-        <div class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400 mb-3">
-          {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" "class=\"w-4 h-4 mt-0.5 shrink-0 text-primary-600\"") }}
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-5">오시는 길</h3>
+        <div class="flex items-start gap-3 text-base text-gray-600 dark:text-gray-400 mb-4">
+          {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" "class=\"w-5 h-5 mt-0.5 shrink-0 text-primary-600\"") }}
           <span>서울특별시 송파구 올림픽로 102 서일빌딩 3층<br />잠실새내역(4번 출구) 도보 3분</span>
         </div>
-        <div class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
-          {{ partial "functions/get_icon" (dict "name" "hero/truck" "attributes" "class=\"w-4 h-4 mt-0.5 shrink-0 text-primary-600\"") }}
+        <div class="flex items-start gap-3 text-base text-gray-600 dark:text-gray-400 mb-6">
+          {{ partial "functions/get_icon" (dict "name" "hero/truck" "attributes" "class=\"w-5 h-5 mt-0.5 shrink-0 text-primary-600\"") }}
           <span>서일빌딩 내 주차장 이용 가능</span>
         </div>
         <div class="mt-auto space-y-2">
           <a href="/about/location/"
-            class="block text-center py-2.5 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 font-semibold hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors">
+            class="block text-center py-3 text-lg rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 font-semibold hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors">
             지도로 크게 보기
           </a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=37.5114327,127.0819814" target="_blank" rel="noopener"
-            class="block text-center py-2.5 rounded-lg border border-gray-300 dark:border-white/10 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+            class="block text-center py-3 text-lg rounded-lg border border-gray-300 dark:border-white/10 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
             길찾기
           </a>
         </div>

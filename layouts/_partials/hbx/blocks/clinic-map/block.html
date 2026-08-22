@@ -30,22 +30,22 @@
     </div>
     {{ end }}
     <div class="grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl ring-1 ring-gray-200 dark:ring-gray-700 shadow-lg">
-      <div class="bg-white dark:bg-gray-800 p-8 flex flex-col justify-center order-last lg:order-first">
+      <div class="bg-white dark:bg-gray-800 p-8 lg:p-10 flex flex-col justify-center order-last lg:order-first">
         {{ with $address }}
-        <div class="flex items-start gap-3 text-gray-700 dark:text-gray-300 mb-6">
-          {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" "class=\"w-5 h-5 mt-0.5 shrink-0 text-primary-600\"") }}
-          <p class="whitespace-pre-line leading-relaxed">{{ . }}</p>
+        <div class="flex items-start gap-4 text-gray-700 dark:text-gray-300 mb-8">
+          {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" "class=\"w-7 h-7 mt-0.5 shrink-0 text-primary-600\"") }}
+          <p class="whitespace-pre-line leading-relaxed text-lg sm:text-xl">{{ . }}</p>
         </div>
         {{ end }}
         {{ if $directions_url }}
         <a href="{{ $directions_url | safeURL }}" target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-3 transition-colors w-fit">
+           class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-semibold text-lg px-8 py-4 transition-colors w-fit">
           {{ $directions_text }}
-          {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"w-4 h-4\"") }}
+          {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"w-5 h-5\"") }}
         </a>
         {{ end }}
       </div>
-      <div class="relative h-80 lg:h-auto order-first lg:order-last">
+      <div class="relative h-96 lg:h-auto lg:min-h-[440px] order-first lg:order-last">
         {{ if $naverClientId }}
         <div id="{{ $mapId }}" class="absolute inset-0 w-full h-full"></div>
         <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId={{ $naverClientId }}"></script>
