@@ -37,12 +37,12 @@ sections:
         margin: [0, 0, 0, 0]
       css_class: "dark"
       section_break:
-        fade_bottom: "#0f2027"
+        fade_bottom: "#0d2733"
       background:
-        color: "#0a1a1f"
+        color: "#0d2733"
         gradient:
           type: radial
-          start: "rgba(20,184,166,0.35)"
+          start: "rgba(58,165,198,0.35)"
           end: "transparent"
           position: "50% -10%"
           shape: ellipse

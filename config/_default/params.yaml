@@ -56,9 +56,10 @@ hugoblox:
     pack: "default"
     # Optional: Override theme pack colors
     colors:
-      # 기존 아임웹 홈페이지(healimjs1.imweb.me)의 브랜드 컬러를 그대로 유지
-      primary: "#1998bf"
-      secondary: "#1e87a7"
+      # 기존 아임웹 홈페이지(healimjs1.imweb.me)의 청록색 브랜드를 유지하되,
+      # 채도를 낮추고 밝기를 올려 더 부드럽고 차분한 톤으로 조정 (정신건강 클리닉에 맞는 톤)
+      primary: "#3aa5c6"
+      secondary: "#2c7a94"
       neutral: "" # Affects gray utilities (text-gray-*, bg-gray-*)
     # Optional: Mode-specific color overrides
     colors_light: {}
@@ -80,7 +81,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   typography:
     # Theme pack: name from data/fonts/
-    pack: "geometric"
+    pack: "pretendard"
 
   # ────────────────────────────────────────────────────────────────────────────
   # LAYOUT

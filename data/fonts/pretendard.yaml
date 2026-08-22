@@ -1,0 +1,35 @@
+# HugoBlox Font Pack — self-hosted, Korean-optimized
+# Font file: assets/dist/font/Pretendard.var.woff2
+
+hugoblox:
+  meta:
+    format: "hugoblox-font@1"
+    name: "Pretendard"
+    vendor: "custom"
+    version: "1.0.0"
+    license: "OFL-1.1"
+    description: "Pretendard — 한글 최적화 가변 폰트 (자체 호스팅)"
+
+  families:
+    heading: "Pretendard"
+    body: "Pretendard"
+    code: "JetBrains Mono"
+
+  weights:
+    heading: [600, 700]
+    body: [400, 500]
+    code: [400]
+
+  leading:
+    heading: 1.3
+    body: 1.7
+    code: 1.5
+
+  tracking:
+    heading: "-0.01em"
+    body: "0"
+
+  variable:
+    heading: true
+    body: true
+    code: false
