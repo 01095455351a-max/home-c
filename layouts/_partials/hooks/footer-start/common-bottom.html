@@ -2,18 +2,25 @@
      상담 신청 폼은 Web3Forms(https://web3forms.com)로 이메일 접수됨 — site.Params.clinic.web3forms_access_key
      발급 전에는 제출해도 실제 접수되지 않으니 docs/MANUAL.md §4.1 참고해 키를 먼저 등록할 것. */}}
 {{ $c := site.Params.clinic }}
+{{/* 홈/오시는 길/진료시간 페이지는 이미 자체적으로 동일한 정보(지도·진료시간 카드)를 갖고 있으므로,
+     이 공통 하단에서는 중복을 피해 진료시간·오시는 길 카드를 숨기고 전화 상담 신청 폼만 노출합니다. */}}
+{{ $hideHoursLocation := or .IsHome (in (slice "/about/location/" "/about/hours/") .RelPermalink) }}
 <section id="consult" class="hb-common-bottom bg-gray-50 dark:bg-gray-900/60 border-t border-gray-200 dark:border-white/10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
 
     <div class="text-center max-w-2xl mx-auto mb-10">
+      {{ if $hideHoursLocation }}
+      <p class="text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400 mb-2">CONSULT</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">전화 상담 신청</h2>
+      {{ else }}
       <p class="text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400 mb-2">CONSULT · HOURS · LOCATION</p>
       <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">전화 상담 신청 · 진료시간 · 오시는 길</h2>
+      {{ end }}
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-      {{/* ── 전화 상담 신청 ── */}}
-      <div class="lg:col-span-1 bg-white dark:bg-gray-800 rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 lg:p-8">
+    {{/* ── 전화 상담 신청 (단독 배치) ── */}}
+    <div class="max-w-xl mx-auto mb-8">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 lg:p-8">
         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">전화 상담 신청</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mb-5">
           이름과 연락처를 남겨주시면 확인 후 전화로 안내해 드립니다.
@@ -84,9 +91,14 @@
           </button>
         </form>
       </div>
+    </div>
+
+    {{/* ── 진료시간 · 오시는 길 (2열) ── */}}
+    {{ if not $hideHoursLocation }}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
       {{/* ── 진료시간 ── */}}
-      <div class="lg:col-span-1 bg-white dark:bg-gray-800 rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 lg:p-8">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 lg:p-8">
         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-5">진료시간</h3>
         <dl class="space-y-3 text-sm">
           <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-white/10">
@@ -115,7 +127,7 @@
       </div>
 
       {{/* ── 오시는 길 ── */}}
-      <div class="lg:col-span-1 bg-white dark:bg-gray-800 rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 lg:p-8 flex flex-col">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 lg:p-8 flex flex-col">
         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-5">오시는 길</h3>
         <div class="flex items-start gap-3 text-base text-gray-600 dark:text-gray-400 mb-4">
           {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" "class=\"w-5 h-5 mt-0.5 shrink-0 text-primary-600\"") }}
@@ -138,5 +150,6 @@
       </div>
 
     </div>
+    {{ end }}
   </div>
 </section>
