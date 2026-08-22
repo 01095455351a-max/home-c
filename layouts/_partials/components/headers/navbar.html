@@ -94,6 +94,44 @@
           {{- else -}}
             {{- $url = .URL | relLangURL -}}
           {{- end -}}
+          {{ if .HasChildren }}
+          {{/* 3단계 메뉴: 클릭하면 하위 항목이 펼쳐지는 아코디언 (예: 진료안내 > 개인맞춤치료 > 한약치료/침치료/...) */}}
+          <li class="nav-dropdown-item nav-dropdown-item-expandable">
+            <details class="group/accordion">
+              <summary class="nav-dropdown-link {{ if $active }}active{{- end -}} flex items-center justify-between cursor-pointer select-none list-none">
+                {{ .Name }}
+                <svg class="h-3.5 w-3.5 fill-current ml-1 transition-transform group-open/accordion:rotate-180" viewBox="0 0 20 20">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </summary>
+              <ul class="pl-4 mt-1 space-y-1 border-l border-gray-200 dark:border-white/10">
+                {{ range .Children }}
+                {{ $grandchildURL := .URL | absLangURL }}
+                {{ $grandchildActive := eq $grandchildURL $pageURL }}
+                {{ $gurl := "" }}
+                {{- if findRE `^#` .URL -}}
+                  {{- if not $.IsHome -}}
+                    {{- $gurl = site.Home.RelPermalink -}}
+                  {{- end }}
+                  {{- $gurl = .URL -}}
+                {{- else -}}
+                  {{- $gurl = .URL | relLangURL -}}
+                {{- end -}}
+                <li>
+                  <a
+                    class="nav-dropdown-link {{ if $grandchildActive }}active{{- end -}}"
+                    {{ if findRE `^http` .URL }}
+                    target="_blank" rel="noopener"
+                    {{ end }}
+                    href="{{$gurl}}">
+                    {{ .Name }}
+                  </a>
+                </li>
+                {{ end }}
+              </ul>
+            </details>
+          </li>
+          {{ else }}
           <li class="nav-dropdown-item">
             <a
               class="nav-dropdown-link {{ if $active }}active{{- end -}}"
@@ -104,6 +142,7 @@
               {{ .Name }}
             </a>
           </li>
+          {{ end }}
           {{ end }}
         </ul>
       </li>

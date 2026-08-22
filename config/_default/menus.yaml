@@ -83,41 +83,42 @@ main:
     url: /guide/first-visit/
     weight: 10
   - parent: 진료안내
-    name: 치료방법 전체보기
+    name: 개인맞춤치료
     url: /guide/treatments/
     weight: 20
-  - parent: 진료안내
-    name: · 개인맞춤한약
+    hasChildren: true
+  - parent: 개인맞춤치료
+    name: 개인맞춤한약
     url: /guide/treatments/herbal-medicine/
-    weight: 30
-  - parent: 진료안내
-    name: · 침치료
+    weight: 10
+  - parent: 개인맞춤치료
+    name: 침치료
     url: /guide/treatments/acupuncture/
-    weight: 40
-  - parent: 진료안내
-    name: · 약침치료
+    weight: 20
+  - parent: 개인맞춤치료
+    name: 약침치료
     url: /guide/treatments/pharmacopuncture/
-    weight: 50
-  - parent: 진료안내
-    name: · 추나요법
+    weight: 30
+  - parent: 개인맞춤치료
+    name: 추나요법
     url: /guide/treatments/chuna/
-    weight: 60
-  - parent: 진료안내
-    name: · 두개천골요법
+    weight: 40
+  - parent: 개인맞춤치료
+    name: 두개천골요법
     url: /guide/treatments/cranial-sacral/
-    weight: 70
-  - parent: 진료안내
-    name: · FCST교정
+    weight: 50
+  - parent: 개인맞춤치료
+    name: FCST교정
     url: /guide/treatments/fcst/
-    weight: 80
-  - parent: 진료안내
-    name: · 두뇌훈련
+    weight: 60
+  - parent: 개인맞춤치료
+    name: 두뇌훈련
     url: /guide/treatments/brain-training/
-    weight: 90
-  - parent: 진료안내
-    name: · 전문의 심리상담
+    weight: 70
+  - parent: 개인맞춤치료
+    name: 전문의 심리상담
     url: /guide/treatments/counseling/
-    weight: 100
+    weight: 80
 
   # 4. 치료후기
   - name: 치료후기
