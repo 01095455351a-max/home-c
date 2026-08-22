@@ -120,13 +120,24 @@ clinic:
    ```
 3. `content/reviews/_index.md`의 해당 카테고리 `focus-areas` 블록에 카드(이미지 경로 + 요약 텍스트) 추가
 
-### 4.5 새 특화 질환 / 치료방법 페이지 추가
+### 4.5 지도 위치 변경 / 다른 지도 서비스로 교체
+
+`content/_index.md`, `content/about/location.md`의 `block: google-map` 항목에서 `lat`/`lng`/`directions_url`을 수정하면 됩니다. 지금은 API 키가 필요 없는 Google 지도 임베드(`layouts/_partials/hbx/blocks/google-map/block.html`)를 쓰고 있으며, 네이버 지도로 바꾸려면 네이버클라우드플랫폼에서 Maps API 키를 발급받아 전달해 주세요.
+
+### 4.6 새 특화 질환 / 치료방법 페이지 추가
 
 `content/diseases/` 또는 `content/guide/treatments/` 안의 기존 `.md` 파일을 복사해 구조(hero → markdown → cta-card)를 그대로 사용하고 내용만 교체합니다. 만든 뒤 `config/_default/menus.yaml`의 해당 드롭다운에 메뉴 항목을 추가해야 상단 메뉴에 나타납니다.
 
-### 4.6 색상 테마 변경
+### 4.7 색상 테마 변경
 
-`config/_default/params.yaml`의 `hugoblox.theme.colors.primary` / `secondary` (hex 코드) 수정. 현재 기존 아임웹 사이트(healimjs1.imweb.me)의 브랜드 컬러(`#1998bf`)를 그대로 사용 중입니다.
+`config/_default/params.yaml`의 `hugoblox.theme.colors.primary` / `secondary` (hex 코드) 수정. 원래 아임웹 사이트(healimjs1.imweb.me)의 브랜드 컬러(`#1998bf`)에서, 정신건강 클리닉에 맞게 채도를 낮추고 밝기를 올린 `#3aa5c6`(primary) / `#2c7a94`(secondary)로 조정해 사용 중입니다. 색상 하나만 바꾸면 `from-primary-*`/`from-secondary-*` 클래스를 쓰는 모든 페이지에 자동 반영되지만, `content/_index.md` 홈 히어로처럼 `rgba(...)` 값을 직접 하드코딩한 곳은 별도로 맞춰줘야 합니다.
+
+### 4.8 폰트 변경
+
+`config/_default/params.yaml`의 `hugoblox.typography.pack`에 `data/fonts/*.yaml` 파일명(확장자 제외)을 지정합니다. 현재 `pretendard`(한글 최적화 가변 폰트, `assets/dist/font/Pretendard.var.woff2`로 자체 호스팅) 사용 중 — Hugo Blox 기본 제공 폰트 팩(Inter, Montserrat 등)은 전부 한글 글리프가 없어 한글은 시스템 기본 폰트로 대체되므로 주의. 새 폰트로 바꾸려면:
+1. 한글을 지원하는 폰트의 가변(variable) woff2 파일을 `assets/dist/font/<폰트이름>.var.woff2`로 저장 (파일명이 `.var.`를 포함해야 가변 폰트로 인식됨)
+2. `data/fonts/<이름>.yaml`에 `pretendard.yaml`과 같은 형식으로 `families.heading`/`families.body`를 그 폰트 이름으로 지정
+3. `params.yaml`의 `typography.pack`을 그 이름으로 변경
 
 ## 5. 배포 (Netlify)
 

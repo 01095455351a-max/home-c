@@ -1,0 +1,56 @@
+{{/* Custom project block: embeds Google Maps via the key-free iframe embed
+     (maps.google.com/maps?q=...&output=embed). No API key required.
+     content: { title, subtitle, address (multi-line string), lat, lng, zoom,
+                directions_text, directions_url } */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $title := index $content "title" }}
+{{ $subtitle := index $content "subtitle" }}
+{{ $address := index $content "address" }}
+{{ $lat := index $content "lat" }}
+{{ $lng := index $content "lng" }}
+{{ $zoom := index $content "zoom" | default 16 }}
+{{ $directions_text := index $content "directions_text" | default "길찾기" }}
+{{ $directions_url := index $content "directions_url" }}
+
+{{ $embed_src := printf "https://maps.google.com/maps?q=%v,%v&z=%v&output=embed" $lat $lng $zoom }}
+
+<div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    {{ if or $title $subtitle }}
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      {{ with $title }}<h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-3">{{ . }}</h2>{{ end }}
+      {{ with $subtitle }}<p class="text-lg text-gray-600 dark:text-gray-400">{{ . }}</p>{{ end }}
+    </div>
+    {{ end }}
+    <div class="grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl ring-1 ring-gray-200 dark:ring-gray-700 shadow-lg">
+      <div class="bg-white dark:bg-gray-800 p-8 flex flex-col justify-center order-last lg:order-first">
+        {{ with $address }}
+        <div class="flex items-start gap-3 text-gray-700 dark:text-gray-300 mb-6">
+          {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" "class=\"w-5 h-5 mt-0.5 shrink-0 text-primary-600\"") }}
+          <p class="whitespace-pre-line leading-relaxed">{{ . }}</p>
+        </div>
+        {{ end }}
+        {{ if $directions_url }}
+        <a href="{{ $directions_url | safeURL }}" target="_blank" rel="noopener"
+           class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-3 transition-colors w-fit">
+          {{ $directions_text }}
+          {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"w-4 h-4\"") }}
+        </a>
+        {{ end }}
+      </div>
+      <div class="relative h-80 lg:h-auto order-first lg:order-last">
+        <iframe
+          src="{{ $embed_src | safeURL }}"
+          class="absolute inset-0 w-full h-full border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="{{ $title | default "지도" }}">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>

@@ -48,27 +48,25 @@
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-disease">관심 질환 <span class="text-red-500">*</span></label>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-disease">상담 분야 <span class="text-red-500">*</span></label>
             <select required id="consult-disease" name="disease"
               class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
               <option value="">선택해 주세요</option>
-              <option>불안장애/공황</option>
-              <option>틱장애</option>
-              <option>ADHD</option>
-              <option>강박장애</option>
-              <option>우울장애</option>
-              <option>불면증</option>
+              <option>틱장애/ADHD</option>
+              <option>공황/불안/강박/우울</option>
+              <option>불면</option>
+              <option>화병</option>
               <option>자율신경실조증</option>
               <option>다한증</option>
-              <option>신경성 질환</option>
-              <option>기타</option>
+              <option>수험생보약</option>
+              <option>기타 신경성질환</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-message">상담 내용</label>
-            <textarea id="consult-message" name="message" rows="3"
-              class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></textarea>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-message">문의사항</label>
+            <textarea id="consult-message" name="message" rows="3" placeholder="나이와 성별, 상담받고 싶으신 주요 증상을 적어주세요"
+              class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></textarea>
           </div>
 
           <div class="flex items-start gap-2">
@@ -132,7 +130,7 @@
             class="block text-center py-2.5 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 font-semibold hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors">
             지도로 크게 보기
           </a>
-          <a href="https://www.openstreetmap.org/directions?to=37.5114327%2C127.0819814" target="_blank" rel="noopener"
+          <a href="https://www.google.com/maps/dir/?api=1&destination=37.5114327,127.0819814" target="_blank" rel="noopener"
             class="block text-center py-2.5 rounded-lg border border-gray-300 dark:border-white/10 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
             길찾기
           </a>

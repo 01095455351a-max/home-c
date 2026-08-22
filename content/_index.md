@@ -175,24 +175,19 @@ sections:
   # ──────────────────────────────────────────────────────────
   # 5. 오시는 길 & 진료시간 — 지도
   # ──────────────────────────────────────────────────────────
-  - block: map
+  - block: google-map
     id: location
     content:
       title: 오시는 길
       subtitle: 잠실새내역 4번 출구 도보 3분
-      location:
-        lat: 37.5114327
-        lng: 127.0819814
-        address: |
-          서울특별시 송파구 올림픽로 102 서일빌딩 3층
-          잠실새내역(4번 출구) 도보 3분 · 서일빌딩 내 주차 가능
-      zoom: 16
-      cta:
-        directions:
-          text: 길찾기
-    design:
-      layout: side-by-side
-      height: md
+      lat: 37.5114327
+      lng: 127.0819814
+      zoom: 17
+      address: |
+        서울특별시 송파구 올림픽로 102 서일빌딩 3층
+        잠실새내역(4번 출구) 도보 3분 · 서일빌딩 내 주차 가능
+      directions_text: 길찾기
+      directions_url: "https://www.google.com/maps/dir/?api=1&destination=37.5114327,127.0819814"
 
   # ──────────────────────────────────────────────────────────
   # 진료시간 & 연락처

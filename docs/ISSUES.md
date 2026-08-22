@@ -28,6 +28,14 @@
 - **증상**: 템플릿의 `netlify.toml`이 `pnpm`을 쓰도록 되어 있었는데, 실제로는 `npm install`로 로컬 개발 환경을 구성함 (`pnpm-lock.yaml` 없음).
 - **해결**: `netlify.toml`, `package.json`을 npm 기준으로 정리.
 
+### 1.6 기본 제공 폰트 팩이 전부 한글 미지원
+- **증상**: `typography.pack: "geometric"` (Montserrat/Poppins) 등 Hugo Blox 기본 폰트 팩은 전부 Google Fonts의 라틴 전용 폰트라 한글 글리프가 없음 — 한글 텍스트는 눈에 띄지 않게 시스템 기본 폰트(맑은 고딕 등)로 자동 대체되고 있었음.
+- **해결**: Pretendard 가변 폰트를 자체 호스팅(`assets/dist/font/Pretendard.var.woff2`)하는 `data/fonts/pretendard.yaml` 팩 추가. [제작 매뉴얼 §4.8](MANUAL.md#48-폰트-변경) 참고.
+
+### 1.7 OpenStreetMap 기반 지도의 한국 POI 데이터가 부실함
+- **증상**: 기본 제공 `map` 블록(MapLibre + OpenFreeMap)은 API 키가 필요 없어 편리하지만, 한국 지도 데이터(OSM)는 도로/상호 정보가 부실해 실제 위치 확인용으로는 부적합.
+- **해결**: 프로젝트 전용 `google-map` 블록(`layouts/_partials/hbx/blocks/google-map/block.html`)을 새로 만들어 API 키 없이 쓸 수 있는 Google Maps iframe 임베드(`maps.google.com/maps?q=...&output=embed`)로 교체. 네이버 지도는 네이버클라우드플랫폼 API 키 발급(사업자 직접 가입 필요)이 있어야 붙일 수 있어 보류 — 필요시 §2 대기 항목 참고.
+
 ## 2. 대기 중인 항목 (실제 배포/운영 전 확인 필요)
 
 | 항목 | 위치 | 상태 |
@@ -37,6 +45,7 @@
 | 개인정보처리방침 공고일자/시행일자 | `content/privacy.md` §10 | `[게시 예정일 기재]` placeholder |
 | 비급여 항목 실제 가격 | `content/pricing/_index.md` | 사장님 요청으로 전 항목 50만원으로 임시 통일. 실제 금액 확정 시 항목별로 교체 필요 |
 | 언론보도 기사 1건 | `content/press/_index.md` 하단 목록 | `edu.donga.com` 자동 조회가 차단되어 수동 확인 필요 |
+| 네이버 지도로 교체 | `layouts/_partials/hbx/blocks/google-map/block.html` 사용 중인 곳 (`content/_index.md`, `content/about/location.md`) | 현재 Google 지도(API 키 불필요) 사용 중. 네이버 지도로 바꾸려면 네이버클라우드플랫폼에서 Maps API 키 발급 필요 |
 | 실제 로그인 후 원본 후기 열람 기능 | 자필 후기 (`content/reviews/_index.md`) | 현재는 "블러 처리 + 요약"으로 구현(정적 사이트 한계). 실제 카카오/네이버 로그인 연동은 별도 프로젝트 — 진행 시 카카오/네이버 개발자 앱 등록(사장님 직접) + Netlify 배포·환경변수 접근 필요 |
 
 ## 3. 알려진 제약사항

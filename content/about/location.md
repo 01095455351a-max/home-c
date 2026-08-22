@@ -13,22 +13,16 @@ sections:
       spacing:
         padding: ["4rem", 0, "3rem", 0]
 
-  - block: map
+  - block: google-map
     content:
-      title: ""
-      location:
-        lat: 37.5114327
-        lng: 127.0819814
-        address: |
-          서울특별시 송파구 올림픽로 102 서일빌딩 3층
-          지하철 2호선 잠실새내역 4번 출구 도보 3분
+      lat: 37.5114327
+      lng: 127.0819814
       zoom: 17
-      cta:
-        directions:
-          text: 길찾기
-    design:
-      layout: side-by-side
-      height: lg
+      address: |
+        서울특별시 송파구 올림픽로 102 서일빌딩 3층
+        지하철 2호선 잠실새내역 4번 출구 도보 3분
+      directions_text: 길찾기
+      directions_url: "https://www.google.com/maps/dir/?api=1&destination=37.5114327,127.0819814"
 
   - block: markdown
     content:
