@@ -11,8 +11,8 @@ sections:
     id: top
     content:
       eyebrow: 해아림한의원 잠실점
-      title: 마음의 불안부터 두뇌의 균형까지 — 2인의 전담 원장이 세밀하게 동행합니다
-      text: 한방신경정신과 전문의 석선희 원장의 맞춤 한약 및 심층 상담 & 임상 22년 차 류석균 원장의 두뇌·자율신경 특화 진료. 복잡한 도심 일상 속, 지친 뇌와 마음에 온전한 쉼과 균형을 전합니다.
+      title: 마음의 불안부터 두뇌의 균형까지
+      text: 공황·불안·불면부터 틱·ADHD·자율신경 문제까지, 두 원장이 각자의 전문 분야를 중심으로 세밀하게 진료합니다.
       primary_action:
         text: 네이버 실시간 예약
         url: "#"
@@ -25,29 +25,36 @@ sections:
         style: ghost
     design:
       spacing:
-        padding: [0, 0, 0, 0]
+        padding: ["6rem", 0, "5rem", 0]
         margin: [0, 0, 0, 0]
-      css_class: "dark"
       section_break:
-        fade_bottom: "#0d2733"
+        fade_bottom: "#F7F3EC"
       background:
-        color: "#0d2733"
+        color: "#F1EDE1"
         gradient:
           type: radial
-          start: "rgba(58,165,198,0.35)"
+          start: "rgba(125,139,106,0.14)"
           end: "transparent"
           position: "50% -10%"
           shape: ellipse
           size: "80% 80%"
-        gradient_mesh:
-          enable: true
-          style: orbs
-          intensity: medium
-          animation: pulse
-          colors: ["primary-500/25", "secondary-500/25"]
-          orb_count: 2
-          positions: ["top-1/3 left-1/4", "bottom-1/3 right-1/4"]
-          sizes: ["w-[32rem] h-[32rem]", "w-[26rem] h-[26rem]"]
+
+  # ──────────────────────────────────────────────────────────
+  # 첫 화면 — 두 원장의 전문 영역을 두 개의 시각적 영역으로 즉시 구분
+  # ──────────────────────────────────────────────────────────
+  - block: specialty-split
+    content:
+      zones:
+        - question: 마음이 너무 불안하고 예민하다면
+          topics: ["공황", "불안", "강박", "우울", "불면"]
+          doctor: 석선희 원장
+          url: /about/doctors/
+        - question: 집중이 어렵거나 신경계가 과도하게 예민하다면
+          topics: ["틱", "ADHD", "자율신경", "다한증", "두통"]
+          doctor: 류석균 원장
+          url: /about/doctors/
+    design:
+      css_class: "bg-white dark:bg-gray-900"
 
   # ──────────────────────────────────────────────────────────
   # 원장 및 진료 철학 소개
