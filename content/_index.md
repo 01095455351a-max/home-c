@@ -33,7 +33,7 @@ sections:
         color: "#F1EDE1"
         gradient:
           type: radial
-          start: "rgba(125,139,106,0.14)"
+          start: "rgba(79,163,184,0.14)"
           end: "transparent"
           position: "50% -10%"
           shape: ellipse

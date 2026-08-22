@@ -63,11 +63,10 @@ hugoblox:
     pack: "default"
     # Optional: Override theme pack colors
     colors:
-      # 에디토리얼 리브랜딩(2026-08): 기존 청록색 브랜드에서 세이지 그린 계열로 전환.
-      # "고급스럽고 따뜻한 에디토리얼형 의료 홈페이지" 방향 — 의료기관 특유의 파란색/흰색 톤을 피하고
-      # 차분하고 인간적인 느낌을 위해 세이지·웜아이보리·차콜 팔레트로 재구성.
-      primary: "#7D8B6A" # sage
-      secondary: "#4F5E45" # deep sage
+      # 에디토리얼 리브랜딩(2026-08): 기존 청록색 브랜드 정체성은 유지하되, 채도를 낮추고
+      # 밝기를 올려 더 밝고 차분한 톤으로 재조정 (기존 #3aa5c6/#2c7a94보다 은은한 톤).
+      primary: "#4FA3B8" # calm sky teal
+      secondary: "#2E7387" # deep calm teal
       neutral: "#78716c" # warm stone gray — text-gray-*/bg-gray-* 유틸리티가 전부 웜톤으로 바뀜
     # Optional: Mode-specific color overrides
     colors_light: {}
