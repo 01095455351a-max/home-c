@@ -1,7 +1,6 @@
 {{/* Custom project block: 오시는 길 지도.
-     site.Params.clinic.naver_map_client_id 가 설정되어 있으면 네이버 지도(JS SDK)를 사용하고,
+     site.Params.clinic.kakao_map_js_key 가 설정되어 있으면 카카오맵(JS SDK)을 사용하고,
      비어있으면 API 키가 필요 없는 구글 지도 iframe으로 자동 대체됩니다.
-     (네이버 지도는 보안 정책상 iframe 임베드가 불가능해 JS SDK + 클라이언트 ID가 필요합니다.)
      content: { title, subtitle, address (multi-line string), lat, lng, zoom,
                 directions_text, directions_url } */}}
 {{ $page := .wcPage }}
@@ -18,7 +17,11 @@
 {{ $directions_text := index $content "directions_text" | default "길찾기" }}
 {{ $directions_url := index $content "directions_url" }}
 
-{{ $naverClientId := site.Params.clinic.naver_map_client_id }}
+{{ $kakaoJsKey := site.Params.clinic.kakao_map_js_key }}
+{{/* 카카오맵의 확대 레벨(level)은 구글식 zoom과 반대 방향(숫자가 작을수록 확대)이라 근사 변환 */}}
+{{ $kakaoLevel := sub 21 $zoom }}
+{{ if lt $kakaoLevel 1 }}{{ $kakaoLevel = 1 }}{{ end }}
+{{ if gt $kakaoLevel 14 }}{{ $kakaoLevel = 14 }}{{ end }}
 {{ $mapId := printf "clinic-map-%s" (substr (md5 (printf "%v%v" $lat $lng)) 0 8) }}
 
 <div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
@@ -46,19 +49,17 @@
         {{ end }}
       </div>
       <div class="relative h-96 lg:h-auto lg:min-h-[440px] order-first lg:order-last">
-        {{ if $naverClientId }}
+        {{ if $kakaoJsKey }}
         <div id="{{ $mapId }}" class="absolute inset-0 w-full h-full"></div>
-        <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId={{ $naverClientId }}"></script>
+        <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{ $kakaoJsKey }}"></script>
         <script>
           (function () {
-            var lat = {{ $lat }};
-            var lng = {{ $lng }};
-            var center = new naver.maps.LatLng(lat, lng);
-            var map = new naver.maps.Map("{{ $mapId }}", {
+            var center = new kakao.maps.LatLng({{ $lat }}, {{ $lng }});
+            var map = new kakao.maps.Map(document.getElementById("{{ $mapId }}"), {
               center: center,
-              zoom: {{ $zoom }},
+              level: {{ $kakaoLevel }},
             });
-            new naver.maps.Marker({ position: center, map: map });
+            new kakao.maps.Marker({ position: center, map: map });
           })();
         </script>
         {{ else }}

@@ -15,9 +15,9 @@ clinic:
   # web3forms.com 에서 이메일만으로 발급받는 Access Key. 상담 신청 폼 제출 시 이 키로 접수 이메일이 발송됩니다.
   # 비워두면 폼을 제출해도 실제로는 접수되지 않으니 배포 전 반드시 등록할 것. (docs/MANUAL.md §4.1 참고)
   web3forms_access_key: ""
-  # 네이버클라우드플랫폼(https://www.ncloud.com) > Maps > Application 등록 후 발급받는 Client ID.
+  # 카카오 디벨로퍼스(https://developers.kakao.com) > 내 애플리케이션 > 앱 키에서 확인하는 JavaScript 키.
   # 비워두면 오시는 길 지도는 구글 지도로 자동 표시됩니다. (docs/ISSUES.md 참고)
-  naver_map_client_id: ""
+  kakao_map_js_key: "399ff77ea1ffe567c14923aed7bc16c3"
 
 # ══════════════════════════════════════════════════════════════════════════════
 # HUGO BLOX CONFIGURATION

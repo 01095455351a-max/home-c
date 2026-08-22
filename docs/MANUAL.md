@@ -7,8 +7,8 @@
 - **기술 스택**: [Hugo](https://gohugo.io) (정적 사이트 생성기, Extended 버전) + [Hugo Blox](https://hugoblox.com) 테마 (`saas-landing-page` 템플릿 기반)
 - **콘텐츠 형식**: Markdown (`.md`) + YAML 프론트매터, Hugo Blox의 블록(block) 시스템으로 섹션 구성
 - **스타일**: Tailwind CSS v4 (Hugo 내장 `css.TailwindCSS` 기능으로 빌드, Node.js 없이도 CSS 자체는 처리되지만 preact 기반 인터랙티브 블록 번들링에는 Node.js 필요)
-- **폼**: Netlify Forms (온라인 상담 신청)
-- **배포 대상**: Netlify (GitHub 저장소와 연동)
+- **폼**: Web3Forms (전화 상담 신청 — 이메일로 접수 알림 발송, 별도 백엔드 없음)
+- **배포 대상**: Cloudflare Pages (`home-c-e67.pages.dev`, GitHub `main` 브랜치 푸시 시 자동 재빌드)
 - **저장소**: https://github.com/01095455351a-max/home-c
 
 ## 2. 로컬 개발 환경
@@ -44,7 +44,7 @@ hugo server --disableFastRender --port 1314
 npm run build
 ```
 
-`hugo --minify` 실행 후 Pagefind 검색 인덱스까지 생성합니다. 결과물은 `public/` 폴더에 생성됩니다 (`.gitignore`에 포함되어 있어 Git에는 올라가지 않음 — Netlify가 빌드 시 직접 생성).
+`hugo --minify` 실행 후 Pagefind 검색 인덱스까지 생성합니다. 결과물은 `public/` 폴더에 생성됩니다 (`.gitignore`에 포함되어 있어 Git에는 올라가지 않음 — Cloudflare Pages가 빌드 시 직접 생성).
 
 ## 3. 폴더 구조
 
@@ -95,13 +95,23 @@ docs/                          이 매뉴얼 + 문제 보고서
 ```yaml
 clinic:
   phone_display: "02-6954-7575"
-  phone_tel: "tel:0507-1469-7578"
+  phone_tel: "tel:02-6954-7575"
   naver_booking_url: "..."
   kakao_channel_url: "..."
   naver_blog_url: "..."
   instagram_url: "..."
   youtube_url: "..."
+  web3forms_access_key: "..."   # 상담 신청 폼 접수 이메일 발송용 (4.1.1 참고)
+  kakao_map_js_key: "..."       # 오시는 길 지도용 (4.5 참고)
 ```
+
+### 4.1.1 상담 신청 폼 접수 이메일 연결 (Web3Forms)
+
+상담 신청 폼은 [web3forms.com](https://web3forms.com)에서 이메일만으로 무료 발급받는 Access Key로 동작합니다. **키가 비어있으면 폼 제출 화면은 정상적으로 뜨지만 실제로는 아무 데도 접수되지 않으니, 배포 전 반드시 등록할 것.**
+
+1. web3forms.com 접속 → 접수받을 이메일 주소 입력 → Access Key 발급 (회원가입 불필요, 이메일로 즉시 발급)
+2. 발급받은 Access Key를 `params.yaml`의 `clinic.web3forms_access_key`에 붙여넣기
+3. 재배포 후 폼을 실제로 한 번 제출해 이메일이 도착하는지 확인
 
 ### 4.2 새 공지사항 추가
 
@@ -122,7 +132,16 @@ clinic:
 
 ### 4.5 지도 위치 변경 / 다른 지도 서비스로 교체
 
-`content/_index.md`, `content/about/location.md`의 `block: google-map` 항목에서 `lat`/`lng`/`directions_url`을 수정하면 됩니다. 지금은 API 키가 필요 없는 Google 지도 임베드(`layouts/_partials/hbx/blocks/google-map/block.html`)를 쓰고 있으며, 네이버 지도로 바꾸려면 네이버클라우드플랫폼에서 Maps API 키를 발급받아 전달해 주세요.
+`content/_index.md`, `content/about/location.md`의 `block: clinic-map` 항목에서 `lat`/`lng`/`directions_url`을 수정하면 됩니다.
+
+지도는 카카오맵(JS SDK)을 기본으로 쓰며, `params.yaml`의 `clinic.kakao_map_js_key`가 비어있으면 API 키가 필요 없는 Google 지도 임베드로 자동 대체됩니다. 카카오맵 키를 새로 발급/교체하려면:
+
+1. [카카오 디벨로퍼스](https://developers.kakao.com) → 내 애플리케이션 → 앱 생성 → **앱 키**에서 **JavaScript 키** 확인
+2. **플랫폼 → Web**에 실제 배포 도메인(`home-c-e67.pages.dev` 등) 등록
+3. 좌측 메뉴 **카카오맵 → 활성화 설정**에서 **상태를 ON**으로 변경 (이 단계를 빼먹으면 키가 있어도 지도가 안 뜸 — [문제 보고서 §1.7](ISSUES.md#17-지도-서비스--osm--google--kakao-순으로-교체) 참고)
+4. 발급받은 JavaScript 키를 `clinic.kakao_map_js_key`에 등록
+
+(참고: 네이버 지도는 2025년 3월부터 API 신규 이용 신청이 유료로 전환되어 사용하지 않기로 함.)
 
 ### 4.6 새 특화 질환 / 치료방법 페이지 추가
 
@@ -139,12 +158,13 @@ clinic:
 2. `data/fonts/<이름>.yaml`에 `pretendard.yaml`과 같은 형식으로 `families.heading`/`families.body`를 그 폰트 이름으로 지정
 3. `params.yaml`의 `typography.pack`을 그 이름으로 변경
 
-## 5. 배포 (Netlify)
+## 5. 배포 (Cloudflare Pages)
 
-1. [app.netlify.com](https://app.netlify.com) → GitHub 로그인
-2. "Add new site" → "Import an existing project" → GitHub → `01095455351a-max/home-c` 선택
-3. 빌드 설정은 `netlify.toml`에 이미 정의되어 있어 자동 인식됨 → "Deploy site"
-4. 배포 후 상담 신청 폼(Netlify Forms)이 자동으로 활성화됨 — Netlify 대시보드의 "Forms" 메뉴에서 접수 내역 확인 가능
+실제 배포는 Cloudflare Pages(`home-c-e67.pages.dev`)로 되어 있으며, GitHub `main` 브랜치에 푸시하면 자동으로 재빌드됩니다. Cloudflare Pages 대시보드(pages.cloudflare.com)에서 빌드 명령(`npm install && hugo --gc --minify && npx pagefind --site public`)과 출력 디렉터리(`public`)를 확인할 수 있습니다.
+
+상담 신청 폼은 Web3Forms로 동작하므로 별도의 "Forms" 대시보드는 없고, 접수 시 `clinic.web3forms_access_key`를 발급받은 이메일 주소로 바로 알림이 옵니다 (§4.1.1 참고).
+
+`netlify.toml`은 과거 Netlify 배포를 염두에 두고 만든 설정 파일로, 현재는 사용되지 않지만 추후 Netlify로 옮길 경우를 대비해 남겨두었습니다.
 
 ## 6. 참고 문서
 
