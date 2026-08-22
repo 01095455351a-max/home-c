@@ -93,6 +93,126 @@ sections:
       css_class: "bg-gray-50 dark:bg-gray-900/50"
 
   # ──────────────────────────────────────────────────────────
+  # 특화 질환 (9종) 요약 — 상단 메뉴 "특화 질환" 클릭 시 이동
+  # ──────────────────────────────────────────────────────────
+  - block: focus-areas
+    id: diseases
+    content:
+      title: 특화 질환
+      text: 해아림한의원 잠실점이 세밀하게 진료하는 9가지 특화 질환입니다. 카드를 눌러 증상·원인·치료 방법을 확인하세요.
+      items:
+        - name: 공황장애 · 불안장애
+          description: 반복되는 공황발작과 예기불안, 이유 없는 걱정과 긴장.
+          icon: hero/heart
+          gradient: from-primary-400 to-primary-600
+          url: /diseases/anxiety-panic/
+          topics: ["가슴 두근거림", "숨막힘", "예기불안"]
+        - name: 틱장애
+          description: 반복되는 눈 깜빡임, 헛기침, 어깨 들썩임 등 근육·음성 틱.
+          icon: hero/face-smile
+          gradient: from-secondary-400 to-secondary-600
+          url: /diseases/tic/
+          topics: ["근육틱", "음성틱", "뚜렛장애"]
+        - name: ADHD
+          description: 지속적인 주의력 부족, 산만함, 충동적인 행동.
+          icon: hero/bolt
+          gradient: from-amber-400 to-orange-500
+          url: /diseases/adhd/
+          topics: ["주의력결핍", "과잉행동", "충동성"]
+        - name: 강박장애
+          description: 반복되는 강박사고와 이를 멈추기 어려운 강박행동.
+          icon: hero/arrow-path
+          gradient: from-purple-400 to-purple-600
+          url: /diseases/ocd/
+          topics: ["강박사고", "반복행동", "확인강박"]
+        - name: 우울장애
+          description: 지속되는 무기력, 의욕 저하, 수면·식욕 변화.
+          icon: hero/cloud
+          gradient: from-slate-400 to-slate-600
+          url: /diseases/depression/
+          topics: ["무기력", "의욕저하", "수면변화"]
+        - name: 불면증
+          description: 잠들기 어렵거나 자주 깨는 등 수면의 질과 양이 저하된 상태.
+          icon: hero/moon
+          gradient: from-blue-400 to-blue-600
+          url: /diseases/insomnia/
+          topics: ["입면장애", "수면유지장애", "조기각성"]
+        - name: 자율신경실조증
+          description: 원인 모를 두근거림, 어지럼증, 소화불량이 반복되는 상태.
+          icon: hero/scale
+          gradient: from-cyan-400 to-cyan-600
+          url: /diseases/dysautonomia/
+          topics: ["두근거림", "어지럼증", "만성피로"]
+        - name: 다한증
+          description: 손·발·얼굴에서 유난히 많이 나는 땀.
+          icon: hero/beaker
+          gradient: from-sky-400 to-sky-600
+          url: /diseases/hyperhidrosis/
+          topics: ["다한", "손발냉감", "사회불안"]
+        - name: 신경성 질환
+          description: 스트레스만 받으면 심해지는 두통, 어지럼증, 소화불량.
+          icon: hero/sparkles
+          gradient: from-rose-400 to-rose-600
+          url: /diseases/nervous-system/
+          topics: ["신경성두통", "신경성소화불량", "근긴장"]
+    design:
+      layout: cards
+      css_class: "bg-white dark:bg-gray-900"
+
+  # ──────────────────────────────────────────────────────────
+  # 진료안내 · 치료 방법 (8종) 요약 — 상단 메뉴 "진료안내" 클릭 시 이동
+  # ──────────────────────────────────────────────────────────
+  - block: focus-areas
+    id: treatments
+    content:
+      title: 진료안내 · 치료 방법
+      text: 증상과 체질에 맞춰 조합해 진행하는 8가지 치료 방법입니다.
+      items:
+        - name: 개인맞춤한약
+          description: 증상과 체질에 맞춰 1:1로 처방되는 청정 한약, 치료의 핵심 축입니다.
+          icon: hero/beaker
+          gradient: from-primary-400 to-primary-600
+          url: /guide/treatments/herbal-medicine/
+        - name: 침치료
+          description: 경혈 자극으로 기혈 순환을 촉진하고 신체 이완을 돕습니다.
+          icon: hero/sparkles
+          gradient: from-secondary-400 to-secondary-600
+          url: /guide/treatments/acupuncture/
+        - name: 약침치료
+          description: 정제된 한약재 추출물을 경혈에 직접 주입하는 정밀 시술입니다.
+          icon: hero/beaker
+          gradient: from-purple-400 to-purple-600
+          url: /guide/treatments/pharmacopuncture/
+        - name: 추나요법
+          description: 손으로 척추·관절의 구조적 균형을 바로잡는 수기 치료입니다.
+          icon: hero/hand-raised
+          gradient: from-amber-400 to-orange-500
+          url: /guide/treatments/chuna/
+        - name: 두개천골요법
+          description: 매우 가벼운 접촉으로 뇌척수액 리듬을 조율하는 부드러운 치료입니다.
+          icon: hero/hand-raised
+          gradient: from-cyan-400 to-cyan-600
+          url: /guide/treatments/cranial-sacral/
+        - name: FCST 교정
+          description: 얼굴과 두개골 주변의 구조적 균형을 교정합니다.
+          icon: hero/face-smile
+          gradient: from-rose-400 to-rose-600
+          url: /guide/treatments/fcst/
+        - name: 두뇌훈련
+          description: 뇌기능 평가를 바탕으로 집중력과 자기조절력을 훈련합니다.
+          icon: hero/cpu-chip
+          gradient: from-sky-400 to-sky-600
+          url: /guide/treatments/brain-training/
+        - name: 전문의 심리상담
+          description: 한방신경정신과 전문의와 함께 진행하는 심층 상담입니다.
+          icon: hero/chat-bubble-left-right
+          gradient: from-slate-400 to-slate-600
+          url: /guide/treatments/counseling/
+    design:
+      layout: cards
+      css_class: "bg-gray-50 dark:bg-gray-900/50"
+
+  # ──────────────────────────────────────────────────────────
   # 3. 중점 클리닉 (2대 전담 분과)
   # ──────────────────────────────────────────────────────────
   - block: focus-areas
@@ -163,6 +283,35 @@ sections:
       marker_style: icon
       connector: line
       css_class: "bg-gray-50 dark:bg-gray-900/50"
+
+  # ──────────────────────────────────────────────────────────
+  # 치료후기 미리보기 — 상단 메뉴 "치료후기" 클릭 시 이동
+  # ──────────────────────────────────────────────────────────
+  - block: focus-areas
+    id: reviews-preview
+    content:
+      title: 치료 후기
+      text: 해아림한의원 잠실점에서 치료받으신 분들의 실제 이야기입니다.
+      items:
+        - name: 공황장애 치료 후기
+          description: "치료 전: 사람 많은 곳, 폐쇄된 공간에서 심하게 호흡이 힘들었고 밤에 잠들기 어려웠습니다. **치료 후**: 사람 많은 곳에도 신경 쓰지 않고 잘 적응하며, 밤에 잠도 잘 잡니다."
+          image: reviews/mental-health/review1.jpg
+          topics: ["공황장애"]
+        - name: ADHD · 9개월 치료 (보호자 후기)
+          description: "치료 전: 숙제할 때 집중하지 못하고 매일 아이와 다퉜습니다. **치료 후**: 한약과 두뇌훈련, 침 치료를 병행하며 서서히 좋아져, 학원 선생님도 놀랄 만큼 집중력이 좋아졌습니다."
+          image: reviews/tic-adhd/review1.jpg
+          topics: ["ADHD"]
+        - name: 얼굴 · 겨드랑이 다한증 · 7개월 치료
+          description: "치료 전: 출퇴근 지하철, 사람 많은 장소에서 화장이 지워질 정도로 땀이 났습니다. **치료 후**: 사람 많은 강의나 출퇴근시에도 땀이 거의 나지 않습니다."
+          image: reviews/hyperhidrosis/review4.jpg
+          topics: ["다한증"]
+      cta:
+        text: 치료 후기 전체 보기
+        url: /reviews/
+        icon: hero/arrow-right
+    design:
+      layout: cards
+      css_class: "bg-white dark:bg-gray-900"
 
   # ──────────────────────────────────────────────────────────
   # 5. 오시는 길 & 진료시간 — 지도

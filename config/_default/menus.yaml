@@ -6,6 +6,7 @@
 main:
   # 1. 한의원 소개
   - name: 한의원 소개
+    url: /#trust
     weight: 10
     hasChildren: true
   - parent: 한의원 소개
@@ -35,6 +36,7 @@ main:
 
   # 2. 특화 질환
   - name: 특화 질환
+    url: /#diseases
     weight: 20
     hasChildren: true
   - parent: 특화 질환
@@ -76,6 +78,7 @@ main:
 
   # 3. 진료안내
   - name: 진료안내
+    url: /#treatments
     weight: 30
     hasChildren: true
   - parent: 진료안내
@@ -122,6 +125,7 @@ main:
 
   # 4. 치료후기
   - name: 치료후기
+    url: /#reviews-preview
     weight: 40
     hasChildren: true
   - parent: 치료후기

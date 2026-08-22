@@ -63,23 +63,50 @@
       {{ $pageURL:= $currentPage.Permalink | absLangURL }}
       {{ $active := eq $menuURL $pageURL }}
       {{ if .HasChildren }}
+      {{ $topURL := "" }}
+      {{- if .URL -}}
+        {{- if findRE `^#` .URL -}}
+          {{- if not $.IsHome -}}
+            {{- $topURL = site.Home.RelPermalink -}}
+          {{- end }}
+          {{- $topURL = printf "%s%s" $topURL .URL -}}
+        {{- else -}}
+          {{- $topURL = .URL | relLangURL -}}
+        {{- end -}}
+      {{- end -}}
       <li class="nav-item nav-dropdown group relative">
+        {{ $topActiveClass := "" }}
+        {{ range .Children }}
+          {{ $childURL := .URL | absLangURL }}
+          {{ if eq $childURL $pageURL }}{{ $topActiveClass = "active" }}{{ end }}
+        {{ end }}
+        {{ if $topURL }}
+            <a
+              href="{{ $topURL }}"
+              tabindex="0"
+              aria-haspopup="true"
+              aria-expanded="false"
+              class="nav-link text-base lg:text-lg cursor-pointer select-none {{ $topActiveClass }} inline-flex items-center">
+              {{ .Name }}
+              <svg class="h-4 w-4 fill-current inline-block" viewBox="0 0 20 20">
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </a>
+        {{ else }}
             <span
               role="button"
               tabindex="0"
               aria-haspopup="true"
               aria-expanded="false"
-              class="nav-link cursor-pointer select-none {{ range .Children }}
-                {{ $childURL := .URL | absLangURL }}
-                {{ $active := eq $childURL $pageURL }}
-                {{ if $active }}active{{ end }}
-              {{ end }} inline-flex items-center">
+              class="nav-link text-base lg:text-lg cursor-pointer select-none {{ $topActiveClass }} inline-flex items-center">
               {{ .Name }}
               <svg class="h-4 w-4 fill-current inline-block" viewBox="0 0 20 20">
                 <path
                   d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
               </svg>
             </span>
+        {{ end }}
         <ul
           class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
           {{ range .Children }}
@@ -158,7 +185,7 @@
       {{- end -}}
       <li class="nav-item">
         <a
-          class="nav-link {{ if $active }}active{{- end -}}"
+          class="nav-link text-base lg:text-lg {{ if $active }}active{{- end -}}"
           {{ if findRE `^http` .URL }}
           target="_blank" rel="noopener"
           {{ end }}
