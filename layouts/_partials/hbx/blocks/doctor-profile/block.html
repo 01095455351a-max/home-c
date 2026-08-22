@@ -1,0 +1,54 @@
+{{/* Custom project block: 원장 프로필 — 사진과 이름/약력을 좌우로, 그 아래 전체 폭 스토리 텍스트.
+     content: { image, name, role, credentials (string list), story (markdown string), reverse (bool) } */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $imagePath := index $content "image" }}
+{{ $name := index $content "name" }}
+{{ $role := index $content "role" }}
+{{ $credentials := index $content "credentials" }}
+{{ $story := index $content "story" }}
+{{ $reverse := partial "functions/coerce_bool" (dict "value" (index $content "reverse") "default" false) }}
+
+{{ $img := false }}
+{{ if $imagePath }}
+  {{ $img = resources.Get (path.Join "media" $imagePath) }}
+  {{ if and $img (reflect.IsImageResourceProcessable $img) }}
+    {{ $img = $img.Fill "640x640 Center q90 webp" }}
+  {{ end }}
+{{ end }}
+
+<div class="py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col {{ if $reverse }}md:flex-row-reverse{{ else }}md:flex-row{{ end }} gap-8 md:gap-12 items-center md:items-start mb-8">
+      {{ if $img }}
+      <div class="w-56 sm:w-64 md:w-2/5 shrink-0">
+        <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $name }}"
+             class="w-full h-auto rounded-2xl shadow-lg object-cover aspect-square" loading="lazy" />
+      </div>
+      {{ end }}
+      <div class="w-full md:w-3/5 text-center {{ if $reverse }}md:text-right{{ else }}md:text-left{{ end }}">
+        {{ with $name }}<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">{{ . }}</h2>{{ end }}
+        {{ with $role }}<p class="text-lg text-primary-600 dark:text-primary-400 font-medium mb-4">{{ . }}</p>{{ end }}
+        {{ if reflect.IsSlice $credentials }}
+        <ul class="space-y-1.5 text-gray-600 dark:text-gray-400 {{ if $reverse }}md:items-end{{ else }}md:items-start{{ end }} flex flex-col items-center">
+          {{ range $credentials }}
+          <li class="flex items-center gap-2 {{ if $reverse }}md:flex-row-reverse{{ end }}">
+            {{ partial "functions/get_icon" (dict "name" "hero/check-badge" "attributes" "class=\"w-4 h-4 text-primary-500 shrink-0\"") }}
+            <span>{{ . }}</span>
+          </li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+    </div>
+
+    {{ with $story }}
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      {{ . | $page.RenderString }}
+    </div>
+    {{ end }}
+  </div>
+</div>
