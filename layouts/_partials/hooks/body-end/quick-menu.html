@@ -40,4 +40,10 @@
     {{ end }}
     <span class="{{ $tooltip }}">블로그 바로가기</span>
   </a>
+  <a href="/about/location/"
+     aria-label="오시는 길"
+     class="hb-quick-menu-btn group relative flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-secondary-600 hover:bg-secondary-700 text-white transition-transform hover:scale-110">
+    {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" $iconAttr) }}
+    <span class="{{ $tooltip }}">오시는 길</span>
+  </a>
 </div>
