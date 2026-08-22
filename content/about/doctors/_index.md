@@ -75,4 +75,41 @@ sections:
       button:
         text: 전화 상담 신청
         url: "#consult"
+
+  - block: credential-slider
+    content:
+      title: 출간 도서 · 연구실적 · 자격
+      subtitle: 해아림한의원 네트워크 원장단이 펴낸 도서와 석선희 원장의 연구·수료 이력입니다.
+      items:
+        - kind: book
+          title: 토닥토닥 틱장애
+          subtitle: 슬기로운 ADHD·틱장애 완치 지침서 · 해아림한의원 저
+          image: books/book1-tic.jpg
+          url: "https://search.shopping.naver.com/book/catalog/32490810061?query=%ED%86%A0%EB%8B%A5%ED%86%A0%EB%8B%A5%20%ED%8B%B1%EC%9E%A5%EC%95%A0"
+        - kind: book
+          title: 걱정마 공황장애
+          subtitle: 불안장애·자율신경실조증·공황장애 치료 완치지침서 · 해아림한의원 저
+          image: books/book2-panic.jpg
+          url: "https://search.shopping.naver.com/book/catalog/45917649628?query=%EA%B1%B1%EC%A0%95%EB%A7%88%20%EA%B3%B5%ED%99%A9%EC%9E%A5%EC%95%A0"
+        - kind: paper
+          title: 우울증 환자의 불면 치료 증례
+          subtitle: 석선희 원장 연구저작
+        - kind: paper
+          title: 공황장애 환자 치료 증례
+          subtitle: 석선희 원장 연구저작
+        - kind: paper
+          title: 스트레스로 인한 복통의 치료 증례
+          subtitle: 석선희 원장 연구저작
+        - kind: cert
+          title: 뉴로피드백 전문가과정 수료
+          subtitle: 석선희 원장
+        - kind: cert
+          title: 바이오피드백 전문가과정 수료
+          subtitle: 석선희 원장
+        - kind: cert
+          title: 기능적 뇌척주요법 전문과정 수료
+          subtitle: 석선희 원장
+        - kind: cert
+          title: 아우토겐 표준과정 수료
+          subtitle: 석선희 원장
 ---
