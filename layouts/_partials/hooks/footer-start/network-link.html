@@ -1,10 +1,14 @@
 {{/* 모든 페이지 하단(공통 상담/진료시간/오시는길 박스 바로 아래)에 노출되는
      해아림한의원 네트워크 홈페이지 바로가기 배너 */}}
+{{ $networkIcon := resources.Get "media/logo-icon.png" }}
+{{ if and $networkIcon (reflect.IsImageResourceProcessable $networkIcon) }}{{ $networkIcon = $networkIcon.Fit "96x96 png" }}{{ end }}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
   <a href="https://www.healim.com" target="_blank" rel="noopener"
      class="group flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border-2 border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20 px-6 py-5 sm:px-8 transition-colors hover:bg-primary-100 dark:hover:bg-primary-900/30">
     <div class="flex items-center gap-4 text-center sm:text-left">
-      {{ partial "functions/get_icon" (dict "name" "hero/globe-alt" "attributes" "class=\"w-8 h-8 text-primary-600 dark:text-primary-400 shrink-0\"") }}
+      {{ if $networkIcon }}
+      <img src="{{ $networkIcon.RelPermalink }}" width="{{ $networkIcon.Width }}" height="{{ $networkIcon.Height }}" alt="해아림한의원" class="w-10 h-10 sm:w-12 sm:h-12 shrink-0" />
+      {{ end }}
       <div>
         <p class="font-bold text-gray-900 dark:text-white">해아림한의원 네트워크 홈페이지</p>
         <p class="text-sm text-gray-600 dark:text-gray-400">전국 해아림한의원 지점 정보와 치료 사례를 확인하실 수 있습니다.</p>
