@@ -249,6 +249,6 @@ footer:
     url: /terms/
     weight: 20
   - parent: 안내
-    name: 해아림한의원 네트워크
-    url: https://www.healim.com
+    name: 비급여안내
+    url: /pricing/
     weight: 30
