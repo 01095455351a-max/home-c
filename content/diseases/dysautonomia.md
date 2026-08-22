@@ -9,7 +9,7 @@ sections:
       title: 자율신경실조증
       text: 검사에서는 특별한 이상이 없다는데 계속되는 두근거림, 어지럼증, 소화불량 — 자율신경 균형을 살펴봐야 합니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -56,6 +56,6 @@ sections:
       title: 원인 모를 불편감, 자율신경부터 확인해 보세요
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

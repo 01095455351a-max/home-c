@@ -9,7 +9,7 @@ sections:
       title: 강박장애
       text: 원치 않는 생각이 반복되고, 이를 없애기 위한 행동을 멈추기 어려운 상태 — 의지의 문제가 아닙니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -56,6 +56,6 @@ sections:
       title: 반복되는 생각과 행동, 더 늦기 전에 상담받아 보세요
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

@@ -40,6 +40,6 @@ sections:
       title: 비급여 항목이 궁금하신가요?
       text: 문의 분야에서 '비급여 항목 문의'를 선택해 신청해 주시면 자세히 안내해 드립니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

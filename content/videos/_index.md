@@ -27,8 +27,8 @@ sections:
   - block: cta-card
     content:
       title: 궁금한 점이 있으신가요?
-      text: 온라인 상담 신청 또는 전화로 편하게 문의해 주세요.
+      text: 전화 상담 신청 또는 전화로 편하게 문의해 주세요.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

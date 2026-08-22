@@ -35,8 +35,8 @@ sections:
   - block: cta-card
     content:
       title: 류석균 원장에게 상담받고 싶으신가요?
-      text: 온라인 상담 신청 시 '류석균 원장'을 담당의로 요청하실 수 있습니다.
+      text: 전화 상담 신청 시 '류석균 원장'을 담당의로 요청하실 수 있습니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

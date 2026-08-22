@@ -9,7 +9,7 @@ sections:
       title: 약침치료
       text: 정제된 한약재 추출물을 경혈에 직접 주입해 치료 효과를 높이는 정밀 시술입니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -52,6 +52,6 @@ sections:
       title: 약침치료가 필요한지 상담을 통해 확인해 보세요
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

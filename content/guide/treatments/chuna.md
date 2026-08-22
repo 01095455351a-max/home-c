@@ -9,7 +9,7 @@ sections:
       title: 추나요법
       text: 손으로 척추와 관절의 균형을 바로잡아 신경계 전달 통로를 원활하게 하는 수기 치료입니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -52,6 +52,6 @@ sections:
       title: 추나요법이 필요한지 상담을 통해 확인해 보세요
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

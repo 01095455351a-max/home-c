@@ -40,7 +40,7 @@ sections:
   - block: cta-card
     content:
       title: 진료시간에 맞춰 편하게 예약해 보세요
-      text: 네이버 예약 또는 온라인 상담 신청으로 원하는 시간을 미리 확인하실 수 있습니다.
+      text: 네이버 예약 또는 전화 상담 신청으로 원하는 시간을 미리 확인하실 수 있습니다.
       button:
         text: 네이버 예약
         url: "https://map.naver.com/p/entry/place/1887559338?placePath=%2Fhome%3Fentry%3Dplt%26from%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202608220007%26locale%3Dko%26svcName%3Dmap_pcv5&searchType=place&lng=127.0819814&lat=37.5114327&c=15.00,0,0,0,dh"

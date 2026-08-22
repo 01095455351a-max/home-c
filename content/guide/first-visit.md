@@ -9,7 +9,7 @@ sections:
       title: 첫 내원시
       text: 처음 내원하시는 분들이 헤매지 않도록, 준비사항부터 진료 이후 관리까지 순서대로 안내해 드립니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -24,7 +24,7 @@ sections:
         - 이전에 다른 병·의원에서 진료받은 기록이나 복용 중인 약이 있다면 챙겨오시면 진료에 도움이 됩니다.
         - 증상이 언제부터, 어떤 상황에서 심해지는지 미리 정리해 오시면 진료 시간을 효율적으로 활용할 수 있습니다.
         - 초진은 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 시간을 비워주세요.
-        - 사전에 [온라인 상담](#consult) 또는 [네이버 예약](https://map.naver.com/p/entry/place/1887559338)으로 예약해 주시면 대기 시간을 줄일 수 있습니다.
+        - 사전에 [전화 상담](#consult) 또는 [네이버 예약](https://map.naver.com/p/entry/place/1887559338)으로 예약해 주시면 대기 시간을 줄일 수 있습니다.
 
   - block: steps
     content:
@@ -59,8 +59,8 @@ sections:
   - block: cta-card
     content:
       title: 첫 방문이 망설여지신다면, 먼저 상담부터 받아보세요
-      text: 온라인 상담 신청 후 궁금한 점을 먼저 확인하실 수 있습니다.
+      text: 전화 상담 신청 후 궁금한 점을 먼저 확인하실 수 있습니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

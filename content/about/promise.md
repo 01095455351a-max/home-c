@@ -44,8 +44,8 @@ sections:
   - block: cta-card
     content:
       title: 약속을 지키는 진료, 지금 시작해 보세요
-      text: 온라인 상담 신청 후 궁금한 점을 먼저 확인하실 수 있습니다.
+      text: 전화 상담 신청 후 궁금한 점을 먼저 확인하실 수 있습니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

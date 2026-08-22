@@ -9,7 +9,7 @@ sections:
       title: 전문의 심리상담
       text: 한방신경정신과 전문의와 함께 증상의 배경이 되는 생각과 상황을 짚어보는 심층 상담입니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -52,6 +52,6 @@ sections:
       title: 마음을 나눌 준비가 되셨다면, 상담을 신청해 주세요
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

@@ -9,7 +9,7 @@ sections:
       title: FCST 교정
       text: 얼굴과 두개골의 균형을 조정해 신경·근육 긴장을 완화하는 안면두개골 균형 교정법입니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -51,6 +51,6 @@ sections:
       title: FCST 교정이 필요한지 상담을 통해 확인해 보세요
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

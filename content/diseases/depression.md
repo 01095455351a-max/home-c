@@ -9,7 +9,7 @@ sections:
       title: 우울장애
       text: 무기력, 의욕 저하, 이유 없는 눈물 — 마음의 문제만이 아니라 뇌와 몸 전체의 신호일 수 있습니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -56,6 +56,6 @@ sections:
       title: 혼자 버티지 마세요, 함께 회복의 방향을 찾습니다
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

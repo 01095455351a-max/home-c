@@ -143,6 +143,6 @@ sections:
       title: 나와 비슷한 사례가 궁금하신가요?
       text: 상담을 신청하시면 유사 증상의 치료 사례를 더 자세히 안내해 드립니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

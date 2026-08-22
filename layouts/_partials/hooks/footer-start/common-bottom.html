@@ -1,26 +1,29 @@
-{{/* 모든 페이지 하단(진짜 footer 위)에 공통 노출되는: 온라인 상담신청 / 진료시간 / 오시는 길 */}}
+{{/* 모든 페이지 하단(진짜 footer 위)에 공통 노출되는: 전화 상담신청 / 진료시간 / 오시는 길
+     상담 신청 폼은 Web3Forms(https://web3forms.com)로 이메일 접수됨 — site.Params.clinic.web3forms_access_key
+     발급 전에는 제출해도 실제 접수되지 않으니 docs/MANUAL.md §4.1 참고해 키를 먼저 등록할 것. */}}
 {{ $c := site.Params.clinic }}
 <section id="consult" class="hb-common-bottom bg-gray-50 dark:bg-gray-900/60 border-t border-gray-200 dark:border-white/10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
 
     <div class="text-center max-w-2xl mx-auto mb-10">
       <p class="text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400 mb-2">CONSULT · HOURS · LOCATION</p>
-      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">온라인 상담 신청 · 진료시간 · 오시는 길</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">전화 상담 신청 · 진료시간 · 오시는 길</h2>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-      {{/* ── 온라인 상담 신청 ── */}}
+      {{/* ── 전화 상담 신청 ── */}}
       <div class="lg:col-span-1 bg-white dark:bg-gray-800 rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 lg:p-8">
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">온라인 상담 신청</h3>
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">전화 상담 신청</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mb-5">
-          <span class="text-red-500">*</span> 표시는 필수 입력 항목입니다.
+          이름과 연락처를 남겨주시면 확인 후 전화로 안내해 드립니다.
         </p>
-        <form name="consult" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/" class="space-y-4">
-          <input type="hidden" name="form-name" value="consult" />
-          <p class="hidden">
-            <label>다른 입력은 채우지 마세요: <input name="bot-field" /></label>
-          </p>
+        <form method="POST" action="https://api.web3forms.com/submit" class="space-y-4">
+          <input type="hidden" name="access_key" value="{{ $c.web3forms_access_key }}" />
+          <input type="hidden" name="subject" value="전화 상담 신청 - 해아림한의원 잠실점" />
+          <input type="hidden" name="from_name" value="해아림한의원 잠실점 홈페이지" />
+          <input type="hidden" name="redirect" value="{{ "/thanks/" | absURL }}" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
 
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-name">이름 <span class="text-red-500">*</span></label>
@@ -35,8 +38,8 @@
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-disease">상담 분야 <span class="text-red-500">*</span></label>
-            <select required id="consult-disease" name="disease"
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-disease">상담 분야 <span class="text-xs text-gray-400">(선택)</span></label>
+            <select id="consult-disease" name="disease"
               class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
               <option value="">선택해 주세요</option>
               <option>틱장애/ADHD</option>
@@ -48,12 +51,6 @@
               <option>수험생보약</option>
               <option>기타 신경성질환</option>
             </select>
-          </div>
-
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-message">문의사항</label>
-            <textarea id="consult-message" name="message" rows="3" placeholder="나이와 성별, 상담받고 싶으신 주요 증상을 적어주세요"
-              class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></textarea>
           </div>
 
           <div>
@@ -76,7 +73,7 @@
 
           <button type="submit"
             class="w-full py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold transition-colors">
-            상담 신청하기
+            전화 상담 신청하기
           </button>
         </form>
       </div>

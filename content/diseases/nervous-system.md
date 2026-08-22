@@ -9,7 +9,7 @@ sections:
       title: 신경성 질환 (신경성 두통·어지럼증 등)
       text: 스트레스만 받으면 심해지는 두통, 어지럼증, 소화불량 — 신경계의 과민 반응을 함께 살펴야 합니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -56,6 +56,6 @@ sections:
       title: 반복되는 두통·어지럼증, 원인부터 확인해 보세요
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

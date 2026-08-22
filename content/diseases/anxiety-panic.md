@@ -9,7 +9,7 @@ sections:
       title: 공황장애 · 불안장애
       text: 뚜렷한 이유 없이 반복되는 가슴 두근거림과 숨막힘, 예기치 못한 공황발작 — 뇌신경계와 자율신경의 불균형에서 시작됩니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -58,6 +58,6 @@ sections:
       title: 혼자 견디지 마세요, 지금 상담받아 보세요
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---

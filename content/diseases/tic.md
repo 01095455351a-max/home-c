@@ -9,7 +9,7 @@ sections:
       title: 틱장애
       text: 눈 깜빡임, 헛기침, 어깨 들썩임처럼 반복되는 근육·음성 틱 — 만 2~13세 사이 가장 많이 시작됩니다.
       primary_action:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
         icon: chat-bubble-left-right
     design:
@@ -56,6 +56,6 @@ sections:
       title: 아이의 틱, 지켜만 보지 마세요
       text: 초진에는 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 내원해 주시길 권장합니다.
       button:
-        text: 온라인 상담 신청
+        text: 전화 상담 신청
         url: "#consult"
 ---
