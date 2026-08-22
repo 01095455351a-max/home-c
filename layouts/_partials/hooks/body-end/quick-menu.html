@@ -1,5 +1,6 @@
-{{/* 우측 플로팅 빠른연결 메뉴 - 전화/네이버예약/카카오채널/네이버블로그/인스타그램/유튜브
-     각 버튼에 hover 시 커스텀 툴팁(라벨)이 왼쪽에 예쁘게 표시됨 */}}
+{{/* 우측 플로팅 빠른연결 메뉴 - 전화/네이버예약/카카오채널/네이버블로그
+     각 버튼에 hover 시 커스텀 툴팁(라벨)이 왼쪽에 예쁘게 표시됨.
+     인스타그램/유튜브는 좌측 하단 푸터(로고 아래 소셜 아이콘)로 이동함. */}}
 {{ $c := site.Params.clinic }}
 {{ $iconAttr := "class=\"w-5 h-5\"" }}
 {{ $bookingIcon := resources.Get "media/icons/naver-booking.png" }}
@@ -38,17 +39,5 @@
     </div>
     {{ end }}
     <span class="{{ $tooltip }}">블로그 바로가기</span>
-  </a>
-  <a href="{{ $c.instagram_url }}" target="_blank" rel="noopener"
-     aria-label="인스타그램"
-     class="hb-quick-menu-btn group relative flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-gradient-to-br from-amber-400 via-pink-500 to-purple-600 hover:brightness-95 text-white transition-transform hover:scale-110">
-    {{ partial "functions/get_icon" (dict "name" "brands/instagram" "attributes" $iconAttr) }}
-    <span class="{{ $tooltip }}">인스타그램</span>
-  </a>
-  <a href="{{ $c.youtube_url }}" target="_blank" rel="noopener"
-     aria-label="유튜브"
-     class="hb-quick-menu-btn group relative flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-[#FF0000] hover:brightness-95 text-white transition-transform hover:scale-110">
-    {{ partial "functions/get_icon" (dict "name" "brands/youtube" "attributes" $iconAttr) }}
-    <span class="{{ $tooltip }}">유튜브</span>
   </a>
 </div>

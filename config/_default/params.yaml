@@ -49,6 +49,8 @@ hugoblox:
       links:
         - icon: brands/instagram
           url: https://www.instagram.com/healimjs
+        - icon: brands/youtube
+          url: "https://www.youtube.com/@%ED%95%B4%EC%95%84%EB%A6%BC-g5w/videos"
 
   # ────────────────────────────────────────────────────────────────────────────
   # THEME
