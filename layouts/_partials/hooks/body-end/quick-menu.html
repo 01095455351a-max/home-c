@@ -16,23 +16,27 @@
   </a>
   <a href="{{ $c.naver_booking_url }}" target="_blank" rel="noopener"
      aria-label="네이버예약"
-     class="hb-quick-menu-btn group relative flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-2xl shadow-lg overflow-hidden bg-white transition-transform hover:scale-110">
+     class="hb-quick-menu-btn group relative flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-2xl shadow-lg bg-white transition-transform hover:scale-110">
     {{ if $bookingIcon }}
-    <img src="{{ $bookingIcon.RelPermalink }}" width="{{ $bookingIcon.Width }}" height="{{ $bookingIcon.Height }}" alt="네이버예약" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 rounded-2xl overflow-hidden">
+      <img src="{{ $bookingIcon.RelPermalink }}" width="{{ $bookingIcon.Width }}" height="{{ $bookingIcon.Height }}" alt="네이버예약" class="w-full h-full object-cover" />
+    </div>
     {{ end }}
     <span class="{{ $tooltip }}">네이버예약</span>
   </a>
   <a href="{{ $c.kakao_channel_url }}" target="_blank" rel="noopener"
-     aria-label="카카오톡채널"
+     aria-label="카카오톡문의"
      class="hb-quick-menu-btn group relative flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-[#FEE500] hover:brightness-95 text-black transition-transform hover:scale-110">
     {{ partial "functions/get_icon" (dict "name" "brands/kakaotalk" "attributes" $iconAttr) }}
-    <span class="{{ $tooltip }}">카카오톡채널</span>
+    <span class="{{ $tooltip }}">카카오톡문의</span>
   </a>
   <a href="{{ $c.naver_blog_url }}" target="_blank" rel="noopener"
      aria-label="블로그"
-     class="hb-quick-menu-btn group relative flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-md shadow-lg overflow-hidden bg-black transition-transform hover:scale-110">
+     class="hb-quick-menu-btn group relative flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-md shadow-lg bg-black transition-transform hover:scale-110">
     {{ if $blogIcon }}
-    <img src="{{ $blogIcon.RelPermalink }}" width="{{ $blogIcon.Width }}" height="{{ $blogIcon.Height }}" alt="네이버블로그" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 rounded-md overflow-hidden">
+      <img src="{{ $blogIcon.RelPermalink }}" width="{{ $blogIcon.Width }}" height="{{ $blogIcon.Height }}" alt="네이버블로그" class="w-full h-full object-cover" />
+    </div>
     {{ end }}
     <span class="{{ $tooltip }}">블로그</span>
   </a>

@@ -23,14 +23,6 @@ sections:
         url: "#"
         icon: chat-bubble-left-right
         style: ghost
-      announcement:
-        badge:
-          text: SNS
-          color: primary
-        text: 공식 인스타그램 @healimjs
-        link:
-          text: 바로가기
-          url: https://www.instagram.com/healimjs
     design:
       spacing:
         padding: [0, 0, 0, 0]
