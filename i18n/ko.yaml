@@ -1,0 +1,12 @@
+# Project-level Korean translation overrides.
+# These merge on top of the Hugo Blox theme's built-in i18n/ko.yaml,
+# filling in a few keys the community translation doesn't cover yet.
+
+- id: read_more
+  translation: 더 보기
+
+- id: block_contact_office_hours
+  translation: 진료시간
+
+- id: block_contact_follow_me
+  translation: SNS 바로가기

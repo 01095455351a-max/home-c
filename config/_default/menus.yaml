@@ -1,0 +1,241 @@
+# Navigation Links
+#   Top-level items with `hasChildren: true` render as dropdowns; their
+#   children (matched by `parent:`) become the dropdown list.
+#   To link a page section, specify the URL as a hash `/#` followed by the `id` of the section.
+
+main:
+  # 1. 한의원 소개
+  - name: 한의원 소개
+    weight: 10
+    hasChildren: true
+  - parent: 한의원 소개
+    name: 잠실점의 약속
+    url: /about/promise/
+    weight: 10
+  - parent: 한의원 소개
+    name: 의료진 소개
+    url: /about/doctors/
+    weight: 20
+  - parent: 한의원 소개
+    name: 진료시간
+    url: /about/hours/
+    weight: 30
+  - parent: 한의원 소개
+    name: 오시는 길
+    url: /about/location/
+    weight: 40
+  - parent: 한의원 소개
+    name: 공지사항
+    url: /about/notice/
+    weight: 50
+  - parent: 한의원 소개
+    name: 비대면진료
+    url: /about/telemedicine/
+    weight: 60
+
+  # 2. 특화 질환
+  - name: 특화 질환
+    weight: 20
+    hasChildren: true
+  - parent: 특화 질환
+    name: 틱장애
+    url: /diseases/tic/
+    weight: 10
+  - parent: 특화 질환
+    name: ADHD
+    url: /diseases/adhd/
+    weight: 20
+  - parent: 특화 질환
+    name: 공황장애 · 불안장애
+    url: /diseases/anxiety-panic/
+    weight: 30
+  - parent: 특화 질환
+    name: 강박장애
+    url: /diseases/ocd/
+    weight: 40
+  - parent: 특화 질환
+    name: 우울장애
+    url: /diseases/depression/
+    weight: 50
+  - parent: 특화 질환
+    name: 불면증
+    url: /diseases/insomnia/
+    weight: 60
+  - parent: 특화 질환
+    name: 자율신경실조증
+    url: /diseases/dysautonomia/
+    weight: 70
+  - parent: 특화 질환
+    name: 다한증
+    url: /diseases/hyperhidrosis/
+    weight: 80
+  - parent: 특화 질환
+    name: 신경성 질환
+    url: /diseases/nervous-system/
+    weight: 90
+
+  # 3. 진료안내
+  - name: 진료안내
+    weight: 30
+    hasChildren: true
+  - parent: 진료안내
+    name: 첫 내원시
+    url: /guide/first-visit/
+    weight: 10
+  - parent: 진료안내
+    name: 치료방법 전체보기
+    url: /guide/treatments/
+    weight: 20
+  - parent: 진료안내
+    name: · 개인맞춤한약
+    url: /guide/treatments/herbal-medicine/
+    weight: 30
+  - parent: 진료안내
+    name: · 침치료
+    url: /guide/treatments/acupuncture/
+    weight: 40
+  - parent: 진료안내
+    name: · 약침치료
+    url: /guide/treatments/pharmacopuncture/
+    weight: 50
+  - parent: 진료안내
+    name: · 추나요법
+    url: /guide/treatments/chuna/
+    weight: 60
+  - parent: 진료안내
+    name: · 두개천골요법
+    url: /guide/treatments/cranial-sacral/
+    weight: 70
+  - parent: 진료안내
+    name: · FCST교정
+    url: /guide/treatments/fcst/
+    weight: 80
+  - parent: 진료안내
+    name: · 두뇌훈련
+    url: /guide/treatments/brain-training/
+    weight: 90
+  - parent: 진료안내
+    name: · 전문의 심리상담
+    url: /guide/treatments/counseling/
+    weight: 100
+
+  # 4. 치료후기
+  - name: 치료후기
+    weight: 40
+    hasChildren: true
+  - parent: 치료후기
+    name: 네이버 리뷰
+    url: /reviews/#naver
+    weight: 10
+  - parent: 치료후기
+    name: 자필 후기
+    url: /reviews/#handwritten
+    weight: 20
+
+  # 5. 게시판
+  - name: 게시판
+    weight: 50
+    hasChildren: true
+  - parent: 게시판
+    name: 자주 묻는 질문
+    url: /faq/
+    weight: 10
+  - parent: 게시판
+    name: 원장 컬럼
+    url: /blog/
+    weight: 20
+  - parent: 게시판
+    name: 언론 보도
+    url: /press/
+    weight: 30
+  - parent: 게시판
+    name: 영상 자료
+    url: /videos/
+    weight: 40
+  - parent: 게시판
+    name: 비급여안내
+    url: /pricing/
+    weight: 50
+
+# Footer links (4-column layout)
+#   Top-level items become column headings, children become links.
+footer:
+  - name: 한의원 소개
+    weight: 10
+  - parent: 한의원 소개
+    name: 잠실점의 약속
+    url: /about/promise/
+    weight: 10
+  - parent: 한의원 소개
+    name: 의료진 소개
+    url: /about/doctors/
+    weight: 20
+  - parent: 한의원 소개
+    name: 진료시간
+    url: /about/hours/
+    weight: 30
+  - parent: 한의원 소개
+    name: 오시는 길
+    url: /about/location/
+    weight: 40
+  - parent: 한의원 소개
+    name: 공지사항
+    url: /about/notice/
+    weight: 50
+
+  - name: 진료 안내
+    weight: 20
+  - parent: 진료 안내
+    name: 특화 질환
+    url: /diseases/
+    weight: 10
+  - parent: 진료 안내
+    name: 첫 내원시
+    url: /guide/first-visit/
+    weight: 20
+  - parent: 진료 안내
+    name: 치료방법
+    url: /guide/treatments/
+    weight: 30
+  - parent: 진료 안내
+    name: 비대면진료
+    url: /about/telemedicine/
+    weight: 40
+
+  - name: 커뮤니티
+    weight: 30
+  - parent: 커뮤니티
+    name: 치료후기
+    url: /reviews/
+    weight: 10
+  - parent: 커뮤니티
+    name: 자주 묻는 질문
+    url: /faq/
+    weight: 20
+  - parent: 커뮤니티
+    name: 원장 컬럼
+    url: /blog/
+    weight: 30
+  - parent: 커뮤니티
+    name: 언론 보도
+    url: /press/
+    weight: 40
+  - parent: 커뮤니티
+    name: 비급여안내
+    url: /pricing/
+    weight: 50
+
+  - name: 안내
+    weight: 40
+  - parent: 안내
+    name: 개인정보처리방침
+    url: /privacy/
+    weight: 10
+  - parent: 안내
+    name: 이용약관
+    url: /terms/
+    weight: 20
+  - parent: 안내
+    name: 해아림한의원 네트워크
+    url: https://www.healim.com
+    weight: 30

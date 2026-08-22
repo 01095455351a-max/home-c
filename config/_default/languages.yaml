@@ -1,0 +1,9 @@
+# Languages
+#   Create a section for each of your site's languages.
+#   Documentation: https://docs.hugoblox.com/reference/language/
+
+# Default (and only) language: Korean
+ko:
+  label: '한국어'
+  locale: ko-KR
+  weight: 1

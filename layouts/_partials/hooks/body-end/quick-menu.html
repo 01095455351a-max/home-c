@@ -1,0 +1,35 @@
+{{/* 우측 플로팅 빠른연결 메뉴 - 전화/네이버예약/카카오채널/네이버블로그/인스타그램/유튜브 */}}
+{{ $c := site.Params.clinic }}
+{{ $iconAttr := "class=\"w-5 h-5\"" }}
+<div class="hb-quick-menu fixed z-40 right-3 bottom-24 md:right-5 md:bottom-28 flex flex-col gap-2">
+  <a href="{{ $c.phone_tel | safeURL }}"
+     title="전화 걸기 ({{ $c.phone_display }})"
+     class="hb-quick-menu-btn flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-primary-600 hover:bg-primary-700 text-white transition-transform hover:scale-110">
+    {{ partial "functions/get_icon" (dict "name" "hero/phone-solid" "attributes" $iconAttr) }}
+  </a>
+  <a href="{{ $c.naver_booking_url }}" target="_blank" rel="noopener"
+     title="네이버 예약"
+     class="hb-quick-menu-btn flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-[#03C75A] hover:brightness-95 text-white transition-transform hover:scale-110">
+    {{ partial "functions/get_icon" (dict "name" "brands/naver" "attributes" $iconAttr) }}
+  </a>
+  <a href="{{ $c.kakao_channel_url }}" target="_blank" rel="noopener"
+     title="카카오톡 채널"
+     class="hb-quick-menu-btn flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-[#FEE500] hover:brightness-95 text-black transition-transform hover:scale-110">
+    {{ partial "functions/get_icon" (dict "name" "brands/kakaotalk" "attributes" $iconAttr) }}
+  </a>
+  <a href="{{ $c.naver_blog_url }}" target="_blank" rel="noopener"
+     title="네이버 블로그"
+     class="hb-quick-menu-btn flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-[#03C75A] hover:brightness-95 text-white transition-transform hover:scale-110">
+    {{ partial "functions/get_icon" (dict "name" "hero/pencil-square" "attributes" $iconAttr) }}
+  </a>
+  <a href="{{ $c.instagram_url }}" target="_blank" rel="noopener"
+     title="인스타그램"
+     class="hb-quick-menu-btn flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-gradient-to-br from-amber-400 via-pink-500 to-purple-600 hover:brightness-95 text-white transition-transform hover:scale-110">
+    {{ partial "functions/get_icon" (dict "name" "brands/instagram" "attributes" $iconAttr) }}
+  </a>
+  <a href="{{ $c.youtube_url }}" target="_blank" rel="noopener"
+     title="유튜브"
+     class="hb-quick-menu-btn flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg bg-[#FF0000] hover:brightness-95 text-white transition-transform hover:scale-110">
+    {{ partial "functions/get_icon" (dict "name" "brands/youtube" "attributes" $iconAttr) }}
+  </a>
+</div>
