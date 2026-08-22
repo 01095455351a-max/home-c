@@ -49,23 +49,50 @@
         {{ end }}
       </div>
       <div class="relative h-96 lg:h-auto lg:min-h-[440px] order-first lg:order-last">
+        {{ $googleIframe := printf "https://maps.google.com/maps?q=%v,%v&z=%v&output=embed" $lat $lng $zoom }}
         {{ if $kakaoJsKey }}
+        {{/* 카카오맵 우선 시도, 로드 실패(광고차단 확장·네트워크 문제 등) 시 자동으로 구글 지도로 전환 */}}
         <div id="{{ $mapId }}" class="absolute inset-0 w-full h-full"></div>
-        <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{ $kakaoJsKey }}"></script>
+        <iframe id="{{ $mapId }}-fallback"
+          src="{{ $googleIframe | safeURL }}"
+          class="absolute inset-0 w-full h-full border-0 hidden"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="{{ $title | default "지도" }}">
+        </iframe>
         <script>
           (function () {
-            var center = new kakao.maps.LatLng({{ $lat }}, {{ $lng }});
-            var map = new kakao.maps.Map(document.getElementById("{{ $mapId }}"), {
-              center: center,
-              level: {{ $kakaoLevel }},
-            });
-            new kakao.maps.Marker({ position: center, map: map });
+            var mapEl = document.getElementById("{{ $mapId }}");
+            var fallbackEl = document.getElementById("{{ $mapId }}-fallback");
+            var done = false;
+            function useFallback() {
+              if (done) return;
+              done = true;
+              if (mapEl) mapEl.style.display = "none";
+              if (fallbackEl) fallbackEl.classList.remove("hidden");
+            }
+            var timeoutId = setTimeout(useFallback, 4000);
+            var script = document.createElement("script");
+            script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey={{ $kakaoJsKey }}";
+            script.onload = function () {
+              try {
+                var center = new kakao.maps.LatLng({{ $lat }}, {{ $lng }});
+                var map = new kakao.maps.Map(mapEl, { center: center, level: {{ $kakaoLevel }} });
+                new kakao.maps.Marker({ position: center, map: map });
+                done = true;
+                clearTimeout(timeoutId);
+              } catch (e) {
+                useFallback();
+              }
+            };
+            script.onerror = useFallback;
+            document.head.appendChild(script);
           })();
         </script>
         {{ else }}
-        {{/* API 키가 아직 설정되지 않아 구글 지도로 대체 표시 (docs/ISSUES.md 참고) */}}
+        {{/* API 키가 설정되지 않아 구글 지도로 대체 표시 (docs/ISSUES.md 참고) */}}
         <iframe
-          src="{{ printf "https://maps.google.com/maps?q=%v,%v&z=%v&output=embed" $lat $lng $zoom | safeURL }}"
+          src="{{ $googleIframe | safeURL }}"
           class="absolute inset-0 w-full h-full border-0"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
