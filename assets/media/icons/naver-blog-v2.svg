@@ -1,5 +1,5 @@
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <rect width="100" height="100" rx="22" fill="#03C75A"/>
   <path d="M20 26a8 8 0 0 1 8-8h44a8 8 0 0 1 8 8v34a8 8 0 0 1-8 8H46l-14 14v-14h-4a8 8 0 0 1-8-8V26z" fill="#FDF6E8"/>
-  <text x="50" y="53" text-anchor="middle" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="34" font-weight="800" fill="#D97B29">글</text>
+  <text x="50" y="51" text-anchor="middle" font-family="Arial,'Helvetica Neue',sans-serif" font-size="20" font-weight="800" fill="#D97B29" letter-spacing="-0.5">blog</text>
 </svg>
