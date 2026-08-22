@@ -13,7 +13,7 @@ sections:
       spacing:
         padding: ["4rem", 0, "3rem", 0]
 
-  - block: focus-areas
+  - block: treatment-grid
     content:
       items:
         - name: 개인맞춤한약

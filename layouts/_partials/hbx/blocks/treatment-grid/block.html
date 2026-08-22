@@ -1,0 +1,45 @@
+{{/* Custom project block: 치료 방법 그리드 — 작은 아이콘 배지 + 카드,
+     데스크톱에서 5열 x 2행으로 배열되는 세련된 컴팩트 그리드.
+     카드를 클릭하면 해당 치료법의 전체 상세 페이지로 이동합니다.
+     content: { title, subtitle, text, items: [{ name, description, icon, gradient, url }] } */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $title := index $content "title" }}
+{{ $subtitle := index $content "subtitle" }}
+{{ $text := index $content "text" }}
+{{ $items := index $content "items" }}
+
+<div class="py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    {{ if or $title $subtitle $text }}
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      {{ with $title }}<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight mb-2">{{ . }}</h2>{{ end }}
+      {{ with $subtitle }}<p class="text-primary-600 dark:text-primary-400 font-medium mb-1">{{ . }}</p>{{ end }}
+      {{ with $text }}<p class="text-gray-600 dark:text-gray-400">{{ . }}</p>{{ end }}
+    </div>
+    {{ end }}
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+      {{ range $items }}
+      {{ $name := index . "name" }}
+      {{ $description := index . "description" }}
+      {{ $icon := index . "icon" }}
+      {{ $gradient := index . "gradient" | default "from-primary-400 to-secondary-400" }}
+      {{ $url := index . "url" }}
+      <a href="{{ $url | relLangURL }}"
+         class="group flex flex-col items-center text-center rounded-xl bg-white dark:bg-gray-800 ring-1 ring-gray-200 dark:ring-gray-700 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 px-3 py-5 sm:py-6">
+        <span class="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br {{ $gradient }} shadow-md mb-3 transition-transform duration-200 group-hover:scale-110">
+          {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-5 h-5 sm:w-5.5 sm:h-5.5 text-white\"") }}
+        </span>
+        <span class="text-sm font-bold text-gray-900 dark:text-white leading-snug mb-1">{{ $name }}</span>
+        {{ with $description }}
+        <span class="text-xs text-gray-500 dark:text-gray-400 leading-snug line-clamp-2">{{ . }}</span>
+        {{ end }}
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</div>
