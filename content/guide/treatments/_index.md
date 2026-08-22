@@ -7,7 +7,7 @@ sections:
     content:
       eyebrow: GUIDE
       title: 치료 방법
-      text: 해아림한의원 잠실점이 증상과 체질에 맞춰 조합해 진행하는 8가지 치료 방법입니다.
+      text: 해아림한의원 잠실점이 증상과 체질에 맞춰 조합해 진행하는 10가지 치료 방법입니다.
     design:
       css_class: "bg-gradient-to-br from-primary-600 to-secondary-700 text-white"
       spacing:
@@ -56,6 +56,16 @@ sections:
           icon: hero/chat-bubble-left-right
           gradient: from-slate-400 to-slate-600
           url: /guide/treatments/counseling/
+        - name: 향기치료
+          description: 후각을 통해 뇌 감정 중추에 직접 작용해 심신 이완을 돕습니다.
+          icon: hero/sparkles
+          gradient: from-emerald-400 to-teal-600
+          url: /guide/treatments/aromatherapy/
+        - name: 엔오클리닉
+          description: 일산화질소(NO) 기반으로 혈액순환과 뇌혈류 개선을 돕습니다.
+          icon: hero/bolt
+          gradient: from-indigo-400 to-blue-600
+          url: /guide/treatments/no-clinic/
     design:
       layout: cards
 
