@@ -97,6 +97,7 @@ sections:
           topics: ["가슴 두근거림", "숨막힘", "예기불안"]
         - name: 틱장애
           description: 반복되는 눈 깜빡임, 헛기침, 어깨 들썩임 등 근육·음성 틱.
+          image: diseases/tic.png
           icon: hero/face-smile
           gradient: from-secondary-400 to-secondary-600
           url: /diseases/tic/
