@@ -52,11 +52,22 @@
 - **원인**: 기본 CSS `word-break: normal` 상태에서는 브라우저가 한글(CJK)을 공백 없는 문자 스트림으로 취급해 아무 음절에서나 줄을 바꿈.
 - **해결**: `layouts/_partials/hooks/head-end/korean-typography.html`에서 `body { word-break: keep-all; overflow-wrap: break-word; }`를 전역 적용. 개별 문구에 `<br>`을 넣는 방식보다 화면 폭이 바뀌어도 항상 띄어쓰기 단위로 자연스럽게 재정렬됨.
 
+### 1.11 홈 화면 "원장 컬럼" 미리보기가 컬럼 목록 페이지와 다르게 세로 1열로 보임
+- **증상**: `/column/` 목록 페이지는 3열 카드 그리드로 잘 나오는데, 홈 화면 하단의 "원장 컬럼" 미리보기 섹션(`content-collection` 블록, `id: news`)은 카드 1개가 한 줄을 다 차지하는 세로 나열로 보임.
+- **원인**: `/column/` 페이지는 자체 제작한 `column-grid` 커스텀 블록을 쓰지만, 홈 화면 미리보기는 Hugo Blox 기본 `content-collection` 블록을 그대로 썼고 `design.view: card`의 기본 컨테이너 폭이 `max-w-[65ch]`(가독성 위주 1열)로 고정되어 있어 컬럼 개수와 무관하게 항상 1열로 렌더링됨.
+- **해결**: `design.view`를 `card`에서 `article-grid`로, `design.columns: 3`을 추가. `article-grid` 뷰도 카드 자체는 `card.html`을 그대로 재사용하므로 시각적 디자인은 동일하고 배치만 그리드로 바뀜.
+- **주의**: `content-collection` 블록으로 카드 목록을 새로 만들 때는 기본값(`view: card`)이 아니라 `view: article-grid` + `design.columns`를 명시해야 여러 열로 보임.
+
+### 1.12 의료진 소개 카드를 눌러도 깨진 `/authors/` 프로필로 연결됨
+- **증상**: 홈 화면 "원장 및 진료 철학 소개"(`team-showcase` 블록)에서 원장 사진/이름을 클릭하면 `/authors/<slug>/`로 이동하는데, 이 경로는 [§2](#2-대기-중인-항목-실제-배포운영-전-확인-필요)에 있던 것처럼 실제로 빌드되지 않는 페이지(404)임. 정작 원장의 실제 자기소개(스토리)는 `/about/doctors/`(의료진 소개 페이지)의 `doctor-profile` 블록 안에 이미 존재함.
+- **해결**: `team-showcase` 블록을 프로젝트에 오버라이드(`layouts/_partials/hbx/blocks/team-showcase/block.html`)해, 카드 링크를 슬러그별로 `/about/doctors/#seok-seonhui`, `/about/doctors/#ryu-seokgyun`로 매핑(그 외 슬러그는 기존 `/authors/<slug>/`로 폴백). `content/about/doctors/_index.md`의 두 `doctor-profile` 섹션에 `id: seok-seonhui` / `id: ryu-seokgyun` 앵커를 추가해 짚어갈 수 있게 함.
+- **참고**: `/authors/` 자체의 404는 여전히 미해결이며(원장 컬럼 게시글 작성자 표시 등 다른 곳에서도 같은 링크를 사용), 별도로 추적 중(백그라운드 작업 task_7fdbae16).
+
 ## 2. 대기 중인 항목 (실제 배포/운영 전 확인 필요)
 
 | 항목 | 위치 | 상태 |
 |---|---|---|
-| 석선희 원장 이야기 원고 | `content/about/doctors/seok-story.md` | 임시 플레이스홀더 (류석균 원장 스토리와 동일 구조). 원고 전달 시 교체 예정 |
+| 석선희 원장 이야기 원고 | `content/about/doctors/_index.md` (두 번째 `doctor-profile` 블록의 `story` 필드) | 류석균 원장 스토리(개인 서사 중심, 실제 원고 반영됨)에 비해 분량이 짧고 진료 철학 요약 위주. 원고 전달 시 교체 예정 |
 | 개인정보처리방침 위탁업체명 | `content/privacy.md` §6 | "㈜아임웹"으로 기재되어 있으나 실제 배포 환경(Cloudflare Pages)에 맞게 확인 필요 |
 | 개인정보처리방침 공고일자/시행일자 | `content/privacy.md` §10 | `[게시 예정일 기재]` placeholder |
 | 비급여 항목 실제 가격 | `content/pricing/_index.md` | 사장님 요청으로 전 항목 50만원으로 임시 통일. 실제 금액 확정 시 항목별로 교체 필요 |
