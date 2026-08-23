@@ -144,6 +144,7 @@ sections:
           topics: ["다한", "손발냉감", "사회불안"]
         - name: 신경성 질환
           description: 스트레스만 받으면 심해지는 두통, 어지럼증, 소화불량.
+          image: diseases/nervous-system.png
           icon: hero/sparkles
           gradient: from-rose-400 to-rose-600
           url: /diseases/nervous-system/
