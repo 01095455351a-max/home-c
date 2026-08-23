@@ -40,24 +40,6 @@ sections:
           size: "80% 80%"
 
   # ──────────────────────────────────────────────────────────
-  # 해아림한의원 잠실점 둘러보기 — 원내 사진 슬라이드
-  # ──────────────────────────────────────────────────────────
-  - block: clinic-gallery
-    id: gallery
-    content:
-      title: 해아림한의원 잠실점 둘러보기
-      subtitle: 편안하고 안정감 있는 공간에서 진료받으실 수 있습니다.
-      items:
-        - image: clinic/reception.jpg
-          caption: 접수 데스크
-        - image: clinic/waiting-room.jpg
-          caption: 대기 공간
-        - image: clinic/counseling-room.jpg
-          caption: 1:1 상담실
-        - image: clinic/treatment-room.jpg
-          caption: 치료실
-
-  # ──────────────────────────────────────────────────────────
   # 원장 및 진료 철학 소개
   # ──────────────────────────────────────────────────────────
   - block: team-showcase
@@ -181,6 +163,24 @@ sections:
       marker_style: icon
       connector: line
       css_class: "bg-gray-50 dark:bg-gray-900/50"
+
+  # ──────────────────────────────────────────────────────────
+  # 해아림한의원 잠실점 둘러보기 — 원내 사진 슬라이드 (진료 프로세스 다음)
+  # ──────────────────────────────────────────────────────────
+  - block: clinic-gallery
+    id: gallery
+    content:
+      title: 해아림한의원 잠실점 둘러보기
+      subtitle: 편안하고 안정감 있는 공간에서 진료받으실 수 있습니다.
+      items:
+        - image: clinic/reception.jpg
+          caption: 접수 데스크
+        - image: clinic/waiting-room.jpg
+          caption: 대기 공간
+        - image: clinic/counseling-room.jpg
+          caption: 1:1 상담실
+        - image: clinic/treatment-room.jpg
+          caption: 치료실
 
   # ──────────────────────────────────────────────────────────
   # 진료안내 · 치료 방법 (8종) 요약 — 상단 메뉴 "진료안내" 클릭 시 이동
