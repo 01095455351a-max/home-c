@@ -17,12 +17,13 @@ sections:
       spacing:
         padding: ["4rem", 0, "3rem", 0]
 
+  - block: video-grid
+    content: {}
+
   - block: markdown
     content:
       text: |
-        준비 중입니다. 유튜브 영상과 방송 출연 영상 링크가 정리되는 대로 이 게시판에 순서대로 추가될 예정입니다.
-
-        지금 바로 보고 싶으시다면 [공식 유튜브 채널](https://www.youtube.com/@%ED%95%B4%EC%95%84%EB%A6%BC-g5w/videos)에서 확인하실 수 있습니다.
+        더 많은 영상은 [공식 유튜브 채널](https://www.youtube.com/@%ED%95%B4%EC%95%84%EB%A6%BC-g5w/videos)에서 확인하실 수 있습니다.
 
   - block: cta-card
     content:

@@ -1,0 +1,82 @@
+{{/* Custom project block: 영상 자료 카드 그리드.
+     content/videos/ 아래 개별 파일(type: video-item)을 weight 순으로 읽어와 렌더링.
+     youtube_id가 있으면 반응형 유튜브 임베드, 없으면 url로 연결되는 카드(방송 출연 등 외부 링크용).
+     새 영상 추가 방법: docs/MANUAL.md 참고. */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $title := "" }}
+{{ with index $content "title" }}{{ $title = strings.TrimSpace (printf "%v" .) }}{{ end }}
+{{ if $title }}{{ $title = $title | emojify | $page.RenderString }}{{ end }}
+
+{{ $text := "" }}
+{{ with index $content "text" }}{{ $text = strings.TrimSpace (printf "%v" .) }}{{ end }}
+{{ if $text }}{{ $text = $text | emojify | $page.RenderString }}{{ end }}
+
+{{ $videoPages := where site.RegularPages "Type" "video-item" }}
+{{ $videoPages = $videoPages.ByWeight }}
+
+{{ if gt (len $videoPages) 0 }}
+<div class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+
+    {{ if or $title $text }}
+    <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+      {{ with $title }}
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight mb-4">{{ . }}</h2>
+      {{ end }}
+      {{ with $text }}
+      <p class="text-lg text-gray-600 dark:text-gray-400">{{ . }}</p>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+      {{ range $item := $videoPages }}
+      {{ $name := $item.Title }}
+      {{ $description := $item.Params.description | default "" }}
+      {{ $youtubeID := $item.Params.youtube_id | default "" }}
+      {{ $extURL := $item.Params.external_url | default "" }}
+
+      <div class="group relative">
+        <div class="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col">
+          {{ if $youtubeID }}
+          <div class="relative aspect-video bg-black overflow-hidden">
+            <iframe
+              class="absolute inset-0 w-full h-full"
+              src="https://www.youtube-nocookie.com/embed/{{ $youtubeID }}"
+              title="{{ $name | plainify }}"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          {{ else if $extURL }}
+          <a href="{{ $extURL | safeURL }}" target="_blank" rel="noopener" class="relative h-48 flex items-center justify-center bg-gradient-to-br from-primary-400 to-secondary-400 overflow-hidden">
+            {{ partial "functions/get_icon" (dict "name" "hero/play-circle" "attributes" "class=\"w-16 h-16 text-white/90 group-hover:scale-110 transition-transform duration-300\"") }}
+          </a>
+          {{ end }}
+
+          <div class="flex flex-col flex-1 p-6">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
+              {{ if and (not $youtubeID) $extURL }}
+              <a href="{{ $extURL | safeURL }}" target="_blank" rel="noopener" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                {{ $name }}
+                {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"inline-block w-4 h-4 ml-1\"") }}
+              </a>
+              {{ else }}
+                {{ $name }}
+              {{ end }}
+            </h3>
+            {{ with $description }}
+            <p class="text-gray-600 dark:text-gray-400 text-sm">{{ . }}</p>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

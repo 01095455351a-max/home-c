@@ -1,0 +1,119 @@
+backend:
+  name: github
+  repo: 01095455351a-max/home-c
+  branch: main
+  base_url: https://home-c-e67.pages.dev
+  auth_endpoint: api/auth
+
+# 발행 즉시 main 브랜치에 커밋 → Cloudflare Pages가 자동으로 재빌드/배포합니다.
+publish_mode: simple
+
+media_folder: "assets/media/uploads"
+public_folder: "/media/uploads"
+
+locale: "ko"
+
+collections:
+  - name: "notices"
+    label: "공지사항"
+    folder: "content/about/notice"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    index_file: "_index"
+    fields:
+      - { label: "제목", name: "title", widget: "string" }
+      - { label: "요약", name: "summary", widget: "text", required: false }
+      - { label: "날짜", name: "date", widget: "datetime" }
+      - label: "작성자"
+        name: "authors"
+        widget: "select"
+        multiple: true
+        default: ["seok-seonhui", "ryu-seokgyun"]
+        options: ["seok-seonhui", "ryu-seokgyun"]
+      - { label: "태그", name: "tags", widget: "list", default: ["공지"] }
+      - { label: "본문", name: "body", widget: "markdown" }
+
+  - name: "columns"
+    label: "원장 컬럼"
+    folder: "content/blog"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    index_file: "_index"
+    fields:
+      - { label: "제목", name: "title", widget: "string" }
+      - { label: "요약", name: "summary", widget: "text" }
+      - { label: "날짜", name: "date", widget: "datetime" }
+      - label: "작성자"
+        name: "authors"
+        widget: "select"
+        multiple: true
+        default: ["seok-seonhui"]
+        options: ["seok-seonhui", "ryu-seokgyun"]
+      - { label: "태그", name: "tags", widget: "list", default: ["칼럼"] }
+      - { label: "본문", name: "body", widget: "markdown" }
+
+  - name: "reviews"
+    label: "자필 후기"
+    folder: "content/reviews"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    index_file: "_index"
+    fields:
+      - { label: "제목 (증상 중심, 예: 손발 다한증)", name: "title", widget: "string" }
+      - { label: "요약 (치료 전 / 치료 후)", name: "description", widget: "text" }
+      - { label: "사진 (블러 처리된 이미지만)", name: "image", widget: "image", media_library: { config: { multiple: false } } }
+      - { label: "태그 (질환/증상, 치료방법 등)", name: "topics", widget: "list" }
+      - { label: "정렬 순서 (숫자가 작을수록 앞)", name: "weight", widget: "number", value_type: "int", default: 500 }
+      - { label: "타입", name: "type", widget: "hidden", default: "review-item" }
+      - label: "빌드 옵션"
+        name: "build"
+        widget: "hidden"
+        default: { render: false, list: "always" }
+
+  - name: "press"
+    label: "언론 보도"
+    folder: "content/press"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    index_file: "_index"
+    fields:
+      - { label: "기사 제목", name: "title", widget: "string" }
+      - { label: "요약 (원장명 · 날짜 — 요약)", name: "description", widget: "text" }
+      - label: "아이콘"
+        name: "icon"
+        widget: "select"
+        default: "hero/newspaper"
+        options: ["hero/newspaper", "hero/academic-cap"]
+      - { label: "이미지 (선택)", name: "image", widget: "image", required: false, media_library: { config: { multiple: false } } }
+      - { label: "배경 그라디언트", name: "gradient", widget: "hidden", default: "from-primary-400 to-secondary-400" }
+      - { label: "원문 링크", name: "external_url", widget: "string" }
+      - { label: "태그", name: "topics", widget: "list" }
+      - { label: "정렬 순서 (숫자가 작을수록 앞)", name: "weight", widget: "number", value_type: "int", default: 500 }
+      - { label: "타입", name: "type", widget: "hidden", default: "press-item" }
+      - label: "빌드 옵션"
+        name: "build"
+        widget: "hidden"
+        default: { render: false, list: "always" }
+
+  - name: "videos"
+    label: "영상 자료"
+    folder: "content/videos"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    index_file: "_index"
+    fields:
+      - { label: "영상 제목", name: "title", widget: "string" }
+      - { label: "설명 (선택)", name: "description", widget: "text", required: false }
+      - { label: "유튜브 영상 ID (유튜브 영상인 경우)", name: "youtube_id", widget: "string", required: false, hint: "유튜브 주소 youtube.com/watch?v=이 부분 만 입력 (예: dQw4w9WgXcQ)" }
+      - { label: "외부 링크 (방송 출연 등 유튜브가 아닌 경우)", name: "external_url", widget: "string", required: false }
+      - { label: "정렬 순서 (숫자가 작을수록 앞)", name: "weight", widget: "number", value_type: "int", default: 500 }
+      - { label: "타입", name: "type", widget: "hidden", default: "video-item" }
+      - label: "빌드 옵션"
+        name: "build"
+        widget: "hidden"
+        default: { render: false, list: "always" }

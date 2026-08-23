@@ -58,7 +58,8 @@
 | 언론보도 기사 1건 | `content/press/_index.md` 하단 목록 | `edu.donga.com` 자동 조회가 차단되어 수동 확인 필요 |
 | Web3Forms Access Key 등록 | `config/_default/params.yaml`의 `clinic.web3forms_access_key` | 비어있으면 상담 신청 폼이 실제로 접수되지 않음. web3forms.com에서 이메일로 발급 후 등록 필요 |
 | 카카오맵 실제 렌더링 라이브 확인 | `content/_index.md`, `content/about/location.md`의 `block: clinic-map` | JS 키 등록 + 카카오맵 활성화까지 완료, SDK 응답도 정상 확인했으나 로컬 미리보기 도구의 네트워크 제약으로 시각적 확인은 실제 배포 주소에서 재확인 필요 |
-| 실제 로그인 후 원본 후기 열람 기능 | 자필 후기 (`content/reviews/_index.md`) | 현재는 "블러 처리 + 요약"으로 구현(정적 사이트 한계). 실제 카카오/네이버 로그인 연동은 별도 프로젝트 — 진행 시 카카오/네이버 개발자 앱 등록(사장님 직접) + 배포 환경 환경변수 접근 필요 |
+| 네이버 로그인 후 원본 후기 열람 기능 | 자필 후기 (`content/reviews/`) | 공개 범위(로그인 회원에게 원본 공개)는 사장님 확인 완료. 아직 필요한 것: (1) 원본(블러 처리 전) 이미지 재전송, (2) 네이버 개발자센터 OAuth 앱 등록(Client ID/Secret, 사장님 직접) — 준비되면 진행 |
+| 관리자 화면(Decap CMS, `/admin`) 실제 로그인 미검증 | `static/admin/`, `functions/api/auth.js`, `functions/api/callback.js` | 코드는 작성 완료, `hugo server`(로컬)는 Cloudflare Pages Functions를 실행하지 않아 로그인까지 로컬 검증 불가. 실 배포 후 아래가 준비되면 테스트 필요: (1) GitHub OAuth App 등록, (2) Cloudflare Pages 환경변수 `GITHUB_CLIENT_ID`/`GITHUB_CLIENT_SECRET` 등록, (3) 원장님·직원 GitHub 계정을 저장소 협업자로 추가. 절차는 [MANUAL.md §4.9](MANUAL.md#49-관리자-화면admin-설정--새-게시판-콘텐츠-추가) 참고 |
 
 ## 3. 알려진 제약사항
 

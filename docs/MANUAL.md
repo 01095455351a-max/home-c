@@ -148,6 +148,45 @@ clinic:
 
 삭제할 때는 해당 `.md` 파일만 지우면 됩니다.
 
+### 4.4.1 새 언론보도 기사 추가
+
+`content/press/` 폴더에 새 `.md` 파일 생성 (기존 `press-01.md` 등을 복사). 저작권 보호를 위해 기사 전문이 아닌 요약만 싣고, 원문은 `external_url`로 링크합니다.
+
+```yaml
+---
+title: "기사 제목"
+description: "원장명 · 날짜 — 요약 (2~3문장)"
+icon: "hero/newspaper"          # 또는 hero/academic-cap
+image: "press/infographics/파일명.svg"   # 없으면 생략 가능 (아이콘으로 대체됨)
+gradient: "from-primary-400 to-secondary-400"
+external_url: "https://원문주소"
+topics: ["공황장애", "불안장애"]
+type: press-item
+weight: 210                     # 기존 항목들보다 큰 숫자를 쓰면 맨 뒤에 추가됨
+build:
+  render: false
+  list: always
+---
+```
+
+### 4.4.2 새 영상 추가
+
+`content/videos/` 폴더에 새 `.md` 파일 생성. 유튜브 영상은 임베드로, 방송 출연 등 유튜브가 아닌 영상은 외부 링크 카드로 표시됩니다.
+
+```yaml
+---
+title: "영상 제목"
+description: "간단한 설명 (선택)"
+youtube_id: "dQw4w9WgXcQ"        # 유튜브 URL의 watch?v= 뒷부분. 유튜브 영상이면 이것만 채우면 임베드됨
+# external_url: "https://..."    # 유튜브가 아닌 경우에만 이걸 대신 사용
+weight: 10
+type: video-item
+build:
+  render: false
+  list: always
+---
+```
+
 ### 4.5 지도 위치 변경 / 다른 지도 서비스로 교체
 
 `content/_index.md`, `content/about/location.md`의 `block: clinic-map` 항목에서 `lat`/`lng`/`directions_url`을 수정하면 됩니다.
@@ -167,7 +206,7 @@ clinic:
 
 ### 4.7 색상 테마 변경
 
-`config/_default/params.yaml`의 `hugoblox.theme.colors.primary` / `secondary` (hex 코드) 수정. 원래 아임웹 사이트(healimjs1.imweb.me)의 브랜드 컬러(`#1998bf`)에서, 정신건강 클리닉에 맞게 채도를 낮추고 밝기를 올린 `#3aa5c6`(primary) / `#2c7a94`(secondary)로 조정해 사용 중입니다. 색상 하나만 바꾸면 `from-primary-*`/`from-secondary-*` 클래스를 쓰는 모든 페이지에 자동 반영되지만, `content/_index.md` 홈 히어로처럼 `rgba(...)` 값을 직접 하드코딩한 곳은 별도로 맞춰줘야 합니다.
+`config/_default/params.yaml`의 `hugoblox.theme.colors.primary` / `secondary` (hex 코드) 수정. 로고의 "잠실점" 텍스트 색상(`#2AA6AA`)을 기준으로, 채도를 낮추고 밝기를 올린 `#3FAFB3`(primary) / `#257D80`(secondary)로 조정해 사용 중입니다. 색상 하나만 바꾸면 `from-primary-*`/`from-secondary-*` 클래스를 쓰는 모든 페이지에 자동 반영되지만, `content/_index.md` 홈 히어로처럼 `rgba(...)` 값을 직접 하드코딩한 곳은 별도로 맞춰줘야 합니다.
 
 ### 4.8 폰트 변경
 
@@ -175,6 +214,34 @@ clinic:
 1. 한글을 지원하는 폰트의 가변(variable) woff2 파일을 `assets/dist/font/<폰트이름>.var.woff2`로 저장 (파일명이 `.var.`를 포함해야 가변 폰트로 인식됨)
 2. `data/fonts/<이름>.yaml`에 `pretendard.yaml`과 같은 형식으로 `families.heading`/`families.body`를 그 폰트 이름으로 지정
 3. `params.yaml`의 `typography.pack`을 그 이름으로 변경
+
+### 4.9 관리자 화면(`/admin`) 설정 — 새 게시판 콘텐츠 추가
+
+코드로 직접 파일을 만들지 않고, 웹 화면에서 원장님/직원이 직접 공지사항·원장 컬럼·자필 후기·언론보도·영상을 추가/삭제할 수 있도록 [Decap CMS](https://decapcms.org)를 붙여뒀습니다 (`static/admin/index.html`, `static/admin/config.yml`, `functions/api/auth.js`, `functions/api/callback.js`). 로그인은 GitHub 계정으로 합니다.
+
+**아직 안 되어 있는 설정 (사장님이 직접 해주셔야 하는 부분)** — 이 3가지가 끝나야 실제로 로그인이 됩니다:
+
+1. **GitHub OAuth App 등록**
+   - GitHub 로그인 → 우측 상단 프로필 → **Settings → Developer settings → OAuth Apps → New OAuth App**
+   - Application name: 아무거나 (예: 해아림한의원 관리자)
+   - Homepage URL: `https://home-c-e67.pages.dev`
+   - Authorization callback URL: `https://home-c-e67.pages.dev/api/callback`
+   - 생성 후 **Client ID**를 복사, **Generate a new client secret**으로 **Client Secret**도 복사 (이 화면을 벗어나면 secret은 다시 볼 수 없으니 바로 복사)
+
+2. **Cloudflare Pages 환경변수 등록**
+   - Cloudflare Pages 대시보드 → 이 프로젝트 → **Settings → Environment variables**
+   - `GITHUB_CLIENT_ID` = 위에서 복사한 Client ID
+   - `GITHUB_CLIENT_SECRET` = 위에서 복사한 Client Secret
+   - 저장 후 재배포 필요 (다음 커밋 푸시 시 자동으로 반영됨)
+
+3. **저장소 협업자 추가** (로그인을 허용할 두 분의 GitHub 계정)
+   - GitHub 저장소(`01095455351a-max/home-c`) → **Settings → Collaborators and teams → Add people**
+   - 원장님, 직원분 GitHub 아이디를 각각 초대 (초대 수락 이메일 확인 필요)
+   - 이 저장소에 쓰기 권한이 있는 GitHub 계정만 `/admin`에 로그인해 발행할 수 있습니다
+
+**사용 방법**: `https://home-c-e67.pages.dev/admin/` 접속 → "GitHub 로 로그인" → 목록에서 원하는 게시판(공지사항/원장 컬럼/자필 후기/언론보도/영상) 선택 → 새 항목 작성 후 **발행(Publish)**. 발행하면 자동으로 GitHub에 커밋되고 Cloudflare Pages가 재배포하며, 보통 1~2분 안에 실제 사이트에 반영됩니다. 삭제도 기존 항목을 열어 삭제 버튼을 누르면 됩니다.
+
+⚠️ 로컬 `hugo server`에서는 `/admin`이 열리긴 하지만 로그인은 되지 않습니다 (Cloudflare Pages Functions는 로컬 Hugo 서버에서 실행되지 않음) — 반드시 실제 배포 주소에서 확인해야 합니다. 위 3가지 설정 후에도 로그인이 안 되면 [문제 보고서 §2](ISSUES.md#2-대기-중인-항목-실제-배포운영-전-확인-필요)를 참고해 다시 확인해 주세요.
 
 ## 5. 배포 (Cloudflare Pages)
 
