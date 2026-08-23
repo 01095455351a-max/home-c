@@ -1,22 +1,14 @@
 {{/* 모든 페이지 하단(공통 상담/진료시간/오시는길 박스 바로 아래)에 노출되는
      해아림한의원 네트워크 홈페이지 바로가기 배너 */}}
-{{ $networkIcon := resources.Get "media/logo-icon.png" }}
-{{ if and $networkIcon (reflect.IsImageResourceProcessable $networkIcon) }}{{ $networkIcon = $networkIcon.Fit "96x96 png" }}{{ end }}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
   <a href="https://www.healim.com" target="_blank" rel="noopener"
-     class="group flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border-2 border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20 px-6 py-5 sm:px-8 transition-colors hover:bg-primary-100 dark:hover:bg-primary-900/30">
-    <div class="flex items-center gap-4 text-center sm:text-left">
-      {{ if $networkIcon }}
-      <img src="{{ $networkIcon.RelPermalink }}" width="{{ $networkIcon.Width }}" height="{{ $networkIcon.Height }}" alt="해아림한의원" class="w-10 h-10 sm:w-12 sm:h-12 shrink-0" />
-      {{ end }}
-      <div>
-        <p class="font-bold text-gray-900 dark:text-white">해아림한의원 네트워크 홈페이지</p>
-        <p class="text-sm text-gray-600 dark:text-gray-400">전국 해아림한의원 지점 정보와 치료 사례를 확인하실 수 있습니다.</p>
-      </div>
+     class="group flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-2 text-center sm:text-left rounded-2xl border-2 border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20 px-6 py-6 sm:px-8 transition-colors hover:bg-primary-100 dark:hover:bg-primary-900/30">
+    <div>
+      <p class="font-bold text-xl sm:text-2xl text-gray-900 dark:text-white">
+        해아림한의원 네트워크 홈페이지
+        {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"inline-block w-5 h-5 ml-1 align-middle text-primary-600 group-hover:translate-x-0.5 transition-transform\"") }}
+      </p>
+      <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mt-1">전국 해아림한의원 지점 정보와 치료 사례를 확인하실 수 있습니다.</p>
     </div>
-    <span class="inline-flex items-center gap-1.5 rounded-full bg-primary-600 group-hover:bg-primary-700 text-white font-semibold px-5 py-2.5 shrink-0 transition-colors">
-      바로가기
-      {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"w-4 h-4\"") }}
-    </span>
   </a>
 </div>

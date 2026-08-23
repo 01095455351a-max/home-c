@@ -34,11 +34,6 @@ sections:
       text: |
         환자분들이 직접 손으로 남겨주신 후기입니다. 개인정보 보호를 위해 이미지는 흐리게 처리했으며, 핵심 내용만 요약해 소개합니다. 원본은 상담 시 원내에서 확인하실 수 있습니다.
 
-  - block: markdown
-    content:
-      text: |
-        > **편집 안내**: 자필 후기는 `content/reviews/` 폴더 안에 후기 1건당 파일 1개로 저장됩니다. 새 후기를 추가하려면 이 폴더에 파일을 새로 만들어 주세요 (자세한 절차는 `docs/MANUAL.md` 참고). 이미지는 개인정보 보호를 위해 반드시 `scripts/blur-review-image.ps1`로 흐리게 처리한 뒤 `assets/media/reviews/` 아래에 넣어주세요.
-
   - block: cta-card
     content:
       title: 나와 비슷한 사례가 궁금하신가요?

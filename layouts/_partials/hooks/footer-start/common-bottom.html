@@ -19,7 +19,7 @@
     </div>
 
     {{/* ── 전화 상담 신청 (단독 배치) ── */}}
-    <div class="max-w-xl mx-auto mb-8">
+    <div class="max-w-4xl mx-auto mb-8">
       <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 lg:p-8">
         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">전화 상담 신청</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mb-5">
@@ -32,33 +32,35 @@
           <input type="hidden" name="redirect" value="{{ "/thanks/" | absURL }}" />
           <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
 
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-name">이름 <span class="text-red-500">*</span></label>
-            <input required type="text" id="consult-name" name="name"
-              class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500" />
-          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-name">이름 <span class="text-red-500">*</span></label>
+              <input required type="text" id="consult-name" name="name"
+                class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500" />
+            </div>
 
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-phone">연락처 <span class="text-red-500">*</span></label>
-            <input required type="tel" id="consult-phone" name="phone" placeholder="010-0000-0000"
-              class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500" />
-          </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-phone">연락처 <span class="text-red-500">*</span></label>
+              <input required type="tel" id="consult-phone" name="phone" placeholder="010-0000-0000"
+                class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500" />
+            </div>
 
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-disease">상담 분야 <span class="text-red-500">*</span></label>
-            <select required id="consult-disease" name="disease"
-              class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-              <option value="">선택해 주세요</option>
-              <option>틱장애/ADHD</option>
-              <option>공황/불안/강박/우울</option>
-              <option>불면</option>
-              <option>화병</option>
-              <option>자율신경실조증</option>
-              <option>다한증</option>
-              <option>수험생보약</option>
-              <option>신경성질환</option>
-              <option>기타</option>
-            </select>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-disease">상담 분야 <span class="text-red-500">*</span></label>
+              <select required id="consult-disease" name="disease"
+                class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                <option value="">선택해 주세요</option>
+                <option>틱장애/ADHD</option>
+                <option>공황/불안/강박/우울</option>
+                <option>불면</option>
+                <option>화병</option>
+                <option>자율신경실조증</option>
+                <option>다한증</option>
+                <option>수험생보약</option>
+                <option>신경성질환</option>
+                <option>기타</option>
+              </select>
+            </div>
           </div>
 
           <div>
@@ -67,28 +69,30 @@
               class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></textarea>
           </div>
 
-          <div>
-            <div class="flex items-start gap-2">
-              <input required type="checkbox" id="consult-consent" name="consent" value="동의"
-                class="mt-1 rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
-              <label for="consult-consent" class="text-xs text-gray-600 dark:text-gray-400">
-                개인정보 수집 및 이용에 동의합니다 <span class="text-red-500">*</span>
-              </label>
-            </div>
-            <details class="mt-2 ml-6 group">
-              <summary class="cursor-pointer select-none text-xs font-medium text-primary-600 dark:text-primary-400 underline hover:text-primary-700 list-none">
-                개인정보처리방침 보기
-              </summary>
-              <div class="mt-2 max-h-40 overflow-y-auto rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-xs leading-relaxed text-gray-600 dark:text-gray-400 prose prose-xs dark:prose-invert max-w-none">
-                {{ with site.GetPage "/privacy/" }}{{ .Content }}{{ end }}
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div>
+              <div class="flex items-start gap-2">
+                <input required type="checkbox" id="consult-consent" name="consent" value="동의"
+                  class="mt-1 rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                <label for="consult-consent" class="text-xs text-gray-600 dark:text-gray-400">
+                  개인정보 수집 및 이용에 동의합니다 <span class="text-red-500">*</span>
+                </label>
               </div>
-            </details>
-          </div>
+              <details class="mt-2 ml-6 group">
+                <summary class="cursor-pointer select-none text-xs font-medium text-primary-600 dark:text-primary-400 underline hover:text-primary-700 list-none">
+                  개인정보처리방침 보기
+                </summary>
+                <div class="mt-2 max-h-40 max-w-sm overflow-y-auto rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-xs leading-relaxed text-gray-600 dark:text-gray-400 prose prose-xs dark:prose-invert">
+                  {{ with site.GetPage "/privacy/" }}{{ .Content }}{{ end }}
+                </div>
+              </details>
+            </div>
 
-          <button type="submit"
-            class="w-full py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold transition-colors">
-            전화 상담 신청하기
-          </button>
+            <button type="submit"
+              class="w-full sm:w-auto sm:min-w-[12rem] px-8 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold transition-colors shrink-0">
+              전화 상담 신청하기
+            </button>
+          </div>
         </form>
       </div>
     </div>

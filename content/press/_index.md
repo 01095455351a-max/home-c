@@ -16,13 +16,6 @@ sections:
   - block: press-grid
     content: {}
 
-  - block: markdown
-    content:
-      text: |
-        > **편집 안내**: 아래 기사는 자동 조회가 차단되어 있어 직접 확인 후 같은 방식으로 추가해 주세요.
-        >
-        > - https://edu.donga.com/news/articleView.html?idxno=107352
-
   - block: cta-card
     content:
       title: 더 많은 건강 정보가 궁금하신가요?
