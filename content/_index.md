@@ -90,6 +90,7 @@ sections:
           topics: ["주의력결핍", "과잉행동", "충동성"]
         - name: 강박장애
           description: 반복되는 강박사고와 이를 멈추기 어려운 강박행동.
+          image: diseases/ocd.png
           icon: hero/arrow-path
           gradient: from-purple-400 to-purple-600
           url: /diseases/ocd/
