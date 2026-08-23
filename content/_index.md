@@ -103,6 +103,7 @@ sections:
           topics: ["근육틱", "음성틱", "뚜렛장애"]
         - name: ADHD
           description: 지속적인 주의력 부족, 산만함, 충동적인 행동.
+          image: diseases/adhd.png
           icon: hero/bolt
           gradient: from-amber-400 to-orange-500
           url: /diseases/adhd/
