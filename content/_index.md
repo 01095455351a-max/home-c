@@ -263,6 +263,7 @@ sections:
             4. 침구 및 신경 이완 치료 — 두경부 긴장 완화 및 기혈 순환 촉진
           icon: hero/heart
           gradient: from-primary-400 to-primary-600
+          url: /about/doctors/#seok-seonhui
           topics:
             - 공황장애
             - 불안장애
@@ -279,6 +280,7 @@ sections:
             4. 생활 관리 코칭 — 수면, 영양, 스트레스 조절 등 일상 적응 관리
           icon: hero/cpu-chip
           gradient: from-secondary-400 to-secondary-600
+          url: /about/doctors/#ryu-seokgyun
           topics:
             - 틱장애
             - ADHD
