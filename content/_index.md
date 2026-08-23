@@ -97,12 +97,14 @@ sections:
           topics: ["강박사고", "반복행동", "확인강박"]
         - name: 우울장애
           description: 지속되는 무기력, 의욕 저하, 수면·식욕 변화.
+          image: diseases/depression.png
           icon: hero/cloud
           gradient: from-slate-400 to-slate-600
           url: /diseases/depression/
           topics: ["무기력", "의욕저하", "수면변화"]
         - name: 불면증
           description: 잠들기 어렵거나 자주 깨는 등 수면의 질과 양이 저하된 상태.
+          image: diseases/insomnia.png
           icon: hero/moon
           gradient: from-blue-400 to-blue-600
           url: /diseases/insomnia/
