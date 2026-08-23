@@ -285,7 +285,7 @@ sections:
           image: reviews/hyperhidrosis/review4.jpg
           topics: ["다한증"]
       cta:
-        text: 치료 후기 전체 보기
+        text: 치료후기 더 보기
         url: /reviews/
         icon: hero/arrow-right
     design:
