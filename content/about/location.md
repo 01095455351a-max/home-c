@@ -64,12 +64,4 @@ sections:
           description: 강변북로를 경유해 차량으로 약 30분 내외 거리입니다.
     design:
       layout: grid
-
-  - block: cta-card
-    content:
-      title: 찾아오시는 길이 헷갈리신다면 전화 주세요
-      text: 도보로 찾기 어려우신 경우 전화로 안내해 드립니다.
-      button:
-        text: "전화 문의 02-6954-7575"
-        url: "tel:02-6954-7575"
 ---
