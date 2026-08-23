@@ -138,6 +138,7 @@ sections:
           topics: ["두근거림", "어지럼증", "만성피로"]
         - name: 다한증
           description: 손·발·얼굴에서 유난히 많이 나는 땀.
+          image: diseases/hyperhidrosis.png
           icon: hero/beaker
           gradient: from-sky-400 to-sky-600
           url: /diseases/hyperhidrosis/
