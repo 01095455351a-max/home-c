@@ -123,12 +123,30 @@ clinic:
 
 ### 4.4 새 자필 후기 추가
 
+(2026-08 리팩터링: 후기 1건 = `content/reviews/` 안의 파일 1개. `content/reviews/_index.md`는 더 이상 후기 목록을 직접 담지 않고, `review-grid` 블록이 이 폴더를 자동으로 읽어 카드로 렌더링합니다.)
+
 1. 원본 이미지(스캔본)를 임의의 폴더에 준비
 2. 아래 스크립트로 블러 처리 (원본은 절대 그대로 웹에 올리지 않음):
    ```powershell
    powershell -File scripts\blur-review-image.ps1 -InputPath "원본.jpg" -OutputPath "assets\media\reviews\카테고리\reviewN.jpg"
    ```
-3. `content/reviews/_index.md`의 해당 카테고리 `focus-areas` 블록에 카드(이미지 경로 + 요약 텍스트) 추가
+3. `content/reviews/` 폴더에 새 `.md` 파일 생성 (기존 파일 하나를 복사해서 값만 바꾸는 게 가장 빠름). 예:
+   ```yaml
+   ---
+   title: "손발 다한증"          # 카드 제목 (증상 중심, "~개월 치료"/"보호자 후기" 등은 넣지 않음)
+   description: "치료 전: ... **치료 후**: ..."
+   image: "reviews/카테고리/reviewN.jpg"   # 위에서 블러 처리한 파일 경로
+   topics: ["다한증"]            # 질환/증상 + (확인된 경우) 치료방법 태그, 최대 3개까지 카드에 노출
+   type: review-item
+   weight: 175                  # 정렬 순서. 기존 항목들 weight를 참고해 원하는 위치의 숫자로 지정
+   build:
+     render: false               # 이 후기만의 개별 페이지는 만들지 않고 목록에만 사용
+     list: always
+   ---
+   ```
+4. `hugo server`로 미리보기 확인 후 커밋
+
+삭제할 때는 해당 `.md` 파일만 지우면 됩니다.
 
 ### 4.5 지도 위치 변경 / 다른 지도 서비스로 교체
 
