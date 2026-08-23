@@ -370,7 +370,8 @@ sections:
           - 칼럼
           - 공지
     design:
-      view: card
+      view: article-grid
+      columns: 3
       css_class: "bg-gray-50 dark:bg-gray-900/50"
 
   # ──────────────────────────────────────────────────────────
