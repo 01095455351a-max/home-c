@@ -12,7 +12,7 @@
 {{ $text := index $content "text" }}
 {{ $items := index $content "items" }}
 
-<div class="py-12 px-4 sm:px-6 lg:px-8">
+<div class="py-10 sm:py-14 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
     {{ if or $title $subtitle $text }}
     <div class="text-center max-w-2xl mx-auto mb-10">
@@ -30,7 +30,7 @@
       {{ $gradient := index . "gradient" | default "from-primary-400 to-secondary-400" }}
       {{ $url := index . "url" }}
       <a href="{{ $url | relLangURL }}"
-         class="group flex flex-col items-center text-center rounded-xl bg-white dark:bg-gray-800 ring-1 ring-gray-200 dark:ring-gray-700 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 px-3 py-5 sm:py-6">
+         class="group flex flex-col items-center text-center rounded-xl bg-white dark:bg-gray-800 ring-1 ring-gray-200 dark:ring-gray-700 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 px-3 py-5 sm:py-6">
         <span class="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br {{ $gradient }} shadow-md mb-3 transition-transform duration-200 group-hover:scale-110">
           {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-5 h-5 sm:w-5.5 sm:h-5.5 text-white\"") }}
         </span>

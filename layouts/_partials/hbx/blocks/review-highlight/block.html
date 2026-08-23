@@ -1,0 +1,46 @@
+{{/* Custom project block: "온라인에서 남겨주신 이야기" — 네이버 리뷰 강조 카드.
+     실제 리뷰 스크린샷 이미지 없이도 시각적으로 완성도 있게 보이도록,
+     네이버 브랜드 그린 포인트 + 별점 아이콘 + 짧은 설명 + CTA 버튼을 담은
+     카드 1개로 구성. review-grid(자필 후기)와 나란히 배치해 "환자들의 이야기"
+     섹션 안에서 두 콘텐츠가 대비되도록 함.
+     content: { eyebrow, title, text, button: { text, url } } */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $eyebrow := index $content "eyebrow" }}
+{{ $title := index $content "title" }}
+{{ $text := index $content "text" }}
+{{ $button := index $content "button" }}
+{{ if not (reflect.IsMap $button) }}{{ $button = dict }}{{ end }}
+
+<div class="py-10 sm:py-14 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    <div class="rounded-2xl bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-100 dark:ring-white/10 overflow-hidden">
+      <div class="flex flex-col sm:flex-row items-center sm:items-stretch">
+        <div class="flex items-center justify-center bg-[#03C75A] sm:w-40 py-8 sm:py-0 shrink-0">
+          <span class="text-white text-4xl font-black tracking-tight">N</span>
+        </div>
+        <div class="flex-1 p-6 sm:p-8 text-center sm:text-left">
+          {{ with $eyebrow }}<p class="text-xs font-semibold uppercase tracking-widest text-[#03C75A] mb-2">{{ . }}</p>{{ end }}
+          {{ with $title }}<h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">{{ . }}</h3>{{ end }}
+          <div class="flex items-center justify-center sm:justify-start gap-1 mb-3 text-amber-400">
+            {{ range seq 5 }}
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.363 1.118l1.287 3.958c.3.922-.755 1.688-1.538 1.118l-3.367-2.447a1 1 0 00-1.176 0l-3.367 2.447c-.783.57-1.838-.196-1.538-1.118l1.287-3.958a1 1 0 00-.363-1.118L2.063 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+            {{ end }}
+          </div>
+          {{ with $text }}<p class="text-gray-600 dark:text-gray-400 mb-5">{{ . }}</p>{{ end }}
+          {{ with $button.text }}
+          {{ $btnText := . }}
+          <a href="{{ $button.url | safeURL }}" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-1.5 rounded-full bg-[#03C75A] hover:brightness-95 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200">
+            {{ $btnText }}
+            {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"w-4 h-4\"") }}
+          </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

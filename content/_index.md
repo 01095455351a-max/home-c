@@ -77,6 +77,10 @@ sections:
           gradient: from-primary-400 to-primary-600
           url: /diseases/anxiety-panic/
           topics: ["가슴 두근거림", "숨막힘", "예기불안"]
+          cta:
+            text: 자세히 보기
+            url: /diseases/anxiety-panic/
+            icon: hero/arrow-right
         - name: 틱장애
           description: 반복되는 눈 깜빡임, 헛기침, 어깨 들썩임 등 근육·음성 틱.
           image: diseases/tic.png
@@ -84,6 +88,10 @@ sections:
           gradient: from-secondary-400 to-secondary-600
           url: /diseases/tic/
           topics: ["근육틱", "음성틱", "뚜렛장애"]
+          cta:
+            text: 자세히 보기
+            url: /diseases/tic/
+            icon: hero/arrow-right
         - name: ADHD
           description: 지속적인 주의력 부족, 산만함, 충동적인 행동.
           image: diseases/adhd.png
@@ -91,6 +99,10 @@ sections:
           gradient: from-amber-400 to-orange-500
           url: /diseases/adhd/
           topics: ["주의력결핍", "과잉행동", "충동성"]
+          cta:
+            text: 자세히 보기
+            url: /diseases/adhd/
+            icon: hero/arrow-right
         - name: 강박장애
           description: 반복되는 강박사고와 이를 멈추기 어려운 강박행동.
           image: diseases/ocd.png
@@ -98,6 +110,10 @@ sections:
           gradient: from-purple-400 to-purple-600
           url: /diseases/ocd/
           topics: ["강박사고", "반복행동", "확인강박"]
+          cta:
+            text: 자세히 보기
+            url: /diseases/ocd/
+            icon: hero/arrow-right
         - name: 우울장애
           description: 지속되는 무기력, 의욕 저하, 수면·식욕 변화.
           image: diseases/depression.png
@@ -105,6 +121,10 @@ sections:
           gradient: from-slate-400 to-slate-600
           url: /diseases/depression/
           topics: ["무기력", "의욕저하", "수면변화"]
+          cta:
+            text: 자세히 보기
+            url: /diseases/depression/
+            icon: hero/arrow-right
         - name: 불면증
           description: 잠들기 어렵거나 자주 깨는 등 수면의 질과 양이 저하된 상태.
           image: diseases/insomnia.png
@@ -112,6 +132,10 @@ sections:
           gradient: from-blue-400 to-blue-600
           url: /diseases/insomnia/
           topics: ["입면장애", "수면유지장애", "조기각성"]
+          cta:
+            text: 자세히 보기
+            url: /diseases/insomnia/
+            icon: hero/arrow-right
         - name: 자율신경실조증
           description: 원인 모를 두근거림, 어지럼증, 소화불량이 반복되는 상태.
           image: diseases/dysautonomia.png
@@ -119,6 +143,10 @@ sections:
           gradient: from-cyan-400 to-cyan-600
           url: /diseases/dysautonomia/
           topics: ["두근거림", "어지럼증", "만성피로"]
+          cta:
+            text: 자세히 보기
+            url: /diseases/dysautonomia/
+            icon: hero/arrow-right
         - name: 다한증
           description: 손·발·얼굴에서 유난히 많이 나는 땀.
           image: diseases/hyperhidrosis.png
@@ -126,6 +154,10 @@ sections:
           gradient: from-sky-400 to-sky-600
           url: /diseases/hyperhidrosis/
           topics: ["다한", "손발냉감", "사회불안"]
+          cta:
+            text: 자세히 보기
+            url: /diseases/hyperhidrosis/
+            icon: hero/arrow-right
         - name: 신경성 질환
           description: 스트레스만 받으면 심해지는 두통, 어지럼증, 소화불량.
           image: diseases/nervous-system.png
@@ -133,6 +165,10 @@ sections:
           gradient: from-rose-400 to-rose-600
           url: /diseases/nervous-system/
           topics: ["신경성두통", "신경성소화불량", "근긴장"]
+          cta:
+            text: 자세히 보기
+            url: /diseases/nervous-system/
+            icon: hero/arrow-right
     design:
       layout: cards
       css_class: "bg-white dark:bg-gray-900"

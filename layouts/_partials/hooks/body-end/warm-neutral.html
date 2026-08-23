@@ -1,0 +1,23 @@
+{{/* 사이트 전역 뉴트럴 톤을 브랜드의 "따뜻한 뉴트럴"로 통일.
+     params.yaml의 hugoblox.theme.colors.neutral(#78716c, Tailwind stone-500과 동일)을
+     지정해도 text-gray, bg-gray 계열 유틸리티는 실제로는 리매핑되지 않고 Tailwind 기본
+     차가운 그레이(--color-gray-900: #111827 등)로 그대로 렌더링됨 — 거의 모든 블록의
+     본문 텍스트·배경·테두리가 이 gray-* 유틸리티를 쓰고 있어 사이트 전체가 의도와 달리
+     차갑게 보이고 있었음. 반면 stone-* 팔레트는 이미 정확히 원하는 톤을 갖고 있으므로,
+     --color-gray-* CSS 변수를 --color-stone-* 값으로 재정의해 마크업 수정 없이
+     사이트 전체(벤더 블록 포함) 회색조를 한 번에 따뜻하게 전환함. */}}
+<style>
+  :root {
+    --color-gray-50: var(--color-stone-50);
+    --color-gray-100: var(--color-stone-100);
+    --color-gray-200: var(--color-stone-200);
+    --color-gray-300: var(--color-stone-300);
+    --color-gray-400: var(--color-stone-400);
+    --color-gray-500: var(--color-stone-500);
+    --color-gray-600: var(--color-stone-600);
+    --color-gray-700: var(--color-stone-700);
+    --color-gray-800: var(--color-stone-800);
+    --color-gray-900: var(--color-stone-900);
+    --color-gray-950: var(--color-stone-950);
+  }
+</style>

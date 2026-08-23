@@ -1,0 +1,39 @@
+{{/* 상단 메뉴 개선: layouts/_partials/components/headers/navbar.html(프로젝트 오버라이드)이
+     현재 페이지와 일치하는 메뉴에 .active 클래스를 이미 부여하고 있지만, 벤더 CSS
+     (assets/css/components/navbar.css)에는 .active에 대한 스타일 규칙이 전혀 없어
+     실제로는 아무 시각적 표시가 안 되고 있었음. 여기서 활성 메뉴 강조 + 절제된
+     hover 인디케이터(밑줄이 가운데서 자라나는 효과)만 추가. 메뉴 구조·마크업은 그대로. */}}
+<style>
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0.35rem;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary-600);
+    transition: width 200ms ease, left 200ms ease;
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    left: 12%;
+    width: 76%;
+  }
+  .nav-link.active {
+    color: var(--color-primary-600);
+    font-weight: 700;
+  }
+  .dark .nav-link.active {
+    color: var(--color-primary-300);
+  }
+  .nav-dropdown-link.active {
+    color: var(--color-primary-600);
+    font-weight: 700;
+  }
+  .dark .nav-dropdown-link.active {
+    color: var(--color-primary-300);
+  }
+</style>
