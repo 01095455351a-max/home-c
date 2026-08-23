@@ -21,15 +21,19 @@
   {{ $columnPages = first $count $columnPages }}
 {{ end }}
 
-{{/* 진료분야 카테고리 정의: key(필터용 슬러그) / label(탭에 표시될 이름) / tags(이 태그 중 하나라도 있으면 해당 카테고리) */}}
+{{/* 진료분야 카테고리 정의: key(필터용 슬러그) / label(탭에 표시될 이름) / tags(이 태그 중 하나라도 있으면 해당 카테고리) /
+     gradient·icon(사진이 없는 글의 카드 헤더에 쓰이는 색 띠 — 특화 질환 카드와 동일한 색 계열로 맞춰 매 글마다
+     사진을 준비하지 않아도 카테고리별로 통일된 느낌을 줌) */}}
 {{ $categories := slice
-  (dict "key" "panic-anxiety" "label" "공황·불안" "tags" (slice "공황장애" "불안장애"))
-  (dict "key" "ocd-depression" "label" "강박·우울" "tags" (slice "강박증" "우울증"))
-  (dict "key" "insomnia" "label" "불면증" "tags" (slice "불면증"))
-  (dict "key" "tic-adhd" "label" "틱장애·ADHD" "tags" (slice "틱장애" "ADHD"))
-  (dict "key" "dysautonomia" "label" "자율신경·다한증" "tags" (slice "자율신경실조증" "다한증"))
-  (dict "key" "nervous" "label" "신경성 질환" "tags" (slice "신경성 두통" "신경성 두통·어지럼증" "신경성질환" "신경성 소화불량"))
+  (dict "key" "panic-anxiety" "label" "공황·불안" "tags" (slice "공황장애" "불안장애") "gradient" "from-primary-400 to-primary-600" "icon" "hero/heart")
+  (dict "key" "ocd-depression" "label" "강박·우울" "tags" (slice "강박증" "우울증") "gradient" "from-purple-400 to-purple-600" "icon" "hero/arrow-path")
+  (dict "key" "insomnia" "label" "불면증" "tags" (slice "불면증") "gradient" "from-blue-400 to-blue-600" "icon" "hero/moon")
+  (dict "key" "tic-adhd" "label" "틱장애·ADHD" "tags" (slice "틱장애" "ADHD") "gradient" "from-secondary-400 to-secondary-600" "icon" "hero/face-smile")
+  (dict "key" "dysautonomia" "label" "자율신경·다한증" "tags" (slice "자율신경실조증" "다한증") "gradient" "from-cyan-400 to-cyan-600" "icon" "hero/scale")
+  (dict "key" "nervous" "label" "신경성 질환" "tags" (slice "신경성 두통" "신경성 두통·어지럼증" "신경성질환" "신경성 소화불량") "gradient" "from-rose-400 to-rose-600" "icon" "hero/sparkles")
 }}
+{{ $defaultGradient := "from-primary-400 to-secondary-400" }}
+{{ $defaultIcon := "hero/document-text" }}
 
 {{/* 각 글의 매칭 카테고리 key 목록을 미리 계산 (카드 렌더링과 탭 카운트에 모두 사용) */}}
 {{ $itemCategoryKeys := dict }}
@@ -82,18 +86,41 @@
       {{ $name := $item.Title }}
       {{ $description := partial "functions/get_summary" $item }}
       {{ $link := $item.RelPermalink }}
-      {{ $featured := partial "functions/get_featured_image" $item }}
+      {{/* front matter에 image.filename이 명시된 글만 사진을 쓰고, 없으면 카테고리 색 띠로 대체.
+           get_featured_image는 filename이 비어있을 때 예상 밖의 이미지(예: 작성자 프로필 사진)를
+           집어오는 경우가 있어, front matter 값을 직접 확인해 "사진 없음"을 명확히 판단함 */}}
+      {{ $imageFilename := "" }}
+      {{ if reflect.IsMap $item.Params.image }}{{ $imageFilename = strings.TrimSpace (printf "%v" (index $item.Params.image "filename" | default "")) }}{{ end }}
+      {{ $featured := false }}
+      {{ if ne $imageFilename "" }}{{ $featured = partial "functions/get_featured_image" $item }}{{ end }}
       {{ $topics := $item.Params.tags }}
       {{ if not (reflect.IsSlice $topics) }}{{ $topics = slice }}{{ end }}
       {{ $myCategories := index $itemCategoryKeys $item.RelPermalink }}
 
+      {{/* 사진이 없는 글은 첫 매칭 카테고리의 색 띠 + 아이콘으로 카드 헤더를 채움 */}}
+      {{ $cardGradient := $defaultGradient }}
+      {{ $cardIcon := $defaultIcon }}
+      {{ if gt (len $myCategories) 0 }}
+        {{ $firstKey := index $myCategories 0 }}
+        {{ range $cat := $categories }}
+          {{ if eq $cat.key $firstKey }}
+            {{ $cardGradient = $cat.gradient }}
+            {{ $cardIcon = $cat.icon }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+
       <div class="hb-column-card group relative" data-hb-categories="{{ delimit $myCategories " " }}">
         <div class="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden flex flex-col">
-          <a href="{{ $link }}" class="block relative h-48 bg-gradient-to-br from-primary-400 to-secondary-400 overflow-hidden">
+          <a href="{{ $link }}" class="block relative h-48 bg-gradient-to-br {{ $cardGradient }} overflow-hidden">
             {{ if $featured }}
               {{ $img := $featured }}
               {{ if reflect.IsImageResourceProcessable $img }}{{ $img = $img.Fill "600x400 Center webp" }}{{ end }}
               <img src="{{ $img.RelPermalink }}" alt="{{ $name | plainify }}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+            {{ else }}
+              <div class="absolute inset-0 flex items-center justify-center">
+                {{ partial "functions/get_icon" (dict "name" $cardIcon "attributes" "class=\"w-16 h-16 text-white/80 group-hover:scale-110 transition-transform duration-300\"") }}
+              </div>
             {{ end }}
           </a>
 
