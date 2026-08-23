@@ -243,6 +243,18 @@ build:
 
 ⚠️ 로컬 `hugo server`에서는 `/admin`이 열리긴 하지만 로그인은 되지 않습니다 (Cloudflare Pages Functions는 로컬 Hugo 서버에서 실행되지 않음) — 반드시 실제 배포 주소에서 확인해야 합니다. 위 3가지 설정 후에도 로그인이 안 되면 [문제 보고서 §2](ISSUES.md#2-대기-중인-항목-실제-배포운영-전-확인-필요)를 참고해 다시 확인해 주세요.
 
+### 4.10 한의원 둘러보기(원내 사진 슬라이드) 사진 추가/변경
+
+홈 화면 히어로 바로 아래 "해아림한의원 잠실점 둘러보기" 섹션은 `clinic-gallery` 커스텀 블록(`layouts/_partials/hbx/blocks/clinic-gallery/block.html`)으로, 가로로 스와이프/스크롤하며 넘겨보는 사진 캐러셀입니다 (`credential-slider` 블록과 동일한 CSS scroll-snap 방식, 별도 JS 라이브러리 없음).
+
+1. 새 사진을 `assets/media/clinic/`에 추가
+2. `content/_index.md`의 `block: clinic-gallery` 항목 `content.items`에 아래 형식으로 추가:
+   ```yaml
+   - image: clinic/파일명.jpg
+     caption: 짧은 설명 (예: 치료실)
+   ```
+3. 순서를 바꾸려면 `items` 배열 순서를 바꾸면 됩니다. 캡션 없이 사진만 넣으려면 `caption`을 생략하면 됩니다.
+
 ## 5. 배포 (Cloudflare Pages)
 
 실제 배포는 Cloudflare Pages(`home-c-e67.pages.dev`)로 되어 있으며, GitHub `main` 브랜치에 푸시하면 자동으로 재빌드됩니다. Cloudflare Pages 대시보드(pages.cloudflare.com)에서 빌드 명령(`npm install && hugo --gc --minify && npx pagefind --site public`)과 출력 디렉터리(`public`)를 확인할 수 있습니다.
