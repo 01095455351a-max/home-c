@@ -20,7 +20,7 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    index_file: "_index"
+    filter: { field: "type", value: "notice-post" }
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "요약", name: "summary", widget: "text", required: false }
@@ -29,10 +29,14 @@ collections:
         name: "authors"
         widget: "select"
         multiple: true
-        default: ["seok-seonhui", "ryu-seokgyun"]
-        options: ["seok-seonhui", "ryu-seokgyun"]
+        default: ["admin"]
+        options:
+          - { label: "관리자", value: "admin" }
+          - { label: "석선희 원장", value: "seok-seonhui" }
+          - { label: "류석균 원장", value: "ryu-seokgyun" }
       - { label: "태그", name: "tags", widget: "list", default: ["공지"] }
       - { label: "본문", name: "body", widget: "markdown" }
+      - { label: "타입", name: "type", widget: "hidden", default: "notice-post" }
 
   - name: "columns"
     label: "원장 컬럼"
@@ -40,7 +44,7 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    index_file: "_index"
+    filter: { field: "type", value: "blog-post" }
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "요약", name: "summary", widget: "text" }
@@ -50,9 +54,13 @@ collections:
         widget: "select"
         multiple: true
         default: ["seok-seonhui"]
-        options: ["seok-seonhui", "ryu-seokgyun"]
+        options:
+          - { label: "관리자", value: "admin" }
+          - { label: "석선희 원장", value: "seok-seonhui" }
+          - { label: "류석균 원장", value: "ryu-seokgyun" }
       - { label: "태그", name: "tags", widget: "list", default: ["칼럼"] }
       - { label: "본문", name: "body", widget: "markdown" }
+      - { label: "타입", name: "type", widget: "hidden", default: "blog-post" }
 
   - name: "reviews"
     label: "자필 후기"
@@ -60,7 +68,7 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    index_file: "_index"
+    filter: { field: "type", value: "review-item" }
     fields:
       - { label: "제목 (증상 중심, 예: 손발 다한증)", name: "title", widget: "string" }
       - { label: "요약 (치료 전 / 치료 후)", name: "description", widget: "text" }
@@ -79,7 +87,7 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    index_file: "_index"
+    filter: { field: "type", value: "press-item" }
     fields:
       - { label: "기사 제목", name: "title", widget: "string" }
       - { label: "요약 (원장명 · 날짜 — 요약)", name: "description", widget: "text" }
@@ -105,7 +113,7 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    index_file: "_index"
+    filter: { field: "type", value: "video-item" }
     fields:
       - { label: "영상 제목", name: "title", widget: "string" }
       - { label: "설명 (선택)", name: "description", widget: "text", required: false }
