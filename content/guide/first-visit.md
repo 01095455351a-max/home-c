@@ -26,6 +26,8 @@ sections:
         - 초진은 정밀 검사와 심층 상담이 함께 진행되므로 50분~1시간 정도 여유 있게 시간을 비워주세요.
         - 사전에 [전화 상담](#consult) 또는 [네이버 예약](https://map.naver.com/p/entry/place/1887559338)으로 예약해 주시면 대기 시간을 줄일 수 있습니다.
 
+        ![해아림한의원 잠실점 치료실 내부 모습](clinic/treatment-room.jpg)
+
   - block: steps
     content:
       title: 내원 후 진행 순서

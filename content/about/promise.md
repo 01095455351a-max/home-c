@@ -35,6 +35,13 @@ sections:
   - block: markdown
     content:
       text: |
+        ![해아림한의원 잠실점 대기 공간](clinic/waiting-room.jpg)
+    design:
+      css_class: "max-w-4xl mx-auto"
+
+  - block: markdown
+    content:
+      text: |
         ## 대표 인사말
 
         안녕하세요. 해아림한의원 잠실점입니다.
