@@ -364,21 +364,17 @@ sections:
   # ──────────────────────────────────────────────────────────
   # 8. 원장 컬럼
   # ──────────────────────────────────────────────────────────
-  - block: content-collection
+  - block: column-grid
     id: news
     content:
       title: 원장 컬럼
       text: 해아림한의원 잠실점 원장들이 직접 전하는 건강 정보와 진료 안내입니다.
-      count: 3
-      sort_by: date
-      sort_ascending: false
-      filters:
-        tags:
-          - 칼럼
-          - 공지
+      count: 6
+      cta:
+        text: 컬럼 더 보기
+        url: /column/
+        icon: hero/arrow-right
     design:
-      view: article-grid
-      columns: 3
       css_class: "bg-gray-50 dark:bg-gray-900/50"
 
   # ──────────────────────────────────────────────────────────

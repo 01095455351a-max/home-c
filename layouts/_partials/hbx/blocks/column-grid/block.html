@@ -10,6 +10,10 @@
 {{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
 
 {{ $count := partial "functions/coerce_int" (dict "value" (index $content "count") "default" 0 "min" 0) }}
+{{ $title := index $content "title" }}
+{{ $text := index $content "text" }}
+{{ $cta := index $content "cta" }}
+{{ if not (reflect.IsMap $cta) }}{{ $cta = dict }}{{ end }}
 
 {{ $columnPages := where site.RegularPages "Type" "blog" }}
 {{ $columnPages = $columnPages.ByDate.Reverse }}
@@ -45,6 +49,13 @@
 
 <div class="py-10 sm:py-14 px-4 sm:px-6 lg:px-8" id="{{ $gridId }}">
   <div class="max-w-7xl mx-auto">
+
+    {{ if or $title $text }}
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      {{ with $title }}<h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-3">{{ . }}</h2>{{ end }}
+      {{ with $text }}<p class="text-lg text-gray-600 dark:text-gray-400">{{ . }}</p>{{ end }}
+    </div>
+    {{ end }}
 
     {{/* 진료분야 카테고리 탭 */}}
     <div class="flex flex-wrap gap-2 mb-8">
@@ -121,6 +132,17 @@
     </div>
 
     <p class="hb-column-empty hidden text-center text-gray-500 dark:text-gray-400 py-12">해당 분야의 컬럼을 준비 중입니다.</p>
+
+    {{ with $cta.text }}
+    {{ $ctaUrl := $cta.url | default "/column/" }}
+    {{ $ctaIcon := $cta.icon | default "hero/arrow-right" }}
+    <div class="mt-10 text-center">
+      <a href="{{ $ctaUrl }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold transition-colors">
+        {{ . }}
+        {{ partial "functions/get_icon" (dict "name" $ctaIcon "attributes" "class=\"w-4 h-4\"") }}
+      </a>
+    </div>
+    {{ end }}
   </div>
 </div>
 
