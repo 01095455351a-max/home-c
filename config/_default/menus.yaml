@@ -145,6 +145,10 @@ main:
     url: /reviews/#handwritten
     weight: 20
 
+  - name: 상담예약
+    url: /consult/
+    weight: 45
+
   # 5. 게시판
   - name: 게시판
     weight: 50

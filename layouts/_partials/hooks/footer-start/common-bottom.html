@@ -64,6 +64,22 @@
           </div>
 
           <div>
+            <span class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">답변 수신 희망 방식</span>
+            <div class="flex flex-wrap gap-x-6 gap-y-1">
+              <label class="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <input type="radio" name="reply_method" value="전화 유선 안내" checked
+                  class="text-primary-600 focus:ring-primary-500 border-gray-300" />
+                전화 유선 안내
+              </label>
+              <label class="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <input type="radio" name="reply_method" value="문자 · 카카오톡 메시지"
+                  class="text-primary-600 focus:ring-primary-500 border-gray-300" />
+                문자 · 카카오톡 메시지
+              </label>
+            </div>
+          </div>
+
+          <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="consult-message">문의사항 <span class="text-xs text-gray-400">(선택)</span></label>
             <textarea id="consult-message" name="message" rows="3" placeholder="나이와 성별, 상담받고 싶으신 주요 증상을 적어주세요"
               class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></textarea>
