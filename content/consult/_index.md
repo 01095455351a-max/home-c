@@ -23,12 +23,12 @@ sections:
           gradient: from-primary-400 to-primary-600
           url: "tel:02-6954-7575"
           topics: ["02-6954-7575"]
-        - name: 카카오톡 1:1 비밀상담
+        - name: 카카오톡 1:1 상담
           description: 카카오톡 채널을 통해 언제든 편안하게 문의하세요.
           icon: brands/kakaotalk
           gradient: from-amber-400 to-yellow-500
           url: "https://pf.kakao.com/_xkqufn"
-          topics: ["카카오톡 1:1 비밀상담"]
+          topics: ["카카오톡 1:1 상담"]
         - name: 네이버 간편 진료예약
           description: 원하시는 날짜와 시간대를 선택해 대기 없이 편리하게 예약하세요.
           icon: hero/calendar-days

@@ -19,7 +19,7 @@ sections:
         icon: calendar-days
         style: gradient
       secondary_action:
-        text: 카카오톡 1:1 비밀상담
+        text: 카카오톡 1:1 상담
         url: "#"
         icon: chat-bubble-left-right
         style: ghost
@@ -163,7 +163,7 @@ sections:
       text: 처음 내원하시는 분들도 부담 없이 준비할 수 있도록 과정을 안내해 드립니다.
       items:
         - title: 사전 예약
-          text: 네이버 예약, 카카오톡 비밀상담을 통한 프라이빗 예약
+          text: 네이버 예약, 카카오톡 1:1 상담을 통한 프라이빗 예약
           icon: calendar-days
         - title: 기초 설문 & 정밀 검사
           text: 두뇌 및 자율신경 기능 상태 객관적 측정
@@ -403,7 +403,7 @@ sections:
     id: reserve
     content:
       title: 지금, 편안한 마음으로 첫 상담을 시작해 보세요
-      text: 네이버 예약 · 카카오톡 1:1 비밀상담 · 공식 인스타그램 DM(@healimjs) · 전화 문의(02-6954-7575)로 편하게 문의해 주세요.
+      text: 네이버 예약 · 카카오톡 1:1 상담 · 공식 인스타그램 DM(@healimjs) · 전화 문의(02-6954-7575)로 편하게 문의해 주세요.
       button:
         text: 네이버 실시간 예약
         url: "#"
