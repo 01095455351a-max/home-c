@@ -61,7 +61,13 @@
 ### 1.12 의료진 소개 카드를 눌러도 깨진 `/authors/` 프로필로 연결됨
 - **증상**: 홈 화면 "원장 및 진료 철학 소개"(`team-showcase` 블록)에서 원장 사진/이름을 클릭하면 `/authors/<slug>/`로 이동하는데, 이 경로는 [§2](#2-대기-중인-항목-실제-배포운영-전-확인-필요)에 있던 것처럼 실제로 빌드되지 않는 페이지(404)임. 정작 원장의 실제 자기소개(스토리)는 `/about/doctors/`(의료진 소개 페이지)의 `doctor-profile` 블록 안에 이미 존재함.
 - **해결**: `team-showcase` 블록을 프로젝트에 오버라이드(`layouts/_partials/hbx/blocks/team-showcase/block.html`)해, 카드 링크를 슬러그별로 `/about/doctors/#seok-seonhui`, `/about/doctors/#ryu-seokgyun`로 매핑(그 외 슬러그는 기존 `/authors/<slug>/`로 폴백). `content/about/doctors/_index.md`의 두 `doctor-profile` 섹션에 `id: seok-seonhui` / `id: ryu-seokgyun` 앵커를 추가해 짚어갈 수 있게 함.
-- **참고**: `/authors/` 자체의 404는 여전히 미해결이며(원장 컬럼 게시글 작성자 표시 등 다른 곳에서도 같은 링크를 사용), 별도로 추적 중(백그라운드 작업 task_7fdbae16).
+- **참고**: `/authors/` 자체의 404는 [§1.13](#113-contentauthors_contentgotmpl로-생성되는-작성자-프로필-페이지가-빌드에서-누락됨)에서 해결됨.
+
+### 1.13 `content/authors/_content.gotmpl`로 생성되는 작성자 프로필 페이지가 빌드에서 누락됨
+- **증상**: `content/authors/_content.gotmpl`이 `data/authors/*.yaml`을 읽어 `hugo.AddPage`로 `/authors/seok-seonhui/`, `/authors/ryu-seokgyun/` 등의 페이지를 만들도록 되어 있는데, `hugo build --gc`를 실행해도 `public/authors/`가 아예 생성되지 않음(에러 메시지 없음, `hugo.Data.authors`는 정상적으로 `data/authors/*.yaml`을 읽고 있었고 Hugo 버전(v0.164.0)도 content adapter를 정상 지원함). 원장 컬럼 등 블로그 글 하단의 작성자 소개 박스가 이 URL로 링크되어 있어 게시된 모든 컬럼 글에서 404가 발생하고 있었음.
+- **원인**: Hugo Blox 템플릿이 기본 제공하는 `content/authors/_index.md`에 `cascade: { build: { render: never, list: always } }`가 설정되어 있었음(파일 안에 "작성자 프로필 페이지를 발행하려면 아래 build/cascade 설정을 모두 제거하라"는 안내 주석까지 있었으나 간과됨). `cascade`는 섹션 안의 일반 콘텐츠 파일뿐 아니라 content adapter로 동적 생성된 하위 페이지(`kind: term`, `path: authors/<slug>`)에도 그대로 상속되어, `AddPage`는 정상 호출되지만 각 페이지가 `render: never`로 조용히 빌드에서 제외됨.
+- **해결**: `content/authors/_index.md`에서 `cascade` 블록을 제거(리스트 페이지 자체의 `build.render: never`는 유지 — `/authors/` 목록 페이지는 굳이 필요 없음). 이제 `hugo build --gc` 시 `public/authors/seok-seonhui/index.html`, `public/authors/ryu-seokgyun/index.html`이 정상 생성됨.
+- **주의**: Hugo Blox 템플릿에서 가져온 `_index.md`/`_content.gotmpl` 조합을 쓸 때는 섹션 `_index.md`의 `cascade.build` 설정이 content adapter가 만드는 페이지까지 조용히 억제할 수 있음을 유의할 것.
 
 ## 2. 대기 중인 항목 (실제 배포/운영 전 확인 필요)
 
