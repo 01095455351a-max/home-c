@@ -330,7 +330,7 @@ sections:
       zoom: 17
       address: |
         서울특별시 송파구 올림픽로 102 서일빌딩 3층
-        잠실새내역(4번 출구) 도보 3분 · 서일빌딩 내 주차 가능
+        잠실새내역(4번 출구) 도보 3분 · 서일빌딩 뒷편 주차 가능
       directions_text: 길찾기
       directions_url: "https://www.google.com/maps/dir/?api=1&destination=37.5114327,127.0819814"
 

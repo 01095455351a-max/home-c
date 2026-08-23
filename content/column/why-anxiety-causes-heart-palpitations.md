@@ -4,6 +4,7 @@ summary: "불안할 때 심장이 빨리 뛰고 가슴이 두근거리는 이유
 date: 2026-08-23T09:40:00+09:00
 lastmod: 2026-08-23T09:40:00+09:00
 type: blog
+share: false
 authors:
   - seok-seonhui
 tags:

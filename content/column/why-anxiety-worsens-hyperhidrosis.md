@@ -4,6 +4,7 @@ summary: "긴장할 때 손·발·겨드랑이와 얼굴의 땀이 심해지는 
 date: 2026-08-23T08:30:00+09:00
 lastmod: 2026-08-23T08:30:00+09:00
 type: blog
+share: false
 authors:
   - ryu-seokgyun
 tags:

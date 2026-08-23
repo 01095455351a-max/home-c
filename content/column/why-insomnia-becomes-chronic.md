@@ -4,6 +4,7 @@ summary: "스트레스로 시작된 불면증이 수면 걱정과 생활습관 �
 date: 2026-08-23T09:00:00+09:00
 lastmod: 2026-08-23T09:00:00+09:00
 type: blog
+share: false
 authors:
   - seok-seonhui
 tags:

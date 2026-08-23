@@ -4,6 +4,7 @@ summary: "공황발작은 왜 아무 이유 없이 갑자기 시작되는 것처
 date: 2026-08-23T10:00:00+09:00
 lastmod: 2026-08-23T10:00:00+09:00
 type: blog
+share: false
 authors:
   - seok-seonhui
 tags:

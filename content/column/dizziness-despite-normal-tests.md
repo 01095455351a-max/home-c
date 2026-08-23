@@ -4,6 +4,7 @@ summary: "MRI와 귀 검사가 정상인데도 어지럼이 지속되는 이유�
 date: 2026-08-23T09:10:00+09:00
 lastmod: 2026-08-23T09:10:00+09:00
 type: blog
+share: false
 authors:
   - ryu-seokgyun
 tags:

@@ -4,6 +4,7 @@ summary: "자율신경 기능 이상으로 나타날 수 있는 두근거림, �
 date: 2026-08-23T08:50:00+09:00
 lastmod: 2026-08-23T08:50:00+09:00
 type: blog
+share: false
 authors:
   - ryu-seokgyun
 tags:

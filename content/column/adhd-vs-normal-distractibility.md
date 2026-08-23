@@ -4,6 +4,7 @@ summary: "아이의 정상적인 산만함과 ADHD를 지속 기간, 두 가지 
 date: 2026-08-23T09:30:00+09:00
 lastmod: 2026-08-23T09:30:00+09:00
 type: blog
+share: false
 authors:
   - ryu-seokgyun
 tags:

@@ -1,0 +1,83 @@
+{{/* 개인정보처리방침·이용약관 등 정책 링크를 새 페이지 이동 없이 팝업(모달)으로 바로 확인할 수 있게 함.
+     대상 링크는 data-hb-modal="/경로/" 속성만 붙이면 자동으로 적용됨(현재는 푸터의 개인정보처리방침/이용약관).
+     href는 그대로 실제 페이지를 가리키므로 새 탭 열기·JS 비활성 환경에서도 정상 동작(점진적 향상). */}}
+<div id="hb-policy-modal" class="fixed inset-0 z-[100] hidden" aria-hidden="true">
+  <div class="hb-policy-modal-backdrop absolute inset-0 bg-black/60"></div>
+  <div class="relative h-full w-full flex items-center justify-center p-4">
+    <div class="relative w-full max-w-2xl max-h-[85vh] flex flex-col rounded-2xl bg-white dark:bg-gray-900 shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800 shrink-0">
+        <h2 class="hb-policy-modal-title text-lg font-bold text-gray-900 dark:text-white"></h2>
+        <button type="button" class="hb-policy-modal-close flex items-center justify-center w-8 h-8 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 transition-colors" aria-label="닫기">
+          {{ partial "functions/get_icon" (dict "name" "hero/x-mark" "attributes" "class=\"w-5 h-5\"") }}
+        </button>
+      </div>
+      <div class="hb-policy-modal-body prose prose-sm dark:prose-invert max-w-none px-6 py-5 overflow-y-auto">
+        <p class="text-gray-400">불러오는 중…</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var modal = document.getElementById('hb-policy-modal');
+  if (!modal) return;
+  var backdrop = modal.querySelector('.hb-policy-modal-backdrop');
+  var closeBtn = modal.querySelector('.hb-policy-modal-close');
+  var titleEl = modal.querySelector('.hb-policy-modal-title');
+  var bodyEl = modal.querySelector('.hb-policy-modal-body');
+  var cache = {};
+  var lastFocused = null;
+
+  function openModal(url) {
+    lastFocused = document.activeElement;
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    titleEl.textContent = '';
+    bodyEl.innerHTML = '<p class="text-gray-400">불러오는 중…</p>';
+    closeBtn.focus();
+
+    if (cache[url]) {
+      titleEl.textContent = cache[url].title;
+      bodyEl.innerHTML = cache[url].html;
+      return;
+    }
+    fetch(url)
+      .then(function (res) { return res.text(); })
+      .then(function (text) {
+        var doc = new DOMParser().parseFromString(text, 'text/html');
+        var h1 = doc.querySelector('h1');
+        var prose = doc.querySelector('.prose');
+        var title = h1 ? h1.textContent.trim() : '';
+        var html = prose ? prose.innerHTML : '<p>내용을 불러오지 못했습니다.</p>';
+        cache[url] = { title: title, html: html };
+        titleEl.textContent = title;
+        bodyEl.innerHTML = html;
+      })
+      .catch(function () {
+        bodyEl.innerHTML = '<p>내용을 불러오지 못했습니다. <a href="' + url + '">여기</a>에서 바로 확인해 주세요.</p>';
+      });
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-hb-modal]');
+    if (trigger) {
+      e.preventDefault();
+      openModal(trigger.getAttribute('data-hb-modal'));
+    }
+  });
+  backdrop.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+  });
+})();
+</script>

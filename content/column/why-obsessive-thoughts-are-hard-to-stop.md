@@ -4,6 +4,7 @@ summary: "원하지 않는 강박적인 생각이 반복되는 이유를 생각 
 date: 2026-08-23T09:20:00+09:00
 lastmod: 2026-08-23T09:20:00+09:00
 type: blog
+share: false
 authors:
   - seok-seonhui
 tags:

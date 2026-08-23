@@ -61,6 +61,7 @@ collections:
       - { label: "태그", name: "tags", widget: "list", default: ["칼럼"] }
       - { label: "본문", name: "body", widget: "markdown" }
       - { label: "타입", name: "type", widget: "hidden", default: "blog" }
+      - { label: "공유 버튼 노출", name: "share", widget: "hidden", default: false }
 
   - name: "reviews"
     label: "자필 후기"

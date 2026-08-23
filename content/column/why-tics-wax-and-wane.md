@@ -4,6 +4,7 @@ summary: "틱장애 증상이 좋아졌다 심해지는 증감 현상과 수면�
 date: 2026-08-23T09:50:00+09:00
 lastmod: 2026-08-23T09:50:00+09:00
 type: blog
+share: false
 authors:
   - ryu-seokgyun
 tags:

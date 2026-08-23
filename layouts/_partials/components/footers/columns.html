@@ -13,41 +13,13 @@
   <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-16">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
 
-      {{/* 브랜드 — 다크 배경에서는 원본 워드마크 로고(어두운 텍스트가 그대로 그려진 래스터 이미지)가
-           보이지 않으므로, 배경이 투명한 원형 로고마크 아이콘 + 흰색 텍스트 조합으로 대체 */}}
+      {{/* 브랜드 — 우측 플로팅 퀵메뉴(전화·네이버예약·카카오톡)와 중복되므로 로고·소셜 버튼 없이 텍스트만 노출 */}}
       <div>
-        {{ $logo_icon := resources.Get "media/logo-icon.png" }}
-        <a href="{{site.Home.RelPermalink}}" class="flex items-center gap-2.5">
-          {{ if $logo_icon }}
-          {{ $logo_icon = $logo_icon.Fit "72x72 png" }}
-          <img src="{{ $logo_icon.RelPermalink }}" width="{{ $logo_icon.Width }}" height="{{ $logo_icon.Height }}" alt="" class="w-9 h-9" />
-          {{ end }}
-          <span class="text-lg font-bold tracking-tight text-white">{{ $branding.name }}</span>
+        <a href="{{site.Home.RelPermalink}}" class="text-lg font-bold tracking-tight text-white">
+          {{ $branding.name }}
         </a>
         {{ if $show_tagline }}
         <p class="mt-2 max-w-xs text-sm text-gray-400">{{ site.Params.hugoblox.identity.tagline | default "" }}</p>
-        {{ end }}
-
-        {{- $show_social := site.Params.hugoblox.footer.show_social | default true -}}
-        {{ if $show_social }}
-        <div class="mt-4 flex items-center gap-2">
-          {{ if $c.naver_booking_url }}
-          <a href="{{ $c.naver_booking_url }}" target="_blank" rel="noopener" aria-label="네이버예약"
-             class="flex items-center justify-center w-9 h-9 rounded-full bg-[#03C75A] text-white font-bold text-sm hover:brightness-95 transition">N</a>
-          {{ end }}
-          {{ if $c.kakao_channel_url }}
-          <a href="{{ $c.kakao_channel_url }}" target="_blank" rel="noopener" aria-label="카카오톡문의"
-             class="flex items-center justify-center w-9 h-9 rounded-full bg-[#FEE500] text-black hover:brightness-95 transition">
-            {{ partial "functions/get_icon" (dict "name" "brands/kakaotalk" "attributes" "class=\"w-4.5 h-4.5\"") }}
-          </a>
-          {{ end }}
-          {{ if $c.phone_tel }}
-          <a href="{{ $c.phone_tel | safeURL }}" aria-label="전화연결"
-             class="flex items-center justify-center w-9 h-9 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition">
-            {{ partial "functions/get_icon" (dict "name" "hero/phone-solid" "attributes" "class=\"w-4 h-4\"") }}
-          </a>
-          {{ end }}
-        </div>
         {{ end }}
 
         {{ with $c.network_site_url }}
@@ -109,7 +81,7 @@
           <span class="text-gray-200 font-medium">주소:</span> 서울특별시 송파구 올림픽로 102 서일빌딩 3층<br />
           <span class="text-primary-300 font-medium">지하철 2호선 잠실새내역 4번 출구 도보 3분</span>
         </p>
-        <p class="mt-2 text-sm text-gray-400"><span class="text-gray-200 font-medium">주차:</span> 서일빌딩 내 주차장 이용 가능</p>
+        <p class="mt-2 text-sm text-gray-400"><span class="text-gray-200 font-medium">주차:</span> 서일빌딩 뒷편 주차장 이용 가능</p>
         {{ if $c.phone_tel }}
         <a href="{{ $c.phone_tel | safeURL }}"
            class="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 px-3.5 py-2 text-sm font-semibold text-white transition-colors">
@@ -137,8 +109,8 @@
         [의료법 고지] 본 웹사이트의 모든 콘텐츠는 정보 제공을 목적으로 작성되었으며, 개별 환자의 상태에 따라 진단 및 치료 효과는 상이할 수 있습니다. 치료 전 반드시 한의사와 1:1 진료 및 상담을 진행하시기 바랍니다.
       </p>
       <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500">
-        <a href="/privacy/" class="hover:text-gray-300 transition-colors">개인정보처리방침</a>
-        <a href="/terms/" class="hover:text-gray-300 transition-colors">이용약관</a>
+        <a href="/privacy/" data-hb-modal="/privacy/" class="hover:text-gray-300 transition-colors">개인정보처리방침</a>
+        <a href="/terms/" data-hb-modal="/terms/" class="hover:text-gray-300 transition-colors">이용약관</a>
         <a href="/pricing/" class="hover:text-gray-300 transition-colors">비급여안내</a>
         <span class="ml-auto text-gray-600">{{ partial "site_footer_license" . }}</span>
       </div>
