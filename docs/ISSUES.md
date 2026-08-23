@@ -69,6 +69,18 @@
 - **해결**: `content/authors/_index.md`에서 `cascade` 블록을 제거(리스트 페이지 자체의 `build.render: never`는 유지 — `/authors/` 목록 페이지는 굳이 필요 없음). 이제 `hugo build --gc` 시 `public/authors/seok-seonhui/index.html`, `public/authors/ryu-seokgyun/index.html`이 정상 생성됨.
 - **주의**: Hugo Blox 템플릿에서 가져온 `_index.md`/`_content.gotmpl` 조합을 쓸 때는 섹션 `_index.md`의 `cascade.build` 설정이 content adapter가 만드는 페이지까지 조용히 억제할 수 있음을 유의할 것.
 
+### 1.14 `theme.colors.neutral` 설정이 `text-gray-*`/`bg-gray-*` 유틸리티에 반영되지 않음
+- **증상**: `params.yaml`에 `hugoblox.theme.colors.neutral: "#78716c"`(Tailwind `stone-500`과 동일한 값)를 지정해두면 사이트 전체의 회색조가 그 톤으로 바뀔 것이라 예상했지만, 실제 빌드된 CSS(`public/css/_entry.*.css`)를 확인하면 `--color-gray-900: #111827`(Tailwind 기본 차가운 그레이)로 전혀 바뀌지 않고 있었음. 대부분의 블록이 본문·배경·테두리에 `gray-*` 유틸리티를 쓰고 있어 사이트 전체가 의도와 다르게 차가운 톤으로 보이고 있었음.
+- **원인**: Hugo Blox 테마 CSS(`assets/css/color-utilities.css` 주석 참고)에서 `gray`와 `neutral`은 서로 다른 별도의 Tailwind 컬러 스케일로 취급됨. `theme.colors.neutral` 설정은 `neutral-*` 클래스에만 영향을 주고(이 프로젝트에서는 아무도 `neutral-*` 클래스를 쓰지 않음), `gray-*`는 항상 Tailwind 기본값을 그대로 씀. 반면 `stone-500`이 정확히 `#78716c`라 처음부터 "웜톤 = stone 팔레트"를 의도했던 것으로 보이나, 실제 템플릿들은 전부 `gray-*`를 쓰도록 작성되어 있었음.
+- **해결**: 모든 템플릿을 `stone-*`로 바꾸는 대신, `layouts/_partials/hooks/body-end/warm-neutral.html`에서 `--color-gray-*` CSS 변수를 `--color-stone-*` 값으로 재정의. **반드시 `body-end`에 둘 것** — `head-end`에 두면 이후 로드되는 컴파일된 Tailwind 엔트리 CSS(`_entry.css`)의 `:root { --color-gray-900: ... }` 선언이 캐스케이드 순서상 나중에 와서 이 오버라이드를 덮어써 버림(직접 겪은 버그).
+- **주의**: 이 사이트에서 "뉴트럴 색을 바꾸고 싶다"는 요청이 오면 `theme.colors.neutral`이 아니라 `warm-neutral.html`의 `--color-stone-*` 참조값(또는 이 파일 자체)을 수정해야 실제로 반영됨.
+
+### 1.15 `functions/get_featured_image`가 `image.filename`이 비어 있으면 엉뚱한 이미지를 집어옴
+- **증상**: `column-grid` 블록에서 사진 없는 컬럼 글에 카테고리 색 띠를 대체 노출시키려고 `image:` 필드를 제거했는데도, `partial "functions/get_featured_image" $item`이 여전히 이미지(그것도 해당 글과 무관한 작성자 프로필 사진 `assets/media/authors/seok-seonhui.jpg`)를 반환해 사진이 없어야 할 카드에 계속 사진이 나타남.
+- **원인**: `get_featured_image`는 `.Params.image.filename`이 빈 문자열일 때도 `resources.GetMatch (path.Join "media" "")`를 호출하게 되는데, 이 호출이 예상과 달리 `assets/media/` 아래의 다른 리소스(당시 마지막으로 캐시/평가된 이미지 리소스로 추정)를 반환하는 부작용이 있었음. 벤더 파셜 자체의 동작이라 프로젝트에서 고치기보다 우회하는 편이 안전함.
+- **해결**: `column-grid`에서 `get_featured_image`를 호출하기 전에 `$item.Params.image.filename`이 실제로 비어있지 않은지 먼저 직접 확인하고, 비어있으면 아예 파셜을 호출하지 않도록 변경(`layouts/_partials/hbx/blocks/column-grid/block.html`).
+- **주의**: "이미지가 없으면 대체 UI를 보여준다" 같은 로직을 새로 만들 때는 `get_featured_image`의 반환값을 곧바로 신뢰하지 말고, front matter의 `image.filename` 값을 직접 먼저 확인할 것.
+
 ## 2. 대기 중인 항목 (실제 배포/운영 전 확인 필요)
 
 | 항목 | 위치 | 상태 |

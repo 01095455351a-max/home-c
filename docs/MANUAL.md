@@ -121,6 +121,8 @@ clinic:
 
 `content/column/`에 새 `.md` 파일 생성 (URL은 `/column/파일명/`), `tags:`에 `칼럼`을 반드시 포함해야 홈 화면 미리보기에 함께 노출됩니다. `type: blog`로 지정해야 BlogPosting 구조화 데이터(JSON-LD)가 자동으로 생성됩니다 (2026-08부터 URL을 `/blog/`에서 `/column/`으로 변경, 원고 내용에 맞는 영문 슬러그를 파일명으로 사용).
 
+**대표 이미지는 넣지 않아도 됩니다.** `tags:`에 넣은 질환명(공황장애/불안장애/강박증/우울증/불면증/틱장애/ADHD/자율신경실조증/다한증/신경성 관련 태그)을 보고 `column-grid` 블록이 자동으로 해당 진료분야의 색 띠 + 아이콘을 카드 헤더에 채워줍니다(카테고리 매핑은 `layouts/_partials/hbx/blocks/column-grid/block.html`의 `$categories` 참고). 특정 사진을 꼭 쓰고 싶은 글에만 예외적으로 `image: {filename: ...}`을 지정하면 사진이 우선합니다.
+
 ### 4.4 새 자필 후기 추가
 
 (2026-08 리팩터링: 후기 1건 = `content/reviews/` 안의 파일 1개. `content/reviews/_index.md`는 더 이상 후기 목록을 직접 담지 않고, `review-grid` 블록이 이 폴더를 자동으로 읽어 카드로 렌더링합니다.)
