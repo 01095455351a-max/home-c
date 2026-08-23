@@ -131,6 +131,7 @@ sections:
           topics: ["입면장애", "수면유지장애", "조기각성"]
         - name: 자율신경실조증
           description: 원인 모를 두근거림, 어지럼증, 소화불량이 반복되는 상태.
+          image: diseases/dysautonomia.png
           icon: hero/scale
           gradient: from-cyan-400 to-cyan-600
           url: /diseases/dysautonomia/
