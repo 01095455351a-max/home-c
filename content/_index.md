@@ -40,6 +40,24 @@ sections:
           size: "80% 80%"
 
   # ──────────────────────────────────────────────────────────
+  # 해아림한의원 잠실점 둘러보기 — 원내 사진 슬라이드
+  # ──────────────────────────────────────────────────────────
+  - block: clinic-gallery
+    id: gallery
+    content:
+      title: 해아림한의원 잠실점 둘러보기
+      subtitle: 편안하고 안정감 있는 공간에서 진료받으실 수 있습니다.
+      items:
+        - image: clinic/reception.jpg
+          caption: 접수 데스크
+        - image: clinic/waiting-room.jpg
+          caption: 대기 공간
+        - image: clinic/counseling-room.jpg
+          caption: 1:1 상담실
+        - image: clinic/treatment-room.jpg
+          caption: 치료실
+
+  # ──────────────────────────────────────────────────────────
   # 원장 및 진료 철학 소개
   # ──────────────────────────────────────────────────────────
   - block: team-showcase
@@ -72,6 +90,7 @@ sections:
       items:
         - name: 공황장애 · 불안장애
           description: 반복되는 공황발작과 예기불안, 이유 없는 걱정과 긴장.
+          image: diseases/anxiety.png
           icon: hero/heart
           gradient: from-primary-400 to-primary-600
           url: /diseases/anxiety-panic/

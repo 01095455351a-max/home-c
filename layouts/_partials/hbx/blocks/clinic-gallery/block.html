@@ -1,0 +1,66 @@
+{{/* Custom project block: "한의원 둘러보기" — 원내 실제 사진을 가로 스와이프로 넘겨보는 갤러리.
+     credential-slider와 동일한 CSS scroll-snap 방식(별도 JS 라이브러리 없음), 카드만 와이드 사진용으로 조정.
+     content: { title, subtitle, items: [{ image, caption }] } */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $title := index $content "title" }}
+{{ $subtitle := index $content "subtitle" }}
+{{ $items := index $content "items" }}
+{{ $sliderId := printf "clinic-gallery-%s" (substr (md5 $title) 0 8) }}
+
+<div class="py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    {{ if or $title $subtitle }}
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      {{ with $title }}<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight mb-2">{{ . }}</h2>{{ end }}
+      {{ with $subtitle }}<p class="text-gray-600 dark:text-gray-400">{{ . }}</p>{{ end }}
+    </div>
+    {{ end }}
+
+    <div class="relative">
+      <button type="button" aria-label="이전"
+        onclick="document.getElementById('{{ $sliderId }}').scrollBy({left: -360, behavior: 'smooth'})"
+        class="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+        {{ partial "functions/get_icon" (dict "name" "hero/chevron-left" "attributes" "class=\"w-5 h-5 text-gray-600 dark:text-gray-300\"") }}
+      </button>
+      <button type="button" aria-label="다음"
+        onclick="document.getElementById('{{ $sliderId }}').scrollBy({left: 360, behavior: 'smooth'})"
+        class="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+        {{ partial "functions/get_icon" (dict "name" "hero/chevron-right" "attributes" "class=\"w-5 h-5 text-gray-600 dark:text-gray-300\"") }}
+      </button>
+
+      <div id="{{ $sliderId }}" class="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-4 px-4 sm:mx-0 sm:px-0"
+           style="scrollbar-width: thin;">
+        {{ range $items }}
+        {{ $imagePath := index . "image" }}
+        {{ $caption := index . "caption" }}
+        {{ $img := false }}
+        {{ if $imagePath }}
+          {{ $img = resources.Get (path.Join "media" $imagePath) }}
+          {{ if and $img (reflect.IsImageResourceProcessable $img) }}
+            {{ $img = $img.Fill "640x420 q85 webp" }}
+          {{ end }}
+        {{ end }}
+
+        <div class="snap-start shrink-0 w-80 sm:w-96">
+          <div class="h-full flex flex-col rounded-2xl bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 overflow-hidden">
+            {{ if $img }}
+            <div class="aspect-[3/2] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+              <img src="{{ $img.RelPermalink }}" alt="{{ $caption | plainify }}" loading="lazy" class="w-full h-full object-cover" />
+            </div>
+            {{ end }}
+            {{ with $caption }}
+            <div class="p-4">
+              <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ . }}</p>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
