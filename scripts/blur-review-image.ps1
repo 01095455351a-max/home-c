@@ -6,7 +6,7 @@ param(
     [Parameter(Mandatory=$true)][string]$InputPath,
     [Parameter(Mandatory=$true)][string]$OutputPath,
     [int]$MaxWidth = 900,
-    [double]$BlurFactor = 0.045
+    [double]$BlurFactor = 0.075
 )
 
 Add-Type -AssemblyName System.Drawing
