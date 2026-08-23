@@ -40,11 +40,11 @@ collections:
 
   - name: "columns"
     label: "원장 컬럼"
-    folder: "content/blog"
+    folder: "content/column"
     create: true
     delete: true
     slug: "{{slug}}"
-    filter: { field: "type", value: "blog-post" }
+    filter: { field: "type", value: "blog" }
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "요약", name: "summary", widget: "text" }
@@ -60,7 +60,7 @@ collections:
           - { label: "류석균 원장", value: "ryu-seokgyun" }
       - { label: "태그", name: "tags", widget: "list", default: ["칼럼"] }
       - { label: "본문", name: "body", widget: "markdown" }
-      - { label: "타입", name: "type", widget: "hidden", default: "blog-post" }
+      - { label: "타입", name: "type", widget: "hidden", default: "blog" }
 
   - name: "reviews"
     label: "자필 후기"

@@ -155,7 +155,7 @@ main:
     weight: 10
   - parent: 게시판
     name: 원장 컬럼
-    url: /blog/
+    url: /column/
     weight: 20
   - parent: 게시판
     name: 언론 보도
@@ -227,7 +227,7 @@ footer:
     weight: 20
   - parent: 커뮤니티
     name: 원장 컬럼
-    url: /blog/
+    url: /column/
     weight: 30
   - parent: 커뮤니티
     name: 언론 보도

@@ -14,7 +14,7 @@ baseURL: 'https://example.com/' # Website URL
 cascade:
   # Blog post options
   - target:
-      path: /blog/**
+      path: /column/**
       kind: page
     pager: true
     editable: true
@@ -31,7 +31,7 @@ cascade:
         enable: true
   # Blog section options
   - target:
-      path: /blog/*
+      path: /column/*
       kind: section
     # Set the listing view
     view: date-title-summary

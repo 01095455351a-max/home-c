@@ -22,5 +22,5 @@ sections:
       text: 원장 컬럼과 공식 SNS에서도 꾸준히 건강 정보를 안내해 드립니다.
       button:
         text: 원장 컬럼 보러가기
-        url: "/blog/"
+        url: "/column/"
 ---
