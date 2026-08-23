@@ -30,11 +30,8 @@ cascade:
       navbar:
         enable: true
   # Blog section options
-  - target:
-      path: /column/*
-      kind: section
-    # Set the listing view
-    view: date-title-summary
+  # (목록 페이지는 content/column/_index.md에서 type: landing + column-grid 블록으로 직접 렌더링하므로
+  #  이 view 설정은 더 이상 사용되지 않지만, 사용 안 하는 게 안전해 참고용으로 남겨둠)
 
 ############################
 ## LANGUAGE

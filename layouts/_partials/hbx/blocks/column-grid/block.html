@@ -1,0 +1,73 @@
+{{/* Custom project block: 원장 컬럼 목록을 3열 카드 그리드로 표시.
+     기존 자필후기/언론보도(review-grid, press-grid)와 동일한 카드 시각 언어를 사용하되,
+     content/column/ 아래 실제 Hugo 페이지(type: blog)를 날짜 최신순으로 읽어와 렌더링함.
+     새 컬럼은 content/column/*.md 파일을 추가하면 자동으로 목록에 반영됨. */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $count := partial "functions/coerce_int" (dict "value" (index $content "count") "default" 0 "min" 0) }}
+
+{{ $columnPages := where site.RegularPages "Type" "blog" }}
+{{ $columnPages = $columnPages.ByDate.Reverse }}
+{{ if gt $count 0 }}
+  {{ $columnPages = first $count $columnPages }}
+{{ end }}
+
+<div class="py-10 sm:py-14 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+      {{ range $item := $columnPages }}
+      {{ $name := $item.Title }}
+      {{ $description := partial "functions/get_summary" $item }}
+      {{ $link := $item.RelPermalink }}
+      {{ $featured := partial "functions/get_featured_image" $item }}
+      {{ $topics := $item.Params.tags }}
+      {{ if not (reflect.IsSlice $topics) }}{{ $topics = slice }}{{ end }}
+
+      <div class="group relative">
+        <div class="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden flex flex-col">
+          <a href="{{ $link }}" class="block relative h-48 bg-gradient-to-br from-primary-400 to-secondary-400 overflow-hidden">
+            {{ if $featured }}
+              {{ $img := $featured }}
+              {{ if reflect.IsImageResourceProcessable $img }}{{ $img = $img.Fill "600x400 Center webp" }}{{ end }}
+              <img src="{{ $img.RelPermalink }}" alt="{{ $name | plainify }}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+            {{ end }}
+          </a>
+
+          <div class="flex flex-col flex-1 p-6">
+            <div class="flex-1">
+              {{ with $topics }}
+              <div class="flex flex-wrap gap-2 mb-3">
+                {{ range first 2 . }}
+                <span class="inline-block px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded">{{ . }}</span>
+                {{ end }}
+              </div>
+              {{ end }}
+
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                <a href="{{ $link }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{{ $name }}</a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">{{ $description | plainify }}</p>
+            </div>
+
+            <div class="mt-auto pt-3 border-t border-gray-100 dark:border-gray-700 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
+              {{ range first 1 $item.Params.authors }}
+                {{ $profile := partial "functions/get_author_profile" . }}
+                {{ with $profile.avatar }}
+                  {{ $avatar_24 := .Process "Fill 48x48 Center webp" }}
+                  <img src="{{ $avatar_24.RelPermalink }}" alt="{{ $profile.title }}" class="w-6 h-6 rounded-full object-cover" width="24" height="24" loading="lazy" />
+                {{ end }}
+                <span>{{ $profile.title }}</span>
+              {{ end }}
+              <span class="opacity-40">·</span>
+              <time datetime="{{ $item.Date.Format "2006-01-02" }}">{{ $item.Date | time.Format (site.Params.hugoblox.locale.date_format | default "Jan 2, 2006") }}</time>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
