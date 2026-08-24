@@ -2,6 +2,7 @@
 title: "엔오클리닉"
 date: 2026-08-21
 type: landing
+draft: true
 sections:
   - block: hero
     content:

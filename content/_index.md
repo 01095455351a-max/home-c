@@ -229,7 +229,7 @@ sections:
     id: treatments
     content:
       title: 진료안내 · 치료 방법
-      text: 증상과 체질에 맞춰 조합해 진행하는 10가지 치료 방법입니다.
+      text: 증상과 체질에 맞춰 조합해 진행하는 9가지 치료 방법입니다.
       items:
         - name: 개인맞춤한약
           description: 증상과 체질에 맞춰 1:1로 처방되는 개인별 맞춤 한약, 치료의 핵심 축입니다.
@@ -276,11 +276,6 @@ sections:
           icon: hero/sparkles
           gradient: from-emerald-400 to-teal-600
           url: /guide/treatments/aromatherapy/
-        - name: 엔오클리닉
-          description: 일산화질소(NO) 기반으로 혈액순환과 뇌혈류 개선을 돕습니다.
-          icon: hero/bolt
-          gradient: from-indigo-400 to-blue-600
-          url: /guide/treatments/no-clinic/
     design:
       layout: cards
       css_class: "bg-gray-50 dark:bg-gray-900/50"

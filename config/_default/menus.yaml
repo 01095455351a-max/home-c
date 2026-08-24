@@ -122,10 +122,6 @@ main:
     name: 향기치료
     url: /guide/treatments/aromatherapy/
     weight: 90
-  - parent: 개인맞춤치료
-    name: 엔오클리닉
-    url: /guide/treatments/no-clinic/
-    weight: 100
 
   # 4. 치료후기
   - name: 치료후기
