@@ -111,7 +111,7 @@
       {{ end }}
 
       <div class="hb-column-card group relative" data-hb-categories="{{ delimit $myCategories " " }}">
-        <div class="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden flex flex-col">
+        <div class="h-full bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-[#C0FAE6] dark:hover:border-gray-600 hover:shadow-[0px_4px_12px_0px_rgba(0,30,43,0.08)] transition-all duration-[170ms] transform hover:-translate-y-0.5 overflow-hidden flex flex-col">
           <a href="{{ $link }}" class="block relative h-48 bg-gradient-to-br {{ $cardGradient }} overflow-hidden">
             {{ if $featured }}
               {{ $img := $featured }}
@@ -164,7 +164,7 @@
     {{ $ctaUrl := $cta.url | default "/column/" }}
     {{ $ctaIcon := $cta.icon | default "hero/arrow-right" }}
     <div class="mt-10 text-center">
-      <a href="{{ $ctaUrl }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold transition-colors">
+      <a href="{{ $ctaUrl }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-600 hover:bg-[#023430] text-white font-semibold transition-colors duration-[170ms]">
         {{ . }}
         {{ partial "functions/get_icon" (dict "name" $ctaIcon "attributes" "class=\"w-4 h-4\"") }}
       </a>

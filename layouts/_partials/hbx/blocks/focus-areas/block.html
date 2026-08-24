@@ -205,7 +205,7 @@
         {{ with index $item_cta "icon" }}{{ $item_cta_icon = printf "%v" . }}{{ end }}
       {{ end }}
       <div class="group relative">
-        <div class="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden flex flex-col">
+        <div class="h-full bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-[#C0FAE6] dark:hover:border-gray-600 hover:shadow-[0px_4px_12px_0px_rgba(0,30,43,0.08)] transition-all duration-[170ms] transform hover:-translate-y-0.5 overflow-hidden flex flex-col">
           
           {{/* Card Image/Icon Header */}}
           {{ $header_content := "" }}
@@ -446,7 +446,7 @@
     {{ end }}
     <div class="mt-12 text-center">
       <a href="{{ $cta_link | safeURL }}" {{ $cta_target | safeHTMLAttr }}
-         class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow hover:shadow-lg transition-all duration-300">
+         class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-[#023430] text-white font-medium rounded-full transition-all duration-[170ms]">
         {{ $cta_text }}
         {{ with $cta_icon }}
         {{ partial "functions/get_icon" (dict "name" . "attributes" "class=\"ml-2 w-5 h-5\"") }}

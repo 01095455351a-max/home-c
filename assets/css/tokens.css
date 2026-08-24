@@ -1,0 +1,94 @@
+/* 해아림한의원 잠실점 — 디자인 토큰
+   시안: handoff/design/Haerim-Jamsil-Homepage-v2.dc.html, Haerim-Detail-Tic.dc.html
+   원본: handoff/tokens.css (Claude Design 산출물)
+   이 프로젝트는 폰트를 Pretendard로 유지하기로 확정해, 원본의 --hj-font /
+   body font-family 지정만 제외하고 나머지 토큰은 그대로 가져왔다. */
+
+:root {
+  /* 주색 (차분한 청록) */
+  --hj-primary:          #00684A;
+  --hj-primary-hover:    #023430;
+  --hj-primary-mid:      #00A35C;
+  --hj-on-primary:       #FFFFFF;
+
+  /* 배경 / 강조면 */
+  --hj-canvas:           #FFFFFF;
+  --hj-surface:          #F9FBFA;
+  --hj-accent-surface:   #E3FCF7;
+  --hj-accent-border:    #C0FAE6;
+  --hj-footer-bg:        #001E2B;
+  --hj-on-dark:          #FFFFFF;
+  --hj-on-dark-muted:    rgba(255,255,255,0.70);
+  --hj-on-dark-accent:   #C0FAE6;
+
+  /* 텍스트 */
+  --hj-ink:              #001E2B;
+  --hj-text:             #3D4F58;
+  --hj-text-weak:        #5C6C75;
+  --hj-text-muted:       #889397;
+
+  /* 선 */
+  --hj-hairline:         #E8EDEB;
+  --hj-hairline-soft:    #F1F3F2;
+  --hj-input-border:     #C1C7C6;
+
+  /* 타입 (크기/행간/자간만 — font-family는 Pretendard 그대로 사용) */
+  --hj-hero-size: 52px;  --hj-hero-lh: 1.25; --hj-hero-ls: -1.5px; --hj-hero-weight: 500;
+  --hj-h1-size:   44px;  --hj-h1-lh:   1.30; --hj-h1-ls:   -1px;   --hj-h1-weight:   500;
+  --hj-h2-size:   34px;  --hj-h2-lh:   1.30; --hj-h2-ls:   -0.5px; --hj-h2-weight:   500;
+  --hj-h3-size:   28px;  --hj-h3-lh:   1.35; --hj-h3-ls:   -0.5px; --hj-h3-weight:   500;
+  --hj-h4-size:   20px;  --hj-h4-lh:   1.40; --hj-h4-weight:   600;
+  --hj-lead-size: 18px;  --hj-lead-lh: 1.85;
+  --hj-body-size: 17px;  --hj-body-lh: 1.80;
+  --hj-body-sm:   15px;  --hj-body-sm-lh: 1.70;
+  --hj-caption:   13px;  --hj-caption-lh: 1.60;
+  --hj-eyebrow:   12px;  --hj-eyebrow-ls: 1px;  /* 대문자, weight 600 */
+
+  /* 간격 */
+  --hj-space-xs:   8px;
+  --hj-space-sm:   12px;
+  --hj-space-md:   16px;
+  --hj-space-lg:   24px;
+  --hj-space-xl:   32px;
+  --hj-space-2xl:  56px;
+  --hj-section-y:  88px;   /* 섹션 상하 패딩 */
+  --hj-container:  1200px;
+  --hj-gutter:     32px;
+
+  /* 모양 */
+  --hj-radius-tag:    4px;
+  --hj-radius-input:  8px;
+  --hj-radius-card:   12px;
+  --hj-radius-panel:  16px;
+  --hj-radius-hero:   20px;
+  --hj-radius-pill:   9999px;
+
+  /* 그림자 (절제해서 사용) */
+  --hj-elev-1: rgba(0,30,43,0.04) 0px 1px 2px 0px;
+  --hj-elev-2: rgba(0,30,43,0.08) 0px 4px 12px 0px;
+  --hj-elev-3: rgba(0,30,43,0.12) 0px 12px 24px -4px;
+
+  /* 모션 */
+  --hj-dur:  170ms;
+  --hj-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- 사용 규칙 요약 ----
+   1) 형광색 계열은 사용하지 않는다. 주 CTA는 --hj-primary 배경 + 흰 글자.
+   2) 버튼과 상태 배지는 항상 pill(--hj-radius-pill). 카드는 12px 고정.
+   3) 카드 기본은 흰 배경 + 1px --hj-hairline 테두리, 그림자 없음.
+      호버 시에만 --hj-elev-2 + translateY(-2px).
+   4) 어두운 면은 푸터 하나뿐이다. 본문 섹션은 흰색과 --hj-surface 를 번갈아 사용.
+   5) 강조 블록(요점, 안심 문구)은 --hj-accent-surface 배경 + --hj-accent-border 테두리.
+   6) 태그·카테고리 라벨: --hj-accent-surface 배경, --hj-primary 글자, 12px/600, radius 4px.
+   7) 본문 링크는 --hj-primary, 호버 --hj-primary-mid.
+*/
+
+/* ---- 기본 요소 매핑 (Tailwind 유틸리티 클래스가 지정된 곳은 그쪽이 우선함) ---- */
+a { color: var(--hj-primary); }
+a:hover { color: var(--hj-primary-mid); }
+
+h1 { font-size: var(--hj-h1-size); font-weight: var(--hj-h1-weight); line-height: var(--hj-h1-lh); letter-spacing: var(--hj-h1-ls); text-wrap: pretty; }
+h2 { font-size: var(--hj-h2-size); font-weight: var(--hj-h2-weight); line-height: var(--hj-h2-lh); letter-spacing: var(--hj-h2-ls); text-wrap: pretty; }
+h3 { font-size: var(--hj-h3-size); font-weight: var(--hj-h3-weight); line-height: var(--hj-h3-lh); letter-spacing: var(--hj-h3-ls); }
+h4 { font-size: var(--hj-h4-size); font-weight: var(--hj-h4-weight); line-height: var(--hj-h4-lh); }

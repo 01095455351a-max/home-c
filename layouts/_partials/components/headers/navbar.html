@@ -7,6 +7,20 @@
 {{- $show_logo := site.Params.hugoblox.header.show_logo | default true -}}
 {{- $show_title := site.Params.hugoblox.header.show_title | default true -}}
 {{- $navbar_title := site.Params.hugoblox.header.title | default $branding.name -}}
+{{/* Claude Design 리디자인 — 상단 40px 유틸리티바(위치·휴진 안내 + 블로그·인스타 + 전화).
+     .page-header가 통째로 sticky이기 때문에(baseof.html), body-start 같은 별도 훅 지점이
+     없어 이 안에 함께 둠 — 유틸바까지 포함해 헤더 전체가 스크롤 시 고정된다. */}}
+{{ $c := site.Params.clinic }}
+<div class="hidden md:block" style="background: var(--hj-surface); border-bottom: 1px solid var(--hj-hairline);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="height: 40px; display: flex; align-items: center; gap: 18px; overflow-x: auto; white-space: nowrap;">
+    <span style="font-size: 13px; color: var(--hj-text-weak);">잠실새내역 4번 출구 도보 3분 · 목·일·공휴일 정기 휴진</span>
+    <span style="margin-left: auto; display: flex; gap: 16px; align-items: center; flex-shrink: 0;">
+      {{ with $c.naver_blog_url }}<a href="{{ . }}" style="font-size: 13px; color: var(--hj-text-weak);">블로그</a>{{ end }}
+      {{ with $c.instagram_url }}<a href="{{ . }}" style="font-size: 13px; color: var(--hj-text-weak);">인스타그램</a>{{ end }}
+      {{ with $c.phone_tel }}<a href="{{ . }}" style="font-size: 13px; font-weight: 600; color: var(--hj-primary);">{{ $c.phone_display }}</a>{{ end }}
+    </span>
+  </div>
+</div>
 <header id="site-header" class="header">
   <nav class="navbar px-3 flex justify-start">
     <div class="order-0 h-full">

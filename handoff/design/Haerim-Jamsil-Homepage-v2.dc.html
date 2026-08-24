@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FFFFFF; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  a { color: #00684A; text-decoration: none; }
+  a:hover { color: #00A35C; }
+</style>
+</helmet>
+
+<div style="font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif; color: #001E2B; background: #FFFFFF;">
+
+  <div style="background: #F9FBFA; border-bottom: 1px solid #E8EDEB;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 40px; display: flex; align-items: center; gap: 18px;">
+      <span style="font-size: 13px; color: #5C6C75;">잠실새내역 4번 출구 도보 3분 · 목·일·공휴일 정기 휴진</span>
+      <span style="margin-left: auto; display: flex; gap: 16px; align-items: center;">
+        <a href="https://blog.naver.com/healimjs" style="font-size: 13px; color: #5C6C75;" style-hover="color: #001E2B;">블로그</a>
+        <a href="https://www.instagram.com/healimjs" style="font-size: 13px; color: #5C6C75;" style-hover="color: #001E2B;">인스타그램</a>
+        <a href="tel:02-6954-7575" style="font-size: 13px; font-weight: 600; color: #00684A;">02-6954-7575</a>
+      </span>
+    </div>
+  </div>
+
+  <header style="background: #FFFFFF; border-bottom: 1px solid #E8EDEB; position: sticky; top: 0; z-index: 20;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 76px; display: flex; align-items: center; gap: 36px;">
+      <a href="#top" style="display: flex; align-items: baseline; gap: 8px; flex: 0 0 auto; white-space: nowrap;">
+        <span style="font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: #001E2B;">해아림한의원</span>
+        <span style="font-size: 13px; font-weight: 600; color: #00684A;">잠실점</span>
+      </a>
+      <nav style="display: flex; gap: 18px; align-items: center; white-space: nowrap; flex: 1 1 auto; min-width: 0; overflow-x: auto;">
+        <a href="#diseases" style="font-size: 15px; font-weight: 500; color: #3D4F58;" style-hover="color: #001E2B;">특화 질환</a>
+        <a href="#treatments" style="font-size: 15px; font-weight: 500; color: #3D4F58;" style-hover="color: #001E2B;">진료안내</a>
+        <a href="#doctors" style="font-size: 15px; font-weight: 500; color: #3D4F58;" style-hover="color: #001E2B;">의료진</a>
+        <a href="#reviews" style="font-size: 15px; font-weight: 500; color: #3D4F58;" style-hover="color: #001E2B;">치료후기</a>
+        <a href="#column" style="font-size: 15px; font-weight: 500; color: #3D4F58;" style-hover="color: #001E2B;">원장 컬럼</a>
+        <a href="#location" style="font-size: 15px; font-weight: 500; color: #3D4F58;" style-hover="color: #001E2B;">오시는 길</a>
+      </nav>
+      <div style="margin-left: auto; display: flex; gap: 10px; align-items: center; flex: 0 0 auto; white-space: nowrap;">
+        <a href="tel:02-6954-7575" style="font-size: 14px; font-weight: 600; color: #001E2B; background: #FFFFFF; border: 1px solid #C1C7C6; padding: 11px 20px; border-radius: 9999px;" style-hover="border-color: #00684A; color: #00684A;">전화 연결</a>
+        <a href="#consult" style="font-size: 14px; font-weight: 600; color: #FFFFFF; background: #00684A; padding: 12px 22px; border-radius: 9999px;" style-hover="background: #023430;">상담예약</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="top" style="background-image: linear-gradient(180deg, #E3FCF7 0%, #F9FBFA 70%, #FFFFFF 100%); padding: 76px 0 72px;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 0.95fr; gap: 56px; align-items: center;">
+      <div>
+        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #00684A; background: #FFFFFF; border: 1px solid #C0FAE6; padding: 8px 16px; border-radius: 9999px; margin-bottom: 24px;">한방신경정신과 전문의 · 임상 22년 원장</div>
+        <h1 style="font-size: 52px; font-weight: 500; line-height: 1.25; letter-spacing: -1.5px; margin: 0; text-wrap: pretty;">마음의 불안부터<br />두뇌의 균형까지</h1>
+        <p style="font-size: 19px; line-height: 1.7; color: #3D4F58; margin: 22px 0 30px; max-width: 480px;">2인의 전담 원장이 세밀하게 동행합니다. 단순한 증상 완화를 넘어, 치료가 끝난 이후의 일상이 평온할 수 있도록 돕습니다.</p>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="#consult" style="font-size: 15px; font-weight: 600; color: #FFFFFF; background: #00684A; padding: 15px 28px; border-radius: 9999px;" style-hover="background: #023430;">전화 상담 신청</a>
+          <a href="https://map.naver.com/p/entry/place/1887559338" style="font-size: 15px; font-weight: 600; color: #001E2B; background: #FFFFFF; border: 1px solid #C1C7C6; padding: 15px 26px; border-radius: 9999px;" style-hover="border-color: #00684A; color: #00684A;">네이버 예약</a>
+        </div>
+        <div style="display: flex; gap: 32px; margin-top: 40px; padding-top: 26px; border-top: 1px solid #E8EDEB;">
+          <div>
+            <div style="font-size: 24px; font-weight: 500; letter-spacing: -0.5px;">2인</div>
+            <div style="font-size: 14px; color: #5C6C75; margin-top: 4px;">전담 원장 · 2대 분과</div>
+          </div>
+          <div>
+            <div style="font-size: 24px; font-weight: 500; letter-spacing: -0.5px;">22년</div>
+            <div style="font-size: 14px; color: #5C6C75; margin-top: 4px;">원장 임상 경력</div>
+          </div>
+          <div>
+            <div style="font-size: 24px; font-weight: 500; letter-spacing: -0.5px;">9가지</div>
+            <div style="font-size: 14px; color: #5C6C75; margin-top: 4px;">특화 질환 진료</div>
+          </div>
+        </div>
+      </div>
+      <div style="border-radius: 20px; overflow: hidden; box-shadow: rgba(0,30,43,0.12) 0px 12px 24px -4px; height: 460px;">
+        <img src="https://home-c-e67.pages.dev/media/clinic/waiting-room_hu_b0f79993cc51e6a8.webp" alt="해아림한의원 잠실점 대기 공간" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+      </div>
+    </div>
+  </section>
+
+  <section id="diseases" style="background: #FFFFFF; padding: 88px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00684A; margin-bottom: 14px;">특화 질환</div>
+      <h2 style="font-size: 34px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.3; margin: 0 0 12px; max-width: 640px; text-wrap: pretty;">세밀하게 진료하는 9가지 특화 질환</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: #3D4F58; margin: 0 0 40px; max-width: 640px;">카드를 눌러 증상·원인·치료 방법을 확인하세요.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+
+        <a href="https://home-c-e67.pages.dev/diseases/anxiety-panic/" style="display: block; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; background: #FFFFFF; color: #001E2B; transition: box-shadow 170ms cubic-bezier(0.4,0,0.2,1), transform 170ms cubic-bezier(0.4,0,0.2,1), border-color 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); border-color: #C0FAE6; color: #001E2B;">
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px;">공황장애 · 불안장애</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 16px;">반복되는 공황발작과 예기불안, 이유 없는 걱정과 긴장.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">가슴 두근거림</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">숨막힘</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">예기불안</span>
+          </div>
+        </a>
+
+        <a href="https://home-c-e67.pages.dev/diseases/tic/" style="display: block; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; background: #FFFFFF; color: #001E2B; transition: box-shadow 170ms cubic-bezier(0.4,0,0.2,1), transform 170ms cubic-bezier(0.4,0,0.2,1), border-color 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); border-color: #C0FAE6; color: #001E2B;">
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px;">틱장애</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 16px;">반복되는 눈 깜빡임, 헛기침, 어깨 들썩임 등 근육·음성 틱.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">근육틱</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">음성틱</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">뚜렛장애</span>
+          </div>
+        </a>
+
+        <a href="https://home-c-e67.pages.dev/diseases/adhd/" style="display: block; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; background: #FFFFFF; color: #001E2B; transition: box-shadow 170ms cubic-bezier(0.4,0,0.2,1), transform 170ms cubic-bezier(0.4,0,0.2,1), border-color 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); border-color: #C0FAE6; color: #001E2B;">
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px;">ADHD</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 16px;">지속적인 주의력 부족, 산만함, 충동적인 행동.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">주의력결핍</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">과잉행동</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">충동성</span>
+          </div>
+        </a>
+
+        <a href="https://home-c-e67.pages.dev/diseases/ocd/" style="display: block; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; background: #FFFFFF; color: #001E2B; transition: box-shadow 170ms cubic-bezier(0.4,0,0.2,1), transform 170ms cubic-bezier(0.4,0,0.2,1), border-color 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); border-color: #C0FAE6; color: #001E2B;">
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px;">강박장애</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 16px;">반복되는 강박사고와 이를 멈추기 어려운 강박행동.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">강박사고</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">반복행동</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">확인강박</span>
+          </div>
+        </a>
+
+        <a href="https://home-c-e67.pages.dev/diseases/depression/" style="display: block; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; background: #FFFFFF; color: #001E2B; transition: box-shadow 170ms cubic-bezier(0.4,0,0.2,1), transform 170ms cubic-bezier(0.4,0,0.2,1), border-color 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); border-color: #C0FAE6; color: #001E2B;">
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px;">우울장애</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 16px;">지속되는 무기력, 의욕 저하, 수면·식욕 변화.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">무기력</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">의욕저하</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">수면변화</span>
+          </div>
+        </a>
+
+        <a href="https://home-c-e67.pages.dev/diseases/insomnia/" style="display: block; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; background: #FFFFFF; color: #001E2B; transition: box-shadow 170ms cubic-bezier(0.4,0,0.2,1), transform 170ms cubic-bezier(0.4,0,0.2,1), border-color 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); border-color: #C0FAE6; color: #001E2B;">
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px;">불면증</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 16px;">잠들기 어렵거나 자주 깨는 등 수면의 질과 양이 저하된 상태.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">입면장애</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">수면유지장애</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">조기각성</span>
+          </div>
+        </a>
+
+        <a href="https://home-c-e67.pages.dev/diseases/dysautonomia/" style="display: block; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; background: #FFFFFF; color: #001E2B; transition: box-shadow 170ms cubic-bezier(0.4,0,0.2,1), transform 170ms cubic-bezier(0.4,0,0.2,1), border-color 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); border-color: #C0FAE6; color: #001E2B;">
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px;">자율신경실조증</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 16px;">원인 모를 두근거림, 어지럼증, 소화불량이 반복되는 상태.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">두근거림</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">어지럼증</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">만성피로</span>
+          </div>
+        </a>
+
+        <a href="https://home-c-e67.pages.dev/diseases/hyperhidrosis/" style="display: block; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; background: #FFFFFF; color: #001E2B; transition: box-shadow 170ms cubic-bezier(0.4,0,0.2,1), transform 170ms cubic-bezier(0.4,0,0.2,1), border-color 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); border-color: #C0FAE6; color: #001E2B;">
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px;">다한증</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 16px;">손·발·얼굴에서 유난히 많이 나는 땀.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">다한</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">손발냉감</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">사회불안</span>
+          </div>
+        </a>
+
+        <a href="https://home-c-e67.pages.dev/diseases/nervous-system/" style="display: block; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; background: #FFFFFF; color: #001E2B; transition: box-shadow 170ms cubic-bezier(0.4,0,0.2,1), transform 170ms cubic-bezier(0.4,0,0.2,1), border-color 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); border-color: #C0FAE6; color: #001E2B;">
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px;">신경성 질환</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 16px;">스트레스만 받으면 심해지는 두통, 어지럼증, 소화불량.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">신경성두통</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">신경성소화불량</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">근긴장</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="doctors" style="background: #F9FBFA; border-top: 1px solid #E8EDEB; border-bottom: 1px solid #E8EDEB; padding: 88px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00684A; margin-bottom: 14px;">의료진</div>
+      <h2 style="font-size: 34px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.3; margin: 0 0 12px; max-width: 640px; text-wrap: pretty;">원장 및 진료 철학 소개</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: #3D4F58; margin: 0 0 40px; max-width: 640px;">단순한 증상 완화를 넘어, 치료가 끝난 이후의 일상이 평온할 수 있도록 돕습니다.</p>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+
+        <div style="background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; gap: 20px; align-items: center;">
+            <img src="https://home-c-e67.pages.dev/media/authors/seok-seonhui_hu_12043985ed9d3691.jpg" alt="석선희 원장" style="width: 96px; height: 96px; border-radius: 9999px; object-fit: cover; display: block;" />
+            <div>
+              <h3 style="font-size: 22px; font-weight: 600; margin: 0 0 6px;">석선희 원장</h3>
+              <div style="font-size: 15px; color: #00684A; font-weight: 600;">한방신경정신과 전문의</div>
+              <div style="font-size: 14px; color: #5C6C75; margin-top: 3px;">대한한방신경정신과학회 정회원</div>
+            </div>
+          </div>
+          <p style="font-size: 16px; line-height: 1.75; color: #3D4F58; margin: 0;">불안과 공황, 불면은 단순한 마음의 나약함이 아닌 뇌신경계와 자율신경의 신체적 불균형에서 시작됩니다. 뇌와 신체의 균형을 회복시키는 1:1 맞춤 청정 한약 치료를 중심으로, 심층 상담치료를 병행하여 치료가 끝난 이후의 일상이 평온할 수 있도록 돕습니다.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 4px;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">공황장애</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">불안장애</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">강박증</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">우울증</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">불면증</span>
+          </div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; gap: 20px; align-items: center;">
+            <img src="https://home-c-e67.pages.dev/media/authors/ryu-seokgyun_hu_8abb3ace253f6c2.jpg" alt="류석균 원장" style="width: 96px; height: 96px; border-radius: 9999px; object-fit: cover; display: block;" />
+            <div>
+              <h3 style="font-size: 22px; font-weight: 600; margin: 0 0 6px;">류석균 원장</h3>
+              <div style="font-size: 15px; color: #00684A; font-weight: 600;">한의사 (임상 22년)</div>
+              <div style="font-size: 14px; color: #5C6C75; margin-top: 3px;">대한한방내과학회 정회원</div>
+            </div>
+          </div>
+          <p style="font-size: 16px; line-height: 1.75; color: #3D4F58; margin: 0;">22년간 쌓아온 임상 경험을 바탕으로, 과부하된 두뇌 기능과 자율신경계의 불균형을 정밀하게 살펴 소아청소년부터 성인까지 안정적인 일상 회복을 이끌어냅니다.</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 4px;">
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">틱장애</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">ADHD</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">자율신경실조증</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">다한증</span>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 6px 12px; border-radius: 9999px;">신경성 질환</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="clinics" style="background: #FFFFFF; padding: 88px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00684A; margin-bottom: 14px;">2인의 전담 원장 · 2대 분과 체계</div>
+      <h2 style="font-size: 34px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.3; margin: 0 0 12px; max-width: 640px; text-wrap: pretty;">해아림한의원 잠실점을 믿고 찾는 이유</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: #3D4F58; margin: 0 0 40px; max-width: 680px;">원인을 짚어내는 정밀 진단부터 1:1 맞춤 한약, 심층 상담·침구 치료까지 이어지는 전담 케어 시스템입니다.</p>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+
+        <div style="background: #E3FCF7; border: 1px solid #C0FAE6; border-radius: 16px; padding: 36px;">
+          <h3 style="font-size: 22px; font-weight: 600; margin: 0 0 8px; line-height: 1.35;">한방신경정신과 &amp; 심신 통합 클리닉</h3>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58; margin-bottom: 26px;"><strong style="font-weight: 600; color: #001E2B;">석선희 원장 전담</strong> · 공황장애, 불안장애, 강박증, 우울증, 불면증</div>
+          <div style="display: flex; flex-direction: column; gap: 18px;">
+            <div style="display: flex; gap: 14px;">
+              <div style="flex: 0 0 26px; height: 26px; border-radius: 9999px; background: #FFFFFF; color: #00684A; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">1</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">정밀 검진 및 원인 분석</div>
+                <div style="font-size: 15px; line-height: 1.65; color: #3D4F58;">자율신경 균형 검사 및 뇌기능 평가</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 14px;">
+              <div style="flex: 0 0 26px; height: 26px; border-radius: 9999px; background: #FFFFFF; color: #00684A; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">2</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">1:1 맞춤 한약 치료 (핵심)</div>
+                <div style="font-size: 15px; line-height: 1.65; color: #3D4F58;">항진된 신경계 안정과 오장육부 균형 회복을 돕는 개인별 탕전</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 14px;">
+              <div style="flex: 0 0 26px; height: 26px; border-radius: 9999px; background: #FFFFFF; color: #00684A; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">3</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">심층 상담치료 (병행)</div>
+                <div style="font-size: 15px; line-height: 1.65; color: #3D4F58;">전문의의 인지적 통찰 및 심신 이완 지도</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 14px;">
+              <div style="flex: 0 0 26px; height: 26px; border-radius: 9999px; background: #FFFFFF; color: #00684A; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">4</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">침구 및 신경 이완 치료</div>
+                <div style="font-size: 15px; line-height: 1.65; color: #3D4F58;">두경부 긴장 완화 및 기혈 순환 촉진</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #F9FBFA; border: 1px solid #E8EDEB; border-radius: 16px; padding: 36px;">
+          <h3 style="font-size: 22px; font-weight: 600; margin: 0 0 8px; line-height: 1.35;">두뇌 기능 &amp; 자율신경 특화 클리닉</h3>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58; margin-bottom: 26px;"><strong style="font-weight: 600; color: #001E2B;">류석균 원장 전담</strong> · 소아·성인 틱장애, ADHD, 자율신경실조증, 다한증, 신경성 두통·어지럼증</div>
+          <div style="display: flex; flex-direction: column; gap: 18px;">
+            <div style="display: flex; gap: 14px;">
+              <div style="flex: 0 0 26px; height: 26px; border-radius: 9999px; background: #FFFFFF; border: 1px solid #E8EDEB; color: #00684A; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">1</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">22년 임상 기반 정밀 평가</div>
+                <div style="font-size: 15px; line-height: 1.65; color: #3D4F58;">두뇌 발달 단계와 자율신경계 기능 상태 진단</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 14px;">
+              <div style="flex: 0 0 26px; height: 26px; border-radius: 9999px; background: #FFFFFF; border: 1px solid #E8EDEB; color: #00684A; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">2</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">두뇌 기능 맞춤 한약 처방</div>
+                <div style="font-size: 15px; line-height: 1.65; color: #3D4F58;">뇌 기능 균형과 신경계 과흥분 조절을 돕는 개인별 맞춤 한약</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 14px;">
+              <div style="flex: 0 0 26px; height: 26px; border-radius: 9999px; background: #FFFFFF; border: 1px solid #E8EDEB; color: #00684A; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">3</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">침구 치료 및 경추 교정</div>
+                <div style="font-size: 15px; line-height: 1.65; color: #3D4F58;">뇌혈류 순환 촉진 및 신체 균형 안정화</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 14px;">
+              <div style="flex: 0 0 26px; height: 26px; border-radius: 9999px; background: #FFFFFF; border: 1px solid #E8EDEB; color: #00684A; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">4</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">생활 관리 코칭</div>
+                <div style="font-size: 15px; line-height: 1.65; color: #3D4F58;">수면, 영양, 스트레스 조절 등 일상 적응 관리</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="treatments" style="background: #F9FBFA; border-top: 1px solid #E8EDEB; border-bottom: 1px solid #E8EDEB; padding: 88px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00684A; margin-bottom: 14px;">진료안내</div>
+      <h2 style="font-size: 34px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.3; margin: 0 0 12px; max-width: 640px; text-wrap: pretty;">진료안내 · 치료 방법</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: #3D4F58; margin: 0 0 40px; max-width: 640px;">증상과 체질에 맞춰 조합해 진행하는 9가지 치료 방법입니다.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+        <a href="https://home-c-e67.pages.dev/guide/treatments/herbal-medicine/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 24px; color: #001E2B; transition: border-color 170ms, box-shadow 170ms;" style-hover="border-color: #00A35C; box-shadow: rgba(0,30,43,0.04) 0px 1px 2px 0px; color: #001E2B;">
+          <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">개인맞춤한약</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58;">증상과 체질에 맞춰 1:1로 처방되는 개인별 맞춤 한약, 치료의 핵심 축입니다.</div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/guide/treatments/acupuncture/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 24px; color: #001E2B; transition: border-color 170ms, box-shadow 170ms;" style-hover="border-color: #00A35C; box-shadow: rgba(0,30,43,0.04) 0px 1px 2px 0px; color: #001E2B;">
+          <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">침치료</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58;">경혈 자극으로 기혈 순환을 촉진하고 신체 이완을 돕습니다.</div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/guide/treatments/pharmacopuncture/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 24px; color: #001E2B; transition: border-color 170ms, box-shadow 170ms;" style-hover="border-color: #00A35C; box-shadow: rgba(0,30,43,0.04) 0px 1px 2px 0px; color: #001E2B;">
+          <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">약침치료</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58;">정제된 한약재 추출물을 경혈에 직접 주입하는 정밀 시술입니다.</div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/guide/treatments/chuna/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 24px; color: #001E2B; transition: border-color 170ms, box-shadow 170ms;" style-hover="border-color: #00A35C; box-shadow: rgba(0,30,43,0.04) 0px 1px 2px 0px; color: #001E2B;">
+          <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">추나요법</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58;">손으로 척추·관절의 구조적 균형을 바로잡는 수기 치료입니다.</div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/guide/treatments/cranial-sacral/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 24px; color: #001E2B; transition: border-color 170ms, box-shadow 170ms;" style-hover="border-color: #00A35C; box-shadow: rgba(0,30,43,0.04) 0px 1px 2px 0px; color: #001E2B;">
+          <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">두개천골요법</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58;">매우 가벼운 접촉으로 뇌척수액 리듬을 조율하는 부드러운 치료입니다.</div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/guide/treatments/fcst/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 24px; color: #001E2B; transition: border-color 170ms, box-shadow 170ms;" style-hover="border-color: #00A35C; box-shadow: rgba(0,30,43,0.04) 0px 1px 2px 0px; color: #001E2B;">
+          <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">FCST 교정</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58;">얼굴과 두개골 주변의 구조적 균형을 교정합니다.</div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/guide/treatments/brain-training/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 24px; color: #001E2B; transition: border-color 170ms, box-shadow 170ms;" style-hover="border-color: #00A35C; box-shadow: rgba(0,30,43,0.04) 0px 1px 2px 0px; color: #001E2B;">
+          <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">두뇌훈련</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58;">뇌기능 평가를 바탕으로 집중력과 자기조절력을 훈련합니다.</div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/guide/treatments/counseling/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 24px; color: #001E2B; transition: border-color 170ms, box-shadow 170ms;" style-hover="border-color: #00A35C; box-shadow: rgba(0,30,43,0.04) 0px 1px 2px 0px; color: #001E2B;">
+          <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">전문의 심리상담</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58;">한방신경정신과 전문의와 함께 진행하는 심층 상담입니다.</div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/guide/treatments/aromatherapy/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 24px; color: #001E2B; transition: border-color 170ms, box-shadow 170ms;" style-hover="border-color: #00A35C; box-shadow: rgba(0,30,43,0.04) 0px 1px 2px 0px; color: #001E2B;">
+          <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">향기치료</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #3D4F58;">후각을 통해 뇌 감정 중추에 직접 작용해 심신 이완을 돕습니다.</div>
+        </a>
+      </div>
+      <div style="margin-top: 28px;">
+        <a href="https://home-c-e67.pages.dev/guide/first-visit" style="font-size: 15px; font-weight: 600;">첫 내원 안내 보기 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="clinic-tour" style="background: #FFFFFF; padding: 88px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00684A; margin-bottom: 14px;">원내 둘러보기</div>
+      <h2 style="font-size: 34px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.3; margin: 0 0 12px; max-width: 640px; text-wrap: pretty;">해아림한의원 잠실점 둘러보기</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: #3D4F58; margin: 0 0 36px;">편안하고 안정감 있는 공간에서 진료받으실 수 있습니다.</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+        <figure style="margin: 0;">
+          <img src="https://home-c-e67.pages.dev/media/clinic/reception_hu_6788b24dac2ed025.webp" alt="접수 데스크" style="width: 100%; height: 240px; object-fit: cover; border-radius: 12px; display: block;" />
+          <figcaption style="font-size: 14px; color: #5C6C75; margin-top: 10px;">접수 데스크</figcaption>
+        </figure>
+        <figure style="margin: 0;">
+          <img src="https://home-c-e67.pages.dev/media/clinic/waiting-room_hu_b0f79993cc51e6a8.webp" alt="대기 공간" style="width: 100%; height: 240px; object-fit: cover; border-radius: 12px; display: block;" />
+          <figcaption style="font-size: 14px; color: #5C6C75; margin-top: 10px;">대기 공간</figcaption>
+        </figure>
+        <figure style="margin: 0;">
+          <img src="https://home-c-e67.pages.dev/media/clinic/counseling-room_hu_4f9549d360674013.webp" alt="1:1 상담실" style="width: 100%; height: 240px; object-fit: cover; border-radius: 12px; display: block;" />
+          <figcaption style="font-size: 14px; color: #5C6C75; margin-top: 10px;">1:1 상담실</figcaption>
+        </figure>
+        <figure style="margin: 0;">
+          <img src="https://home-c-e67.pages.dev/media/clinic/treatment-room_hu_b31a860d2d7374c.webp" alt="치료실" style="width: 100%; height: 240px; object-fit: cover; border-radius: 12px; display: block;" />
+          <figcaption style="font-size: 14px; color: #5C6C75; margin-top: 10px;">치료실</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showReviews }}" hint-placeholder-val="{{ true }}">
+  <section id="reviews" style="background: #F9FBFA; border-top: 1px solid #E8EDEB; border-bottom: 1px solid #E8EDEB; padding: 88px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00684A; margin-bottom: 14px;">치료 후기</div>
+      <h2 style="font-size: 34px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.3; margin: 0 0 12px; max-width: 640px; text-wrap: pretty;">치료 후기</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: #3D4F58; margin: 0 0 36px;">해아림한의원 잠실점에서 치료받으신 분들의 실제 이야기입니다.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div style="background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+          <img src="https://home-c-e67.pages.dev/media/reviews/mental-health/review1_hu_e073e27a28aac8b0.webp" alt="공황장애 치료 후기" style="width: 100%; height: 200px; object-fit: cover; display: block;" />
+          <div style="padding: 24px;">
+            <h3 style="font-size: 18px; font-weight: 600; margin: 0 0 10px;">공황장애 치료 후기</h3>
+            <p style="font-size: 15px; line-height: 1.7; color: #3D4F58; margin: 0 0 14px;">치료 전: 사람 많은 곳, 폐쇄된 공간에서 심하게 호흡이 힘들었고 밤에 잠들기 어려웠습니다. <strong style="font-weight: 600; color: #001E2B;">치료 후</strong>: 사람 많은 곳에도 신경 쓰지 않고 잘 적응하며, 밤에 잠도 잘 잡니다.</p>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">공황장애</span>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+          <img src="https://home-c-e67.pages.dev/media/reviews/tic-adhd/review1_hu_3e46aaca9340ffe7.webp" alt="ADHD 치료 후기" style="width: 100%; height: 200px; object-fit: cover; display: block;" />
+          <div style="padding: 24px;">
+            <h3 style="font-size: 18px; font-weight: 600; margin: 0 0 10px;">ADHD</h3>
+            <p style="font-size: 15px; line-height: 1.7; color: #3D4F58; margin: 0 0 14px;">치료 전: 숙제할 때 집중하지 못하고 매일 아이와 다퉜습니다. <strong style="font-weight: 600; color: #001E2B;">치료 후</strong>: 한약과 두뇌훈련, 침 치료를 병행하며 서서히 좋아져, 학원 선생님도 놀랄 만큼 집중력이 좋아졌습니다.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">ADHD</span>
+              <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">한약치료</span>
+              <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">두뇌훈련</span>
+            </div>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+          <img src="https://home-c-e67.pages.dev/media/reviews/hyperhidrosis/review4_hu_bff1fa79c72da940.webp" alt="다한증 치료 후기" style="width: 100%; height: 200px; object-fit: cover; display: block;" />
+          <div style="padding: 24px;">
+            <h3 style="font-size: 18px; font-weight: 600; margin: 0 0 10px;">얼굴 · 겨드랑이 다한증</h3>
+            <p style="font-size: 15px; line-height: 1.7; color: #3D4F58; margin: 0 0 14px;">치료 전: 출퇴근 지하철, 사람 많은 장소에서 화장이 지워질 정도로 땀이 났습니다. <strong style="font-weight: 600; color: #001E2B;">치료 후</strong>: 사람 많은 강의나 출퇴근시에도 땀이 거의 나지 않습니다.</p>
+            <span style="font-size: 12px; font-weight: 600; color: #00684A; background: #E3FCF7; padding: 5px 10px; border-radius: 4px;">다한증</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 28px; display: flex; gap: 20px; align-items: center;">
+        <a href="https://home-c-e67.pages.dev/reviews/" style="font-size: 15px; font-weight: 600;">치료후기 더 보기 →</a>
+        <span style="font-size: 13px; color: #889397;">개별 환자의 상태에 따라 치료 효과는 상이할 수 있습니다.</span>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="location" style="background: #FFFFFF; padding: 88px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00684A; margin-bottom: 14px;">오시는 길</div>
+      <h2 style="font-size: 34px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.3; margin: 0 0 36px; text-wrap: pretty;">잠실새내역 4번 출구 도보 3분</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 32px; align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div style="background: #F9FBFA; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px;">
+            <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #889397; margin-bottom: 12px;">주소</div>
+            <div style="font-size: 17px; line-height: 1.65; font-weight: 500;">서울특별시 송파구 올림픽로 102 서일빌딩 3층</div>
+            <div style="font-size: 15px; line-height: 1.7; color: #3D4F58; margin-top: 10px;">지하철 2호선 잠실새내역(4번 출구) 도보 3분<br />서일빌딩 뒷편 주차장 이용 가능</div>
+            <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+              <a href="https://www.google.com/maps/dir/?api=1&amp;destination=37.5114327,127.0819814" style="font-size: 14px; font-weight: 600; color: #FFFFFF; background: #00684A; padding: 11px 20px; border-radius: 9999px;" style-hover="background: #023430;">길찾기</a>
+              <a href="tel:02-6954-7575" style="font-size: 14px; font-weight: 600; color: #001E2B; background: #FFFFFF; border: 1px solid #C1C7C6; padding: 11px 20px; border-radius: 9999px;" style-hover="border-color: #00684A; color: #00684A;">02-6954-7575</a>
+            </div>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; overflow: hidden;">
+            <div style="padding: 20px 24px 12px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #889397;">진료시간</div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 24px; border-top: 1px solid #F1F3F2; font-size: 15px;"><span style="color: #3D4F58;">월 · 수</span><span style="font-weight: 600;">10:00 ~ 19:00</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 24px; border-top: 1px solid #F1F3F2; font-size: 15px;"><span style="color: #3D4F58;">화 · 금 <span style="color: #00684A; font-weight: 600;">야간진료</span></span><span style="font-weight: 600;">10:00 ~ 20:00</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 24px; border-top: 1px solid #F1F3F2; font-size: 15px;"><span style="color: #3D4F58;">토요일 · 대체공휴일</span><span style="font-weight: 600;">10:00 ~ 16:00</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 24px; border-top: 1px solid #F1F3F2; font-size: 15px;"><span style="color: #3D4F58;">목 · 일 · 공휴일</span><span style="font-weight: 600; color: #5C6C75;">정기 휴진</span></div>
+            <div style="padding: 14px 24px 20px; border-top: 1px solid #F1F3F2; font-size: 14px; line-height: 1.6; color: #5C6C75;">점심시간 13:00 ~ 14:00 · 토요일·대체공휴일은 점심시간 없이 연속 진료합니다. 대체공휴일은 진료합니다.</div>
+          </div>
+        </div>
+        <iframe src="https://maps.google.com/maps?q=37.5114327,127.0819814&amp;z=17&amp;output=embed" title="해아림한의원 잠실점 위치" style="width: 100%; height: 560px; border: 1px solid #E8EDEB; border-radius: 12px; display: block;" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showColumn }}" hint-placeholder-val="{{ true }}">
+  <section id="column" style="background: #F9FBFA; border-top: 1px solid #E8EDEB; border-bottom: 1px solid #E8EDEB; padding: 88px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00684A; margin-bottom: 14px;">원장 컬럼</div>
+      <h2 style="font-size: 34px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.3; margin: 0 0 12px; max-width: 640px; text-wrap: pretty;">원장이 직접 전하는 건강 정보</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: #3D4F58; margin: 0 0 36px;">해아림한의원 잠실점 원장들이 직접 전하는 건강 정보와 진료 안내입니다.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <a href="https://home-c-e67.pages.dev/column/why-panic-disorder-starts-suddenly/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; color: #001E2B; transition: box-shadow 170ms, transform 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); color: #001E2B;">
+          <div style="font-size: 12px; font-weight: 600; color: #00684A; margin-bottom: 12px;">공황장애 · 불안장애</div>
+          <h3 style="font-size: 19px; font-weight: 600; line-height: 1.4; margin: 0 0 12px;">공황장애는 왜 갑자기 시작될까요?</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 20px;">공황발작은 왜 아무 이유 없이 갑자기 시작되는 것처럼 느껴질까요? 신체의 위험 경보 반응과 예기불안, 반복되는 과정, 확인해야 할 위험 신호를 설명합니다.</p>
+          <div style="display: flex; align-items: center; gap: 10px; padding-top: 16px; border-top: 1px solid #F1F3F2;">
+            <img src="https://home-c-e67.pages.dev/media/authors/seok-seonhui_hu_55c9618a3a4c339e.webp" alt="석선희 원장" style="width: 32px; height: 32px; border-radius: 9999px; object-fit: cover; display: block;" />
+            <span style="font-size: 13px; color: #5C6C75;">석선희 원장 · 2026년 8월 23일</span>
+          </div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/column/why-tics-wax-and-wane/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; color: #001E2B; transition: box-shadow 170ms, transform 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); color: #001E2B;">
+          <div style="font-size: 12px; font-weight: 600; color: #00684A; margin-bottom: 12px;">틱장애 칼럼</div>
+          <h3 style="font-size: 19px; font-weight: 600; line-height: 1.4; margin: 0 0 12px;">틱장애는 왜 좋아졌다 심해졌다 할까요?</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 20px;">틱장애 증상이 좋아졌다 심해지는 증감 현상과 수면·긴장·환경의 영향을 설명하고 부모가 확인할 점을 안내합니다.</p>
+          <div style="display: flex; align-items: center; gap: 10px; padding-top: 16px; border-top: 1px solid #F1F3F2;">
+            <img src="https://home-c-e67.pages.dev/media/authors/ryu-seokgyun_hu_56dfad40699659da.webp" alt="류석균 원장" style="width: 32px; height: 32px; border-radius: 9999px; object-fit: cover; display: block;" />
+            <span style="font-size: 13px; color: #5C6C75;">류석균 원장 · 2026년 8월 23일</span>
+          </div>
+        </a>
+        <a href="https://home-c-e67.pages.dev/column/adhd-vs-normal-distractibility/" style="display: block; background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 28px; color: #001E2B; transition: box-shadow 170ms, transform 170ms;" style-hover="box-shadow: rgba(0,30,43,0.08) 0px 4px 12px 0px; transform: translateY(-2px); color: #001E2B;">
+          <div style="font-size: 12px; font-weight: 600; color: #00684A; margin-bottom: 12px;">ADHD 칼럼</div>
+          <h3 style="font-size: 19px; font-weight: 600; line-height: 1.4; margin: 0 0 12px;">ADHD와 단순한 산만함은 어떻게 다를까요?</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: #3D4F58; margin: 0 0 20px;">아이의 정상적인 산만함과 ADHD를 지속 기간, 두 가지 이상의 환경, 기능 저하와 감별질환을 기준으로 설명합니다.</p>
+          <div style="display: flex; align-items: center; gap: 10px; padding-top: 16px; border-top: 1px solid #F1F3F2;">
+            <img src="https://home-c-e67.pages.dev/media/authors/ryu-seokgyun_hu_56dfad40699659da.webp" alt="류석균 원장" style="width: 32px; height: 32px; border-radius: 9999px; object-fit: cover; display: block;" />
+            <span style="font-size: 13px; color: #5C6C75;">류석균 원장 · 2026년 8월 23일</span>
+          </div>
+        </a>
+      </div>
+      <div style="margin-top: 28px;">
+        <a href="https://home-c-e67.pages.dev/column/" style="font-size: 15px; font-weight: 600;">컬럼 더 보기 →</a>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="consult" style="background: #FFFFFF; padding: 88px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="background: #E3FCF7; border: 1px solid #C0FAE6; border-radius: 20px; padding: 56px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: start;">
+        <div>
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00684A; margin-bottom: 14px;">Consult</div>
+          <h2 style="font-size: 34px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.3; margin: 0 0 14px; text-wrap: pretty;">전화 상담 신청</h2>
+          <p style="font-size: 17px; line-height: 1.7; color: #3D4F58; margin: 0 0 28px;">이름과 연락처를 남겨주시면 확인 후 전화로 안내해 드립니다.</p>
+          <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 1px solid #C0FAE6;">
+            <a href="tel:02-6954-7575" style="font-size: 17px; font-weight: 600; color: #001E2B;">전화 02-6954-7575</a>
+            <a href="https://pf.kakao.com/_xkqufn" style="font-size: 15px; font-weight: 500;">카카오톡으로 문의하기 →</a>
+            <a href="https://map.naver.com/p/entry/place/1887559338" style="font-size: 15px; font-weight: 500;">네이버 예약으로 진행하기 →</a>
+          </div>
+        </div>
+        <form style="background: #FFFFFF; border: 1px solid #E8EDEB; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <label style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 14px; font-weight: 600;">이름 <span style="color: #00A35C;">*</span></span>
+              <input type="text" placeholder="홍길동" style="font-family: inherit; font-size: 15px; color: #001E2B; padding: 12px 14px; border: 1px solid #C1C7C6; border-radius: 8px; background: #FFFFFF;" />
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 14px; font-weight: 600;">연락처 <span style="color: #00A35C;">*</span></span>
+              <input type="tel" placeholder="010-0000-0000" style="font-family: inherit; font-size: 15px; color: #001E2B; padding: 12px 14px; border: 1px solid #C1C7C6; border-radius: 8px; background: #FFFFFF;" />
+            </label>
+          </div>
+          <label style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600;">상담 분야 <span style="color: #00A35C;">*</span></span>
+            <select style="font-family: inherit; font-size: 15px; color: #001E2B; padding: 12px 14px; border: 1px solid #C1C7C6; border-radius: 8px; background: #FFFFFF;">
+              <option>선택해 주세요</option>
+              <option>틱장애/ADHD</option>
+              <option>공황/불안/강박/우울</option>
+              <option>불면</option>
+              <option>화병</option>
+              <option>자율신경실조증</option>
+              <option>다한증</option>
+              <option>수험생보약</option>
+              <option>신경성질환</option>
+              <option>기타</option>
+            </select>
+          </label>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-size: 14px; font-weight: 600;">답변 수신 희망 방식</span>
+            <div style="display: flex; gap: 20px;">
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 15px; color: #3D4F58;"><input type="radio" name="reply" style="accent-color: #00684A;" />전화 유선 안내</label>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 15px; color: #3D4F58;"><input type="radio" name="reply" style="accent-color: #00684A;" />문자 · 카카오톡 메시지</label>
+            </div>
+          </div>
+          <label style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600;">문의사항 (선택)</span>
+            <textarea rows="4" placeholder="증상과 경과를 간단히 적어주시면 상담에 도움이 됩니다." style="font-family: inherit; font-size: 15px; color: #001E2B; padding: 12px 14px; border: 1px solid #C1C7C6; border-radius: 8px; background: #FFFFFF; resize: vertical;"></textarea>
+          </label>
+          <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.6; color: #3D4F58;">
+            <input type="checkbox" style="margin-top: 3px; accent-color: #00684A;" />
+            <span>개인정보 수집 및 이용에 동의합니다 <span style="color: #00A35C;">*</span> · <a href="https://home-c-e67.pages.dev/privacy/" style="font-weight: 600;">개인정보처리방침 보기</a></span>
+          </label>
+          <button type="button" style="font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; background: #00684A; border: none; padding: 15px 24px; border-radius: 9999px; cursor: pointer;" style-hover="background: #023430;">전화 상담 신청하기</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #001E2B; color: #FFFFFF; padding: 64px 0 40px;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+      <div style="display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.1fr; gap: 40px;">
+        <div>
+          <div style="display: flex; align-items: baseline; gap: 8px;">
+            <span style="font-size: 19px; font-weight: 700; letter-spacing: -0.4px;">해아림한의원</span>
+            <span style="font-size: 13px; font-weight: 600; color: #C0FAE6;">잠실점</span>
+          </div>
+          <p style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.70); margin: 14px 0 18px; max-width: 280px;">마음의 불안부터 두뇌의 균형까지 — 2인의 전담 원장이 세밀하게 동행합니다</p>
+          <a href="https://www.healim.com" style="font-size: 14px; color: #C0FAE6;" style-hover="color: #C0FAE6;">해아림한의원 네트워크 홈페이지 →</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.70); margin-bottom: 4px;">주요 진료과목</div>
+          <a href="https://home-c-e67.pages.dev/diseases/anxiety-panic/" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">공황장애 · 불안장애</a>
+          <a href="https://home-c-e67.pages.dev/diseases/ocd/" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">강박장애</a>
+          <a href="https://home-c-e67.pages.dev/diseases/depression/" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">우울장애</a>
+          <a href="https://home-c-e67.pages.dev/diseases/insomnia/" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">불면증</a>
+          <a href="https://home-c-e67.pages.dev/diseases/tic/" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">틱장애 · ADHD</a>
+          <a href="https://home-c-e67.pages.dev/diseases/dysautonomia/" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">자율신경실조증</a>
+          <a href="https://home-c-e67.pages.dev/diseases/hyperhidrosis/" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">다한증</a>
+          <a href="https://home-c-e67.pages.dev/diseases/nervous-system/" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">신경성 질환</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.70); margin-bottom: 4px;">진료 시간표</div>
+          <span style="font-size: 14px; color: rgba(255,255,255,0.70);">월 · 수 10:00 ~ 19:00</span>
+          <span style="font-size: 14px; color: rgba(255,255,255,0.70);">화 · 금 (야간) 10:00 ~ 20:00</span>
+          <span style="font-size: 14px; color: rgba(255,255,255,0.70);">토 · 대체공휴일 10:00 ~ 16:00</span>
+          <span style="font-size: 14px; color: rgba(255,255,255,0.70);">목 · 일 · 공휴일 정기 휴진</span>
+          <span style="font-size: 13px; color: rgba(255,255,255,0.70); margin-top: 6px;">※ 점심시간 13:00~14:00 (토·공휴일 없음)</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.70); margin-bottom: 4px;">오시는 길 &amp; 문의</div>
+          <span style="font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.70);">서울특별시 송파구 올림픽로 102 서일빌딩 3층<br />지하철 2호선 잠실새내역 4번 출구 도보 3분</span>
+          <span style="font-size: 14px; color: rgba(255,255,255,0.70);">주차: 서일빌딩 뒷편 주차장 이용 가능</span>
+          <a href="tel:02-6954-7575" style="font-size: 16px; font-weight: 600; color: #FFFFFF; margin-top: 4px;" style-hover="color: #C0FAE6;">02-6954-7575</a>
+          <div style="display: flex; gap: 14px; margin-top: 6px;">
+            <a href="https://blog.naver.com/healimjs" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">블로그</a>
+            <a href="https://www.instagram.com/healimjs" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">인스타그램</a>
+            <a href="https://pf.kakao.com/_xkqufn" style="font-size: 14px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">카카오톡</a>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.14); display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-size: 13px; color: rgba(255,255,255,0.70);">상호명: 해아림한의원 잠실점 | 대표자: 석선희 | 대표전화: 02-6954-7575 | 소재지: 서울특별시 송파구 올림픽로 102 서일빌딩 3층 | 사업자등록번호 618-92-00392</div>
+        <div style="font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.70); max-width: 900px;">[의료법 고지] 본 웹사이트의 모든 콘텐츠는 정보 제공을 목적으로 작성되었으며, 개별 환자의 상태에 따라 진단 및 치료 효과는 상이할 수 있습니다. 치료 전 반드시 한의사와 1:1 진료 및 상담을 진행하시기 바랍니다.</div>
+        <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+          <a href="https://home-c-e67.pages.dev/privacy/" style="font-size: 13px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">개인정보처리방침</a>
+          <a href="https://home-c-e67.pages.dev/terms/" style="font-size: 13px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">이용약관</a>
+          <a href="https://home-c-e67.pages.dev/pricing/" style="font-size: 13px; color: rgba(255,255,255,0.70);" style-hover="color: #FFFFFF;">비급여안내</a>
+        </div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.70);">© 2026 해아림한의원 잠실점</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showReviews&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;섹션&quot;},&quot;showColumn&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;섹션&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showReviews: this.props.showReviews ?? true,
+      showColumn: this.props.showColumn ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

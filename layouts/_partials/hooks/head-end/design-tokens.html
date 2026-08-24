@@ -1,0 +1,9 @@
+{{/* Claude Design 리디자인 — 색상·타입·간격·모양 토큰 (handoff/CLAUDE-CODE-BRIEF.md 기준).
+     원본은 handoff/tokens.css, 실제 사용 파일은 assets/css/tokens.css.
+     이 값들을 기준으로 theme.colors.primary/secondary(params.yaml)와
+     기존 gray-* 웜뉴트럴 후크(warm-neutral.html)도 함께 맞춰뒀다. */}}
+{{ $tokens := resources.Get "css/tokens.css" }}
+{{ if $tokens }}
+  {{ $tokens = $tokens | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $tokens.RelPermalink }}" integrity="{{ $tokens.Data.Integrity }}">
+{{ end }}
