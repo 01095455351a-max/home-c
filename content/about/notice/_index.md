@@ -20,5 +20,5 @@ sections:
       sort_ascending: false
       page_type: notice-post
     design:
-      view: card
+      view: date-title-summary
 ---

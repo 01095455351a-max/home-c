@@ -117,6 +117,8 @@ clinic:
 
 `content/about/notice/` 폴더에 새 `.md` 파일 생성. 기존 파일(`2026-hours-update.md`)을 복사해서 `title`, `date`, `tags: [공지]`만 맞추면 자동으로 공지사항 게시판과 홈 화면 미리보기에 나타납니다. (⚠️ `date`는 항상 과거 날짜로 — Hugo는 미래 날짜 콘텐츠를 기본적으로 빌드에서 제외합니다. [문제 보고서 §1](ISSUES.md#1-hugo가-미래-날짜-콘텐츠를-조용히-빌드에서-제외함) 참고)
 
+공지사항 게시판은 카드형이 아니라 날짜·제목·요약이 한 줄씩 나열되는 리스트형(`content/about/notice/_index.md`의 `content-collection` 블록에 `design.view: date-title-summary`)으로 표시됩니다. 항목이 많아질수록 카드형보다 스크롤이 짧고 훑어보기 쉬워 이 뷰를 선택했습니다.
+
 ### 4.3 새 원장 컬럼 작성
 
 `content/column/`에 새 `.md` 파일 생성 (URL은 `/column/파일명/`), `tags:`에 `칼럼`을 반드시 포함해야 홈 화면 미리보기에 함께 노출됩니다. `type: blog`로 지정해야 BlogPosting 구조화 데이터(JSON-LD)가 자동으로 생성됩니다 (2026-08부터 URL을 `/blog/`에서 `/column/`으로 변경, 원고 내용에 맞는 영문 슬러그를 파일명으로 사용).
