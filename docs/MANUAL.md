@@ -210,7 +210,23 @@ build:
 
 ### 4.6 새 특화 질환 / 치료방법 페이지 추가
 
-`content/diseases/` 또는 `content/guide/treatments/` 안의 기존 `.md` 파일을 복사해 구조(hero → markdown → cta-card)를 그대로 사용하고 내용만 교체합니다. 만든 뒤 `config/_default/menus.yaml`의 해당 드롭다운에 메뉴 항목을 추가해야 상단 메뉴에 나타납니다.
+`content/diseases/` 또는 `content/guide/treatments/` 안의 기존 `.md` 파일을 복사해 구조를 그대로 사용하고 내용만 교체합니다. 만든 뒤 `config/_default/menus.yaml`의 해당 드롭다운에 메뉴 항목을 추가해야 상단 메뉴에 나타납니다.
+
+**질환 상세 페이지(`content/diseases/*.md`) 표준 구조** — 9개 질환 페이지 모두 아래 순서를 따릅니다(2026-08-24 전체 적용):
+
+1. `block: hero` — 질환명, 한 줄 요약
+2. `block: markdown` (하나의 큰 블록, 아래 H2 섹션들을 순서대로 포함)
+   - 질환 개요("~, 왜 반복될까요" 류의 도입부)
+   - 환자 언어로 쓴 증상 목록
+   - `## <질환명>과 헷갈리기 쉬운 것들` — 감별진단 3개 내외 (다른 신체 질환/유사 질환과의 구분)
+   - 원인(3~4개 요인)
+   - `## 진료에서는 무엇을 확인하나요` — 수면/식욕/소화/피로/스트레스/증상 경과/복용약 등 실제 문진 항목 체크리스트
+   - `## 해아림한의원 잠실점의 치료 방향` — 담당 원장을 `[이름 원장](/about/doctors/)` 링크로 최소 1회 언급
+   - `## 관련 원장 컬럼` — 해당 질환을 다루는 컬럼 글로 링크(컬럼 front matter의 `authors:`로 담당 원장 확인)
+3. `block: faq` — 질환별 자주 묻는 질문 3~4개(사이트 전체 FAQ와 중복되지 않는, 그 질환에 특화된 질문)
+4. `block: cta-card`
+
+새 질환 페이지를 만들 때도 이 구조를 그대로 따르고, front matter에 `description:` 필드(SEO용 요약)를 반드시 채웁니다. 담당 원장은 [`config/_default/menus.yaml`](../config/_default/menus.yaml)의 특화 질환 목록과 `content/about/doctors/_index.md`의 각 원장 `credentials`/`진료 분야`를 기준으로 판단합니다.
 
 ### 4.7 색상 테마 변경
 
