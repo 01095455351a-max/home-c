@@ -17,7 +17,7 @@ sections:
     content:
       items:
         - name: 개인맞춤한약
-          description: 증상과 체질에 맞춰 1:1로 처방되는 청정 한약, 치료의 핵심 축입니다.
+          description: 증상과 체질에 맞춰 1:1로 처방되는 개인별 맞춤 한약, 치료의 핵심 축입니다.
           icon: hero/beaker
           gradient: from-primary-400 to-primary-600
           url: /guide/treatments/herbal-medicine/

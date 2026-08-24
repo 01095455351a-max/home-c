@@ -7,7 +7,7 @@ sections:
     content:
       eyebrow: 치료 방법
       title: 개인맞춤한약
-      text: 증상과 체질, 현재 몸 상태에 맞춰 1:1로 처방되는 청정 한약 — 해아림한의원 잠실점 치료의 핵심 축입니다.
+      text: 증상과 체질, 현재 몸 상태에 맞춰 1:1로 처방되는 개인별 맞춤 한약 — 해아림한의원 잠실점 치료의 핵심 축입니다.
       primary_action:
         text: 전화 상담 신청
         url: "#consult"
