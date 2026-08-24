@@ -87,12 +87,18 @@
 - **해결**: (1) `content/about/location.md`에 실제 한국어 제목(`진료시간 & 연락처`) 지정, (2) 근본 원인도 `i18n/ko.yaml`에 `block_contact_title`/`block_contact_visit_title`/`block_contact_connect_title` 세 키를 한국어로 추가해 앞으로 이 블록을 빈 title로 쓰더라도 영어가 새지 않도록 방어.
 - **주의**: 벤더 블록에 `title`/`text` 같은 필드가 있다고 해서 빈 문자열이 "숨김"으로 처리된다고 가정하지 말 것 — `default` 폴백이 걸려있는 필드는 반드시 실제 값을 채우거나 `i18n/ko.yaml`에 대응 키가 있는지 먼저 확인. `contact-info`의 연결 카드 내 "Phone"/"Email"/"Call me" 등 일부 라벨은 i18n 호출 자체가 없는 하드코딩이라 이 방법으로도 못 고침(대기 중 항목 참고).
 
+### 1.17 `baseURL`이 placeholder(`example.com`)로 남아 있어 canonical·OG·구조화 데이터·sitemap.xml이 전부 잘못된 도메인을 가리킴
+- **증상**: 실제 배포된 `home-c-e67.pages.dev` 사이트에서 `<link rel="canonical">`, `og:url`, JSON-LD(BlogPosting/WebPage/BreadcrumbList/FAQPage)의 `@id`, 그리고 **`sitemap.xml` 자체**가 전부 `https://example.com/...`를 가리키고 있었음. Phase 1 분석 보고서 작성 중 프로젝트 레이어의 Schema.org 마크업이 "전무하다"고 보고했었는데, 실제로는 Hugo Blox 테마(`hugo_cache`, 조사 시 제외 대상)가 `type: blog` 컬럼 글에 BlogPosting/WebPage/BreadcrumbList/FAQPage JSON-LD를 자동 생성하고 있었음 — 다만 baseURL이 잘못되어 전부 무의미한 주소를 가리키고 있었던 것.
+- **원인**: `config/_default/hugo.yaml:8`의 `baseURL: 'https://example.com/'`이 프로젝트 초기 스캐폴딩 값 그대로 남아 있었음. `config/production/` 오버라이드도 없고 Cloudflare Pages 빌드 명령(`hugo --gc --minify`, docs/MANUAL.md §5)에도 `--baseURL`/`HUGO_BASEURL` 지정이 없어 항상 이 placeholder가 그대로 빌드됨.
+- **해결**: `baseURL`을 현재 실제 사용 중인 `https://home-c-e67.pages.dev/`로 수정. 빌드 후 `public/` 전체에서 `example.com` 잔존 0건, 배포 사이트에서도 canonical·sitemap 정상화 확인.
+- **주의**: 사용자 확인상 **정식 커스텀 도메인으로 이전할 계획이 있음** — 도메인이 확정되면 `config/_default/hugo.yaml`의 `baseURL`을 다시 그 주소로 교체해야 함(대기 중 항목에도 등록). 이후 유사한 "placeholder가 실배포까지 새는" 문제를 막으려면, 새 프로젝트 세팅 시 `baseURL`을 가장 먼저 점검 항목에 넣을 것.
+
 ## 2. 대기 중인 항목 (실제 배포/운영 전 확인 필요)
 
 | 항목 | 위치 | 상태 |
 |---|---|---|
-| 석선희 원장 이야기 원고 | `content/about/doctors/_index.md` (두 번째 `doctor-profile` 블록의 `story` 필드) | 류석균 원장 스토리(개인 서사 중심, 실제 원고 반영됨)에 비해 분량이 짧고 진료 철학 요약 위주. 원고 전달 시 교체 예정 |
-| 개인정보처리방침 위탁업체명 | `content/privacy.md` §6 | "㈜아임웹"으로 기재되어 있으나 실제 배포 환경(Cloudflare Pages)에 맞게 확인 필요 |
+| 석선희 원장 이야기 원고 | `content/about/doctors/_index.md` (두 번째 `doctor-profile` 블록의 `story` 필드) | 류석균 원장 스토리와 동일한 구조(진료 분야/소개/진료 철학/진료 방식/관련 질환/관련 컬럼)로 세팅만 맞춰둔 상태. 실제 원고 전달 시 교체 예정 |
+| 정식 커스텀 도메인 확정 시 `baseURL` 재변경 | `config/_default/hugo.yaml:8` | 현재 `https://home-c-e67.pages.dev/`로 설정됨(§1.17). 정식 도메인 연결이 완료되면 반드시 이 값을 새 도메인으로 교체 — 안 바꾸면 canonical·sitemap·구조화 데이터가 다시 옛 주소를 가리키게 됨 |
 | 개인정보처리방침 공고일자/시행일자 | `content/privacy.md` §10 | `[게시 예정일 기재]` placeholder |
 | 비급여 항목 실제 가격 | `content/pricing/_index.md` | 사장님 요청으로 전 항목 50만원으로 임시 통일. 실제 금액 확정 시 항목별로 교체 필요 |
 | 언론보도 기사 1건 | `content/press/_index.md` 하단 목록 | `edu.donga.com` 자동 조회가 차단되어 수동 확인 필요 |

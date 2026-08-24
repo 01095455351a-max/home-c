@@ -5,7 +5,7 @@
 
 # Website name (set in params.yaml under hugoblox.branding.name)
 title: ''
-baseURL: 'https://example.com/' # Website URL
+baseURL: 'https://home-c-e67.pages.dev/' # Website URL — 정식 도메인 확정 시 교체 (docs/ISSUES.md §2 참고)
 
 ############################
 ## PAGE OPTIONS
