@@ -81,6 +81,12 @@
 - **해결**: `column-grid`에서 `get_featured_image`를 호출하기 전에 `$item.Params.image.filename`이 실제로 비어있지 않은지 먼저 직접 확인하고, 비어있으면 아예 파셜을 호출하지 않도록 변경(`layouts/_partials/hbx/blocks/column-grid/block.html`).
 - **주의**: "이미지가 없으면 대체 UI를 보여준다" 같은 로직을 새로 만들 때는 `get_featured_image`의 반환값을 곧바로 신뢰하지 말고, front matter의 `image.filename` 값을 직접 먼저 확인할 것.
 
+### 1.16 `contact-info` 블록에 `title`을 빈 문자열로 주면 "Contact Us"가 그대로 노출됨
+- **증상**: `content/about/location.md`(구 `hours.md`에서부터)에서 `contact-info` 블록의 `title: ""`로 제목을 숨기려 했는데, 실제로는 영어 "Contact Us"가 큰 섹션 제목으로 그대로 보였음. `visit_title`/`connect_title`도 값을 안 주면 각각 "Visit Us"/"Connect"로 영어가 노출됨.
+- **원인**: 벤더 블록(`_vendor/.../blox/contact-info/block.html`)은 `title`이 빈 문자열이면 무시하고 `i18n "block_contact_title" | default "Contact Us"`로 폴백하는데, 프로젝트 `i18n/ko.yaml`에는 `block_contact_office_hours`/`block_contact_follow_me`만 번역이 있고 `block_contact_title`/`block_contact_visit_title`/`block_contact_connect_title`은 없어 항상 영어 기본값으로 떨어짐. 홈페이지(`content/_index.md`)는 처음부터 `title`을 명시적으로 채워서 이 문제를 우연히 피해갔음.
+- **해결**: (1) `content/about/location.md`에 실제 한국어 제목(`진료시간 & 연락처`) 지정, (2) 근본 원인도 `i18n/ko.yaml`에 `block_contact_title`/`block_contact_visit_title`/`block_contact_connect_title` 세 키를 한국어로 추가해 앞으로 이 블록을 빈 title로 쓰더라도 영어가 새지 않도록 방어.
+- **주의**: 벤더 블록에 `title`/`text` 같은 필드가 있다고 해서 빈 문자열이 "숨김"으로 처리된다고 가정하지 말 것 — `default` 폴백이 걸려있는 필드는 반드시 실제 값을 채우거나 `i18n/ko.yaml`에 대응 키가 있는지 먼저 확인. `contact-info`의 연결 카드 내 "Phone"/"Email"/"Call me" 등 일부 라벨은 i18n 호출 자체가 없는 하드코딩이라 이 방법으로도 못 고침(대기 중 항목 참고).
+
 ## 2. 대기 중인 항목 (실제 배포/운영 전 확인 필요)
 
 | 항목 | 위치 | 상태 |
@@ -94,6 +100,7 @@
 | 카카오맵 실제 렌더링 라이브 확인 | `content/_index.md`, `content/about/location.md`의 `block: clinic-map` | JS 키 등록 + 카카오맵 활성화까지 완료, SDK 응답도 정상 확인했으나 로컬 미리보기 도구의 네트워크 제약으로 시각적 확인은 실제 배포 주소에서 재확인 필요 |
 | 네이버 로그인 후 원본 후기 열람 기능 | 자필 후기 (`content/reviews/`) | 공개 범위(로그인 회원에게 원본 공개)는 사장님 확인 완료. 아직 필요한 것: (1) 원본(블러 처리 전) 이미지 재전송, (2) 네이버 개발자센터 OAuth 앱 등록(Client ID/Secret, 사장님 직접) — 준비되면 진행 |
 | 관리자 화면(Decap CMS, `/admin`) 실제 로그인 미검증 | `static/admin/`, `functions/api/auth.js`, `functions/api/callback.js` | 코드는 작성 완료, `hugo server`(로컬)는 Cloudflare Pages Functions를 실행하지 않아 로그인까지 로컬 검증 불가. 실 배포 후 아래가 준비되면 테스트 필요: (1) GitHub OAuth App 등록, (2) Cloudflare Pages 환경변수 `GITHUB_CLIENT_ID`/`GITHUB_CLIENT_SECRET` 등록, (3) 원장님·직원 GitHub 계정을 저장소 협업자로 추가. 절차는 [MANUAL.md §4.9](MANUAL.md#49-관리자-화면admin-설정--새-게시판-콘텐츠-추가) 참고 |
+| `contact-info` 블록의 "Phone"/"Email"/"Call me" 등 일부 라벨이 영어로 하드코딩됨 | `_vendor/github.com/HugoBlox/kit/modules/blox/blox/contact-info/block.html` (예: §363, §422, §434) | i18n 호출이 아예 없는 리터럴 문자열이라 `i18n/ko.yaml` 추가로는 못 고침(§1.16 참고). 프로젝트 오버라이드(`layouts/_partials/hbx/blocks/contact-info/block.html`)로 벤더 파일을 복사해 해당 문자열만 한국어로 바꿔야 함. 홈페이지·진료시간&오시는길 페이지 양쪽에 동일하게 존재하는 사소한 노출(전화번호 위 작은 라벨) |
 
 ## 3. 알려진 제약사항
 

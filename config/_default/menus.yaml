@@ -18,13 +18,9 @@ main:
     url: /about/doctors/
     weight: 20
   - parent: 한의원 소개
-    name: 진료시간
-    url: /about/hours/
-    weight: 30
-  - parent: 한의원 소개
-    name: 오시는 길
+    name: 진료시간 & 오시는 길
     url: /about/location/
-    weight: 40
+    weight: 30
   - parent: 한의원 소개
     name: 공지사항
     url: /about/notice/
@@ -188,13 +184,9 @@ footer:
     url: /about/doctors/
     weight: 20
   - parent: 한의원 소개
-    name: 진료시간
-    url: /about/hours/
-    weight: 30
-  - parent: 한의원 소개
-    name: 오시는 길
+    name: 진료시간 & 오시는 길
     url: /about/location/
-    weight: 40
+    weight: 30
   - parent: 한의원 소개
     name: 공지사항
     url: /about/notice/

@@ -193,6 +193,8 @@ build:
 
 `content/_index.md`, `content/about/location.md`의 `block: clinic-map` 항목에서 `lat`/`lng`/`directions_url`을 수정하면 됩니다.
 
+`clinic-map` 블록은 `design.layout`으로 두 가지 배치를 지원합니다: `split`(기본, 주소·지도 좌우 분할) / `stacked`(지도를 상단에 크게 보여주고 주소·전화·길찾기를 그 아래 카드에 배치 — 지도를 더 넓고 시원하게 보여주고 싶을 때, `content/about/location.md`에서 사용 중). `content.phone`을 지정하면 주소 옆에 전화 아이콘+번호도 함께 노출됩니다.
+
 지도는 카카오맵(JS SDK)을 기본으로 쓰며, `params.yaml`의 `clinic.kakao_map_js_key`가 비어있으면 API 키가 필요 없는 Google 지도 임베드로 자동 대체됩니다. 카카오맵 키를 새로 발급/교체하려면:
 
 1. [카카오 디벨로퍼스](https://developers.kakao.com) → 내 애플리케이션 → 앱 생성 → **앱 키**에서 **JavaScript 키** 확인
@@ -201,6 +203,8 @@ build:
 4. 발급받은 JavaScript 키를 `clinic.kakao_map_js_key`에 등록
 
 (참고: 네이버 지도는 2025년 3월부터 API 신규 이용 신청이 유료로 전환되어 사용하지 않기로 함.)
+
+**진료시간과 오시는 길은 별도 페이지가 아니라 `content/about/location.md` 한 페이지("진료시간 & 오시는 길")에 통합되어 있습니다.** 이전에 있던 `content/about/hours.md`는 삭제되었고, `/about/hours/`로 들어오는 옛 링크는 `aliases`로 `/about/location/`에 자동 리다이렉트됩니다. `config/_default/menus.yaml`의 `한의원 소개` 드롭다운에도 "진료시간"/"오시는 길" 두 항목이 아닌 "진료시간 & 오시는 길" 한 항목만 존재합니다 — 새로 분리하지 말 것.
 
 ### 4.6 새 특화 질환 / 치료방법 페이지 추가
 

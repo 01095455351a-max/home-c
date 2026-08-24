@@ -4,7 +4,7 @@
 {{ $c := site.Params.clinic }}
 {{/* 홈/오시는 길/진료시간 페이지는 이미 자체적으로 동일한 정보(지도·진료시간 카드)를 갖고 있으므로,
      이 공통 하단에서는 중복을 피해 진료시간·오시는 길 카드를 숨기고 전화 상담 신청 폼만 노출합니다. */}}
-{{ $hideHoursLocation := or .IsHome (in (slice "/about/location/" "/about/hours/") .RelPermalink) }}
+{{ $hideHoursLocation := or .IsHome (eq .RelPermalink "/about/location/") }}
 <section id="consult" class="hb-common-bottom bg-gray-50 dark:bg-gray-900/60 border-t border-gray-200 dark:border-white/10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
 

@@ -2,11 +2,16 @@
      site.Params.clinic.kakao_map_js_key 가 설정되어 있으면 카카오맵(JS SDK)을 사용하고,
      비어있으면 API 키가 필요 없는 구글 지도 iframe으로 자동 대체됩니다.
      content: { title, subtitle, address (multi-line string), lat, lng, zoom,
-                directions_text, directions_url } */}}
+                directions_text, directions_url }
+     design: { layout: "split"(기본, 주소·지도 좌우 분할) | "stacked"(지도를 상단에 크게,
+               주소·길찾기는 그 아래 — 지도 자체를 더 넓고 시원하게 보여주고 싶을 때) } */}}
 {{ $page := .wcPage }}
 {{ $block := .wcBlock }}
 {{ $content := $block.content }}
 {{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+{{ $design := $block.design }}
+{{ if not (reflect.IsMap $design) }}{{ $design = dict }}{{ end }}
+{{ $layout := index $design "layout" | default "split" }}
 
 {{ $title := index $content "title" }}
 {{ $subtitle := index $content "subtitle" }}
@@ -16,6 +21,7 @@
 {{ $zoom := index $content "zoom" | default 16 }}
 {{ $directions_text := index $content "directions_text" | default "길찾기" }}
 {{ $directions_url := index $content "directions_url" }}
+{{ $phone := index $content "phone" }}
 
 {{ $kakaoJsKey := site.Params.clinic.kakao_map_js_key }}
 {{/* 카카오맵의 확대 레벨(level)은 구글식 zoom과 반대 방향(숫자가 작을수록 확대)이라 근사 변환 */}}
@@ -32,12 +38,52 @@
       {{ with $subtitle }}<p class="text-lg text-gray-600 dark:text-gray-400">{{ . }}</p>{{ end }}
     </div>
     {{ end }}
+
+    {{ $googleIframe := printf "https://maps.google.com/maps?q=%v,%v&z=%v&output=embed" $lat $lng $zoom }}
+    {{ $mapNode := printf "<div id=\"%s\" class=\"absolute inset-0 w-full h-full\"></div><iframe id=\"%s-fallback\" src=\"%s\" class=\"absolute inset-0 w-full h-full border-0 hidden\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\" title=\"%s\"></iframe><script>(function () { var mapEl = document.getElementById(%q); var fallbackEl = document.getElementById(%q); var done = false; function useFallback() { if (done) return; done = true; if (mapEl) mapEl.style.display = \"none\"; if (fallbackEl) fallbackEl.classList.remove(\"hidden\"); } var timeoutId = setTimeout(useFallback, 4000); var script = document.createElement(\"script\"); script.src = \"https://dapi.kakao.com/v2/maps/sdk.js?appkey=%s\"; script.onload = function () { try { var center = new kakao.maps.LatLng(%v, %v); var map = new kakao.maps.Map(mapEl, { center: center, level: %v }); new kakao.maps.Marker({ position: center, map: map }); done = true; clearTimeout(timeoutId); } catch (e) { useFallback(); } }; script.onerror = useFallback; document.head.appendChild(script); })();</script>" $mapId $mapId ($googleIframe | safeURL) ($title | default "지도") $mapId (printf "%s-fallback" $mapId) $kakaoJsKey $lat $lng $kakaoLevel }}
+    {{ $mapNodeSimple := printf "<iframe src=\"%s\" class=\"absolute inset-0 w-full h-full border-0\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\" title=\"%s\"></iframe>" ($googleIframe | safeURL) ($title | default "지도") }}
+    {{ $mapHTML := $mapNodeSimple }}
+    {{ if $kakaoJsKey }}{{ $mapHTML = $mapNode }}{{ end }}
+
+    {{ if eq $layout "stacked" }}
+    {{/* 지도를 상단에 크게, 주소·연락처·길찾기는 그 아래 카드에 — 지도를 더 넓고 시원하게 보여주고 싶을 때 */}}
+    <div class="relative w-full h-[340px] sm:h-[440px] lg:h-[500px] rounded-3xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-700 shadow-lg mb-6">
+      {{ $mapHTML | safeHTML }}
+    </div>
+    <div class="rounded-2xl bg-white dark:bg-gray-800 ring-1 ring-gray-200 dark:ring-gray-700 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+      {{ with $address }}
+      <div class="flex items-start gap-3 text-gray-700 dark:text-gray-300 flex-1">
+        {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" "class=\"w-6 h-6 mt-0.5 shrink-0 text-primary-600\"") }}
+        <p class="whitespace-pre-line leading-relaxed text-base sm:text-lg">{{ . }}</p>
+      </div>
+      {{ end }}
+      {{ with $phone }}
+      <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+        {{ partial "functions/get_icon" (dict "name" "hero/phone" "attributes" "class=\"w-6 h-6 shrink-0 text-primary-600\"") }}
+        <a href="tel:{{ . }}" class="text-base sm:text-lg font-semibold hover:text-primary-600 transition-colors">{{ . }}</a>
+      </div>
+      {{ end }}
+      {{ if $directions_url }}
+      <a href="{{ $directions_url | safeURL }}" target="_blank" rel="noopener"
+         class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 transition-colors w-fit shrink-0">
+        {{ $directions_text }}
+        {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"w-5 h-5\"") }}
+      </a>
+      {{ end }}
+    </div>
+    {{ else }}
     <div class="grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl ring-1 ring-gray-200 dark:ring-gray-700 shadow-lg">
       <div class="bg-white dark:bg-gray-800 p-8 lg:p-10 flex flex-col justify-center order-last lg:order-first">
         {{ with $address }}
         <div class="flex items-start gap-4 text-gray-700 dark:text-gray-300 mb-8">
           {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" "class=\"w-7 h-7 mt-0.5 shrink-0 text-primary-600\"") }}
           <p class="whitespace-pre-line leading-relaxed text-lg sm:text-xl">{{ . }}</p>
+        </div>
+        {{ end }}
+        {{ with $phone }}
+        <div class="flex items-center gap-4 text-gray-700 dark:text-gray-300 mb-8">
+          {{ partial "functions/get_icon" (dict "name" "hero/phone" "attributes" "class=\"w-7 h-7 shrink-0 text-primary-600\"") }}
+          <a href="tel:{{ . }}" class="text-lg sm:text-xl font-semibold hover:text-primary-600 transition-colors">{{ . }}</a>
         </div>
         {{ end }}
         {{ if $directions_url }}
@@ -49,57 +95,9 @@
         {{ end }}
       </div>
       <div class="relative h-96 lg:h-auto lg:min-h-[440px] order-first lg:order-last">
-        {{ $googleIframe := printf "https://maps.google.com/maps?q=%v,%v&z=%v&output=embed" $lat $lng $zoom }}
-        {{ if $kakaoJsKey }}
-        {{/* 카카오맵 우선 시도, 로드 실패(광고차단 확장·네트워크 문제 등) 시 자동으로 구글 지도로 전환 */}}
-        <div id="{{ $mapId }}" class="absolute inset-0 w-full h-full"></div>
-        <iframe id="{{ $mapId }}-fallback"
-          src="{{ $googleIframe | safeURL }}"
-          class="absolute inset-0 w-full h-full border-0 hidden"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="{{ $title | default "지도" }}">
-        </iframe>
-        <script>
-          (function () {
-            var mapEl = document.getElementById("{{ $mapId }}");
-            var fallbackEl = document.getElementById("{{ $mapId }}-fallback");
-            var done = false;
-            function useFallback() {
-              if (done) return;
-              done = true;
-              if (mapEl) mapEl.style.display = "none";
-              if (fallbackEl) fallbackEl.classList.remove("hidden");
-            }
-            var timeoutId = setTimeout(useFallback, 4000);
-            var script = document.createElement("script");
-            script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey={{ $kakaoJsKey }}";
-            script.onload = function () {
-              try {
-                var center = new kakao.maps.LatLng({{ $lat }}, {{ $lng }});
-                var map = new kakao.maps.Map(mapEl, { center: center, level: {{ $kakaoLevel }} });
-                new kakao.maps.Marker({ position: center, map: map });
-                done = true;
-                clearTimeout(timeoutId);
-              } catch (e) {
-                useFallback();
-              }
-            };
-            script.onerror = useFallback;
-            document.head.appendChild(script);
-          })();
-        </script>
-        {{ else }}
-        {{/* API 키가 설정되지 않아 구글 지도로 대체 표시 (docs/ISSUES.md 참고) */}}
-        <iframe
-          src="{{ $googleIframe | safeURL }}"
-          class="absolute inset-0 w-full h-full border-0"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="{{ $title | default "지도" }}">
-        </iframe>
-        {{ end }}
+        {{ $mapHTML | safeHTML }}
       </div>
     </div>
+    {{ end }}
   </div>
 </div>
