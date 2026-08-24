@@ -13,6 +13,19 @@ sections:
       spacing:
         padding: ["4rem", 0, "3rem", 0]
 
+  - block: markdown
+    content:
+      text: |
+        ## 질환별로 궁금한 점이 있으신가요
+
+        찾으시는 질환을 눌러보시면 감별진단, 진료 확인사항, 치료 방법과 함께 해당 질환에 특화된 자주 묻는 질문도 확인하실 수 있습니다.
+
+        **석선희 원장 진료** — [공황장애 · 불안장애](/diseases/anxiety-panic/) · [강박장애](/diseases/ocd/) · [우울장애](/diseases/depression/) · [불면증](/diseases/insomnia/)
+
+        **류석균 원장 진료** — [틱장애](/diseases/tic/) · [ADHD](/diseases/adhd/) · [자율신경실조증](/diseases/dysautonomia/) · [다한증](/diseases/hyperhidrosis/) · [신경성 질환](/diseases/nervous-system/)
+
+        아래는 진료 전반에 대해 공통적으로 궁금해하시는 내용입니다.
+
   - block: faq
     content:
       items:
