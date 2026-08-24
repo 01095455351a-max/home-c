@@ -42,27 +42,9 @@ sections:
   # ──────────────────────────────────────────────────────────
   # 원장 및 진료 철학 소개
   # ──────────────────────────────────────────────────────────
-  - block: team-showcase
-    id: doctors
-    content:
-      title: 원장 및 진료 철학 소개
-      subtitle: 단순한 증상 완화를 넘어, 치료가 끝난 이후의 일상이 평온할 수 있도록 돕습니다.
-      user_groups:
-        - 전담 원장
-      sort_by: weight
-      sort_ascending: true
-    design:
-      show_role: true
-      show_organizations: true
-      show_interests: true
-      max_interests: 5
-      align: center
-      max_columns: 2
-      show_social: false
-      css_class: "bg-gray-50 dark:bg-gray-900/50"
-
   # ──────────────────────────────────────────────────────────
   # 특화 질환 (9종) 요약 — 상단 메뉴 "특화 질환" 클릭 시 이동
+  # 원장 소개보다 먼저 배치: 환자가 자신의 증상부터 찾을 수 있도록
   # ──────────────────────────────────────────────────────────
   - block: focus-areas
     id: diseases
@@ -172,6 +154,28 @@ sections:
     design:
       layout: cards
       css_class: "bg-white dark:bg-gray-900"
+
+  # ──────────────────────────────────────────────────────────
+  # 원장 및 진료 철학 소개
+  # ──────────────────────────────────────────────────────────
+  - block: team-showcase
+    id: doctors
+    content:
+      title: 원장 및 진료 철학 소개
+      subtitle: 단순한 증상 완화를 넘어, 치료가 끝난 이후의 일상이 평온할 수 있도록 돕습니다.
+      user_groups:
+        - 전담 원장
+      sort_by: weight
+      sort_ascending: true
+    design:
+      show_role: true
+      show_organizations: true
+      show_interests: true
+      max_interests: 5
+      align: center
+      max_columns: 2
+      show_social: false
+      css_class: "bg-gray-50 dark:bg-gray-900/50"
 
   # ──────────────────────────────────────────────────────────
   # 첫 진료시 — 4단계 진료 프로세스 (특화 질환 다음, 치료 방법 이전)
@@ -370,7 +374,7 @@ sections:
       zoom: 17
       address: |
         서울특별시 송파구 올림픽로 102 서일빌딩 3층
-        잠실새내역(4번 출구) 도보 3분 · 서일빌딩 뒷편 주차 가능
+        잠실새내역(4번 출구) 도보 3분 · 서일빌딩 뒷편 주차장 이용 가능
       directions_text: 길찾기
       directions_url: "https://www.google.com/maps/dir/?api=1&destination=37.5114327,127.0819814"
 
