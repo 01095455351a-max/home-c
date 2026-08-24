@@ -279,6 +279,24 @@ build:
    ```
 3. 순서를 바꾸려면 `items` 배열 순서를 바꾸면 됩니다. 캡션 없이 사진만 넣으려면 `caption`을 생략하면 됩니다.
 
+### 4.11 자필 후기 "네이버 로그인 후 원본 보기" 기능 활성화
+
+정적 사이트라 원본 이미지가 `public/`에 미리 배포되어 있으면 로그인 없이도 URL만 알면 누구나 볼 수 있습니다. 그래서 원본은 `public/`이 아니라 별도의 비공개 저장소(Cloudflare R2)에 두고, 로그인이 확인된 요청에만 서버(Cloudflare Pages Functions)가 대신 읽어서 보여주는 구조로 만들어뒀습니다 (`functions/api/naver-login.js`, `functions/api/naver-callback.js`, `functions/api/reviews/[[path]].js`, `functions/_lib/session.js`).
+
+**코드는 이미 준비되어 있고, 아래 설정을 마쳐야 실제로 작동합니다** (설정 전까지는 `params.yaml`의 `clinic.naver_client_id`가 비어있어 잠금 UI 자체가 아예 안 보이고 기존처럼 블러 이미지만 보입니다 — 안전한 기본값):
+
+1. **네이버 개발자센터 애플리케이션 등록**: [developers.naver.com](https://developers.naver.com) → 내 애플리케이션 → 등록. 사용 API는 "네이버 로그인"만 체크. **Callback URL**에 `https://<배포주소>/api/naver-callback` 등록 (예: `https://home-c-e67.pages.dev/api/naver-callback`, 도메인이 바뀌면 이것도 같이 갱신). 발급된 Client ID / Client Secret 확인.
+2. **Cloudflare R2 버킷 생성**: Cloudflare 대시보드 → R2 → 버킷 만들기 (이름 예: `healim-review-originals`). 각 후기의 원본(블러 처리 전) 이미지를, 해당 후기 `.md` 파일의 `image:` 값에서 **`reviews/` 접두사만 뺀 경로**를 오브젝트 키로 그대로 업로드합니다.
+   - 예: `content/reviews/panic-disorder.md`의 `image: "reviews/mental-health/review1.jpg"` → R2 오브젝트 키는 `mental-health/review1.jpg`
+3. **R2 바인딩 연결**: 이 Pages 프로젝트 → Settings → Functions → R2 bucket bindings → 변수 이름 `REVIEWS_ORIGINALS`로 위 버킷 연결.
+4. **환경변수 등록** (Settings → Environment variables):
+   - `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` — 1번에서 발급받은 값
+   - `SESSION_SECRET` — 아무 긴 무작위 문자열 (예: `openssl rand -hex 32`로 생성). 로그인 세션 토큰 서명에 사용, 외부 노출 금지.
+5. **`params.yaml` 활성화**: `clinic.naver_client_id`에 1번의 Client ID 값을 붙여넣고 배포. 이 값이 채워지는 순간 각 자필 후기 카드에 "네이버 로그인 후 원본 보기" 잠금 아이콘이 자동으로 나타납니다. (`content/reviews/_index.md`의 "원본은 상담 시 원내에서 확인하실 수 있습니다" 문구도 이때 함께 다듬으면 좋습니다 — 여전히 사실이긴 하지만 이제 로그인으로도 볼 수 있다는 점을 안내할 수 있음)
+6. 재배포 후 `/reviews/`에서 실제로 네이버 로그인 → 원본 이미지가 보이는지 확인. (⚠️ `hugo server` 로컬 미리보기는 Cloudflare Pages Functions를 실행하지 않아 이 기능은 로컬에서 검증 불가 — 관리자 페이지 GitHub 로그인과 동일한 제약, §4.9 참고)
+
+새 후기를 추가할 때도 원본 이미지를 같은 규칙(키 = `image:` 경로에서 `reviews/` 제거)으로 R2에 함께 업로드해야 잠금 해제가 작동합니다.
+
 ## 5. 배포 (Cloudflare Pages)
 
 실제 배포는 Cloudflare Pages(`home-c-e67.pages.dev`)로 되어 있으며, GitHub `main` 브랜치에 푸시하면 자동으로 재빌드됩니다. Cloudflare Pages 대시보드(pages.cloudflare.com)에서 빌드 명령(`npm install && hugo --gc --minify && npx pagefind --site public`)과 출력 디렉터리(`public`)를 확인할 수 있습니다.

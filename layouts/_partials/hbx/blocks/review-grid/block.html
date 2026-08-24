@@ -22,6 +22,10 @@
 
 {{ $count := partial "functions/coerce_int" (dict "value" (index $content "count") "default" 0 "min" 0) }}
 
+{{/* 네이버 로그인 후 원본 열람 기능 — clinic.naver_client_id가 설정되어 있을 때만 잠금 UI를 노출.
+     비어있으면(기본값) 기존처럼 블러 이미지만 보여줌. 설정 방법은 docs/MANUAL.md 참고. */}}
+{{ $naverEnabled := ne (site.Params.clinic.naver_client_id | default "") "" }}
+
 {{/* content/reviews/ 아래 type: review-item 페이지를 weight 순으로 조회 */}}
 {{ $reviewPages := where site.RegularPages "Type" "review-item" }}
 {{ $reviewPages = $reviewPages.ByWeight }}
@@ -57,6 +61,7 @@
       {{/* focus-areas 블록과 동일한 image 경로 해석 로직 (assets/media/ 하위 상대경로) */}}
       {{ $image_resource := false }}
       {{ $image_url := "" }}
+      {{ $original_key := "" }}
       {{ if $image }}
         {{ $image_path := strings.TrimSpace (printf "%v" $image) }}
         {{ $image_path = strings.TrimPrefix "/" $image_path }}
@@ -69,18 +74,31 @@
           {{ if not $image_resource }}
             {{ $image_url = printf "/media/%s" $normalized }}
           {{ end }}
+          {{/* R2 오브젝트 키 = 블러 이미지 경로에서 "reviews/" 접두사만 제거한 값 (docs/MANUAL.md 참고) */}}
+          {{ $original_key = strings.TrimPrefix "reviews/" $normalized }}
         {{ end }}
       {{ end }}
 
       <div class="group relative">
         <div class="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden flex flex-col">
           <div class="relative h-48 bg-gradient-to-br from-primary-400 to-secondary-400 overflow-hidden">
+            {{ $imgAttrs := printf "alt=\"%s\" class=\"w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500\"" ($name | plainify) }}
+            {{ if and $naverEnabled $original_key }}
+              {{ $imgAttrs = printf "%s data-original-src=\"%s\"" $imgAttrs (printf "/api/reviews/%s" $original_key) }}
+            {{ end }}
             {{ if $image_resource }}
               {{ $img := $image_resource }}
               {{ if reflect.IsImageResourceProcessable $img }}{{ $img = $img.Fill "600x400 Center webp" }}{{ end }}
-              <img src="{{ $img.RelPermalink }}" alt="{{ $name | plainify }}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+              <img src="{{ $img.RelPermalink }}" {{ $imgAttrs | safeHTMLAttr }}>
             {{ else if $image_url }}
-              <img src="{{ $image_url | relURL }}" alt="{{ $name | plainify }}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+              <img src="{{ $image_url | relURL }}" {{ $imgAttrs | safeHTMLAttr }}>
+            {{ end }}
+            {{ if and $naverEnabled $original_key (or $image_resource $image_url) }}
+            <a href="/api/naver-login?return=%2Freviews%2F%23handwritten"
+               class="review-lock-overlay absolute inset-0 flex flex-col items-center justify-center gap-1.5 bg-gray-900/55 hover:bg-gray-900/70 transition-colors text-white text-xs font-medium text-center px-3">
+              {{ partial "functions/get_icon" (dict "name" "hero/lock-closed" "attributes" "class=\"w-6 h-6\"") }}
+              <span>네이버 로그인 후<br>원본 보기</span>
+            </a>
             {{ end }}
           </div>
 
