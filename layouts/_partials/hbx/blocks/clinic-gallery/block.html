@@ -46,7 +46,7 @@
         {{ end }}
 
         <div class="snap-start shrink-0 w-80 sm:w-96">
-          <div class="h-full flex flex-col rounded-2xl bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 overflow-hidden">
+          <div class="h-full flex flex-col rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 overflow-hidden">
             {{ if $img }}
             <div class="aspect-[3/2] bg-gray-100 dark:bg-gray-700 overflow-hidden">
               <img src="{{ $img.RelPermalink }}" alt="{{ $caption | plainify }}" loading="lazy" class="w-full h-full object-cover" />

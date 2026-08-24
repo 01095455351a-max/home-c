@@ -28,12 +28,12 @@ sections:
         padding: ["6rem", 0, "5rem", 0]
         margin: [0, 0, 0, 0]
       section_break:
-        fade_bottom: "#F7F3EC"
+        fade_bottom: "#FFFFFF"
       background:
-        color: "#F1EDE1"
+        color: "#F9FBFA"
         gradient:
           type: radial
-          start: "rgba(63,175,179,0.14)"
+          start: "rgba(0,104,74,0.12)"
           end: "transparent"
           position: "50% -10%"
           shape: ellipse

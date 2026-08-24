@@ -47,10 +47,10 @@
 
     {{ if eq $layout "stacked" }}
     {{/* 지도를 상단에 크게, 주소·연락처·길찾기는 그 아래 카드에 — 지도를 더 넓고 시원하게 보여주고 싶을 때 */}}
-    <div class="relative w-full h-[340px] sm:h-[440px] lg:h-[500px] rounded-3xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-700 shadow-lg mb-6">
+    <div class="relative w-full h-[340px] sm:h-[440px] lg:h-[500px] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 mb-6">
       {{ $mapHTML | safeHTML }}
     </div>
-    <div class="rounded-2xl bg-white dark:bg-gray-800 ring-1 ring-gray-200 dark:ring-gray-700 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+    <div class="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
       {{ with $address }}
       <div class="flex items-start gap-3 text-gray-700 dark:text-gray-300 flex-1">
         {{ partial "functions/get_icon" (dict "name" "hero/map-pin" "attributes" "class=\"w-6 h-6 mt-0.5 shrink-0 text-primary-600\"") }}
@@ -65,14 +65,14 @@
       {{ end }}
       {{ if $directions_url }}
       <a href="{{ $directions_url | safeURL }}" target="_blank" rel="noopener"
-         class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 transition-colors w-fit shrink-0">
+         class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-600 hover:bg-[#023430] text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 transition-colors duration-[170ms] w-fit shrink-0">
         {{ $directions_text }}
         {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"w-5 h-5\"") }}
       </a>
       {{ end }}
     </div>
     {{ else }}
-    <div class="grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl ring-1 ring-gray-200 dark:ring-gray-700 shadow-lg">
+    <div class="grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
       <div class="bg-white dark:bg-gray-800 p-8 lg:p-10 flex flex-col justify-center order-last lg:order-first">
         {{ with $address }}
         <div class="flex items-start gap-4 text-gray-700 dark:text-gray-300 mb-8">
@@ -88,7 +88,7 @@
         {{ end }}
         {{ if $directions_url }}
         <a href="{{ $directions_url | safeURL }}" target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-semibold text-lg px-8 py-4 transition-colors w-fit">
+           class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-600 hover:bg-[#023430] text-white font-semibold text-lg px-8 py-4 transition-colors duration-[170ms] w-fit">
           {{ $directions_text }}
           {{ partial "functions/get_icon" (dict "name" "hero/arrow-top-right-on-square" "attributes" "class=\"w-5 h-5\"") }}
         </a>
