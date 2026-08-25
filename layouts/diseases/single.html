@@ -1,0 +1,179 @@
+{{/* Claude Design 리디자인 STEP 5-2 — 질환 상세 페이지 전용 레이아웃.
+     handoff/design/Haerim-Detail-Tic.dc.html 시안 기준: 브레드크럼 → 헤더(제목/태그/CTA) →
+     본문(좌) + 스티키 사이드바(우 320px: 목차/상담카드/진료시간). 상담신청 폼·오시는길·지도·
+     푸터는 layouts/_partials/hooks/footer-start/common-bottom.html + site_footer가 모든
+     페이지에 이미 공통으로 렌더링하므로 여기서 다시 만들지 않는다.
+
+     content/diseases/*.md 프론트매터:
+       title:            짧은 라벨(브레드크럼·SEO)
+       headline:         페이지 H1(내러티브 문구)
+       tags:              [질환 관련 키워드 3개 내외 — 헤더 배지]
+       doctor:            담당 원장 slug (authors 데이터 기준)
+       related_columns:   [/column/slug/, ...] — 관련 원장 컬럼 링크
+       faqs:              [{question, answer}, ...] — 질환별 자주 묻는 질문
+     본문(마크다운 바디)의 H2가 그대로 사이드바 목차 항목이 된다. */}}
+{{- define "main" -}}
+{{ $c := site.Params.clinic }}
+{{ $tags := .Params.tags }}
+{{ if not (reflect.IsSlice $tags) }}{{ $tags = slice }}{{ end }}
+{{ $headline := .Params.headline | default .Title }}
+{{ $doctorSlug := .Params.doctor }}
+{{ $relatedColumns := .Params.related_columns }}
+{{ if not (reflect.IsSlice $relatedColumns) }}{{ $relatedColumns = slice }}{{ end }}
+{{ $faqs := .Params.faqs }}
+{{ if not (reflect.IsSlice $faqs) }}{{ $faqs = slice }}{{ end }}
+
+{{/* .Fragments는 .Content가 실제로 렌더링되어야 채워지므로, 먼저 강제로 평가해 캡처해둔다
+     (본문 출력에는 이 변수를 그대로 재사용 — .Content를 다시 호출하지 않음). */}}
+{{ $body := .Content }}
+
+{{/* 목차: 본문 H2 + (있는 경우) 관련 컬럼 / FAQ 섹션 */}}
+{{ $tocItems := slice }}
+{{/* .Fragments.Headings의 최상위 항목은 페이지 전체를 감싸는 빈 루트 노드이고,
+     실제 본문 H2들은 그 .Headings(자식)로 들어있다. */}}
+{{ range .Fragments.Headings }}
+  {{ range .Headings }}
+    {{ $tocItems = $tocItems | append (dict "id" .ID "text" .Title) }}
+  {{ end }}
+{{ end }}
+{{ if gt (len $relatedColumns) 0 }}{{ $tocItems = $tocItems | append (dict "id" "related" "text" "관련 원장 컬럼") }}{{ end }}
+{{ if gt (len $faqs) 0 }}{{ $tocItems = $tocItems | append (dict "id" "disease-faq" "text" "자주 묻는 질문") }}{{ end }}
+
+<section style="background-image: linear-gradient(180deg, var(--hj-accent-surface) 0%, var(--hj-surface) 100%); border-bottom: 1px solid var(--hj-hairline);" class="pt-8 pb-10 sm:pt-11 sm:pb-14">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {{/* 브레드크럼 */}}
+    <nav class="flex items-center gap-2 text-[13px] mb-6" style="color: var(--hj-text-weak);">
+      <a href="{{ site.Home.RelPermalink }}" class="hover:!text-inherit" style="color: var(--hj-text-weak);">홈</a>
+      <span>›</span>
+      <a href="/diseases/" style="color: var(--hj-text-weak);">특화 질환</a>
+      <span>›</span>
+      <span class="font-semibold" style="color: var(--hj-ink);">{{ .Title }}</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-12 lg:items-end">
+      <div>
+        <p class="text-xs font-semibold tracking-wider uppercase mb-3" style="color: var(--hj-primary);">특화 질환 · {{ .Title }}</p>
+        <h1 class="text-3xl sm:text-[44px]">{{ $headline }}</h1>
+        {{ with .Params.subtitle }}<p class="text-base sm:text-lg mt-3" style="color: var(--hj-text);">{{ . }}</p>{{ end }}
+        {{ if gt (len $tags) 0 }}
+        <div class="flex flex-wrap gap-1.5 mt-5">
+          {{ range $tags }}
+          <span class="text-xs font-semibold px-3 py-1.5 rounded" style="color: var(--hj-primary); background: #fff; border: 1px solid var(--hj-accent-border);">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+      <div class="flex gap-2.5 flex-wrap lg:justify-end">
+        <a href="#consult" class="inline-flex items-center justify-center rounded-full bg-primary-600 hover:bg-[#023430] text-white font-semibold text-[15px] px-6 py-3.5 transition-colors duration-[170ms]">전화 상담 신청</a>
+        {{ with $c.naver_booking_url }}
+        <a href="{{ . }}" class="inline-flex items-center justify-center rounded-full bg-white hover:border-primary-600 hover:text-primary-600 text-[15px] font-semibold px-6 py-3.5 transition-colors duration-[170ms] border" style="border-color: var(--hj-input-border); color: var(--hj-ink);">네이버 예약</a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-12 sm:py-16 lg:py-[64px]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 lg:gap-16 items-start">
+
+    <article class="min-w-0 max-w-none disease-article
+      prose prose-slate
+      prose-headings:font-medium prose-headings:tracking-[-0.5px]
+      prose-h2:text-[28px] prose-h2:leading-[1.35] prose-h2:mb-5 prose-h2:mt-14 prose-h2:scroll-mt-24
+      prose-p:text-[17px] prose-p:leading-[1.8] prose-p:my-0
+      prose-li:text-[17px] prose-li:leading-[1.75]
+      prose-strong:font-semibold
+      prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
+      prose-blockquote:not-italic prose-blockquote:font-normal prose-blockquote:border-l-[3px] prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-lg prose-blockquote:my-6
+      [&_h2]:text-[color:var(--hj-ink)] [&_p]:text-[color:var(--hj-text)] [&_li]:text-[color:var(--hj-text)] [&_strong]:text-[color:var(--hj-ink)]
+      [&_a]:text-[color:var(--hj-primary)] [&_blockquote]:text-[color:var(--hj-text)] [&_blockquote]:border-l-[color:var(--hj-primary)] [&_blockquote]:bg-[color:var(--hj-surface)]
+      [&>*+h2]:pt-0 [&_ul]:my-5 [&_ol]:my-5 [&_ul>li]:pl-1 [&_ol>li]:pl-1">
+      {{ $body }}
+
+      {{ if gt (len $relatedColumns) 0 }}
+      <div id="related" class="scroll-mt-24">
+        <h2>관련 원장 컬럼</h2>
+        <div class="flex flex-col gap-3 not-prose">
+          {{ range $url := $relatedColumns }}
+            {{ with site.GetPage $url }}
+            {{ $category := "칼럼" }}
+            {{ with .Params.tags }}{{ if gt (len .) 0 }}{{ $category = index . 0 }}{{ end }}{{ end }}
+            {{ $author := "" }}
+            {{ with .Params.authors }}{{ if gt (len .) 0 }}{{ $author = index . 0 }}{{ end }}{{ end }}
+            {{ $profile := partial "functions/get_author_profile" $author }}
+            <a href="{{ .RelPermalink }}" class="flex items-center gap-4 rounded-xl border p-5 transition-all duration-[170ms] hover:shadow-[0px_4px_12px_0px_rgba(0,30,43,0.08)] hover:-translate-y-0.5" style="border-color: var(--hj-hairline);">
+              {{ with $profile.avatar }}
+              {{ $av := . }}
+              {{ if reflect.IsImageResourceProcessable $av }}{{ $av = $av.Fill "96x96 Center webp" }}{{ end }}
+              <img src="{{ $av.RelPermalink }}" alt="{{ $profile.title }}" class="w-12 h-12 rounded-full object-cover shrink-0">
+              {{ end }}
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold mb-1.5" style="color: var(--hj-primary);">{{ $category }}</p>
+                <p class="text-[18px] font-semibold leading-snug" style="color: var(--hj-ink);">{{ .Title }}</p>
+              </div>
+              <span class="text-[15px] font-semibold shrink-0" style="color: var(--hj-primary);">→</span>
+            </a>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      {{ if gt (len $faqs) 0 }}
+      <div id="disease-faq" class="scroll-mt-24">
+        <h2>자주 묻는 질문</h2>
+        <div class="flex flex-col gap-4 not-prose">
+          {{ range $faqs }}
+          <div class="rounded-xl border p-6" style="border-color: var(--hj-hairline);">
+            <p class="text-[17px] font-semibold mb-2" style="color: var(--hj-ink);">{{ index . "question" }}</p>
+            <p class="text-[16px] leading-[1.75]" style="color: var(--hj-text);">{{ index . "answer" | markdownify }}</p>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      {{ with .Params.cta_title }}
+      <div id="consult-note" class="not-prose rounded-xl p-7 sm:p-8 mt-2" style="background: var(--hj-accent-surface); border: 1px solid var(--hj-accent-border);">
+        <p class="text-[19px] font-semibold mb-2" style="color: var(--hj-ink);">{{ . }}</p>
+        {{ with $.Params.cta_text }}<p class="text-[16px] leading-[1.7]" style="color: var(--hj-text);">{{ . }}</p>{{ end }}
+        <a href="#consult" class="inline-flex items-center justify-center rounded-full bg-primary-600 hover:bg-[#023430] text-white font-semibold text-[15px] px-6 py-3 mt-5 transition-colors duration-[170ms]">전화 상담 신청</a>
+      </div>
+      {{ end }}
+    </article>
+
+    <aside class="lg:sticky lg:top-[104px] flex flex-col gap-4">
+      {{ if gt (len $tocItems) 0 }}
+      <nav class="rounded-xl border p-6" style="border-color: var(--hj-hairline);">
+        <p class="text-[11px] font-semibold tracking-wider uppercase mb-3.5" style="color: var(--hj-text-muted);">이 페이지에서</p>
+        <div class="flex flex-col gap-2.5">
+          {{ range $tocItems }}
+          <a href="#{{ .id }}" class="text-[15px] hover:!text-[color:var(--hj-primary)]" style="color: var(--hj-text);">{{ .text }}</a>
+          {{ end }}
+        </div>
+      </nav>
+      {{ end }}
+
+      <div class="rounded-xl p-6" style="background: var(--hj-accent-surface); border: 1px solid var(--hj-accent-border);">
+        <p class="text-[18px] font-semibold mb-2" style="color: var(--hj-ink);">전화 상담 신청</p>
+        <p class="text-[15px] leading-[1.7] mb-4.5" style="color: var(--hj-text);">이름과 연락처를 남겨주시면 확인 후 전화로 안내해 드립니다.</p>
+        <a href="#consult" class="block text-center rounded-full bg-primary-600 hover:bg-[#023430] text-white font-semibold text-[15px] px-5 py-3 transition-colors duration-[170ms]">상담 신청하기</a>
+        {{ with $c.phone_tel }}
+        <a href="{{ . }}" class="block text-center font-semibold text-[16px] mt-3.5 hover:!text-[color:var(--hj-primary)]" style="color: var(--hj-ink);">{{ $c.phone_display }}</a>
+        {{ end }}
+      </div>
+
+      <div class="rounded-xl border p-6" style="border-color: var(--hj-hairline);">
+        <p class="text-[11px] font-semibold tracking-wider uppercase mb-3.5" style="color: var(--hj-text-muted);">진료시간</p>
+        <div class="flex flex-col gap-2.5 text-sm">
+          <div class="flex justify-between gap-3"><span style="color: var(--hj-text);">월 · 수</span><span class="font-semibold">10:00 ~ 19:00</span></div>
+          <div class="flex justify-between gap-3"><span style="color: var(--hj-text);">화 · 금 (야간)</span><span class="font-semibold">10:00 ~ 20:00</span></div>
+          <div class="flex justify-between gap-3"><span style="color: var(--hj-text);">토 · 대체공휴일</span><span class="font-semibold">10:00 ~ 16:00</span></div>
+          <div class="flex justify-between gap-3"><span style="color: var(--hj-text);">목 · 일 · 공휴일</span><span class="font-semibold" style="color: var(--hj-text-weak);">정기 휴진</span></div>
+          <p class="text-xs mt-1" style="color: var(--hj-text-weak);">점심 13:00~14:00 (토·공휴일 없음)</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+{{- end -}}
